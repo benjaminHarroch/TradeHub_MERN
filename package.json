@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "dev": "concurrently \"nodemon index.js\" \"cd ClientApp && npm start\""
   },
   "keywords": [],
   "author": "",
@@ -12,13 +13,16 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
+    "concurrently": "7.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "finnhub": "^1.2.15",
     "finviz-screener": "^1.1.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "yahoo-stock-api": "^1.1.10"
   },
   "description": ""
 }

@@ -1,0 +1,19 @@
+
+
+.barButton{
+    font-size: 1.5em;
+    padding: 10px 6em;
+    border: none;
+    background-color: inherit;
+    margin-top: 15px;
+    border-bottom: 1px solid lightblue; ;
+    font-weight: 600;
+    letter-spacing:2px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.barButton:hover{
+
+    background-color: aliceblue;
+}

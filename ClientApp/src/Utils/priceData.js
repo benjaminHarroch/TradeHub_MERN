@@ -931,3 +931,6 @@ export const priceData = [
       close: 201.01
     },
   ];
+
+
+  

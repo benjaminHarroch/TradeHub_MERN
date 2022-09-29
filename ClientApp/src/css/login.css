@@ -1,0 +1,54 @@
+
+.LoginContainer{
+
+    display: flex;
+    flex-direction: column;
+    padding: 2em; 
+    text-align: center;
+    justify-content: center;
+    font-weight: 500;
+
+}
+
+.LoginContainer>div{
+
+    padding: 1.05em;
+    margin-bottom: 1.05em;
+
+}
+
+.username-login label{
+    display: block;
+}
+                    
+
+.password-login label{
+
+    display: block;
+
+}
+                    
+
+
+.username-login input,
+.password-login input{
+   
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #f6f6f6;
+    padding: 1.02em;
+}
+
+.button-login button{
+
+    background-color:lightblue;
+    padding: 8px 18px;
+    border: none;
+    box-shadow: 1px 2px lightblue;
+    cursor: pointer;
+    font-size: 1.02em;
+    border-radius: 3px;
+
+}
+                    
+                 

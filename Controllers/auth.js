@@ -103,7 +103,7 @@ router.post('/register',async (req,res)=>{
     const response=await chekeIfExistUserName(userName);
 
     if(response){
-        return serverResponse(res,500,"the userName is already exist");
+        return serverResponse(res,500,{message:"the user is already exist"});
     }
 
     bcrypt.hash(password, saltRounds, async function(err, hash) {
@@ -111,7 +111,7 @@ router.post('/register',async (req,res)=>{
 
         if(err){
 
-            return serverResponse(res,500,{mesage:"an error uccured with your password"})
+            return serverResponse(res,500,{message:"an error uccured with your password"})
         }
          //if the user not exist so save the user in the data base and return token
             const newUser= new UserModel({userName,password:hash,profilepic,posts});

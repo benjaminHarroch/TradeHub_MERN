@@ -1,0 +1,63 @@
+
+.newsContainer{
+
+    display: flex;
+    flex-flow: wrap;
+    margin-top: 2em;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsCart{
+    
+    display: flex;
+    padding: 5em;
+    flex-direction: column-reverse;
+    align-content: center;
+    justify-content: space-around;
+    width: 15em;
+    height: 20em;
+    padding: 5em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-right: 1px solid darkgrey;
+    margin-top: 1em;
+}
+
+.newsCart>div{
+
+    padding: 0.2em;
+}
+
+.headline{
+
+}
+.summary{
+
+    font-weight: 400;
+}
+.datetime{
+    font-size: 1.2em;
+}
+
+.image img{
+
+    width: 100%;
+    border-radius: 12px;
+
+}
+
+
+.linkContainer{
+
+    text-decoration: none;
+    color: #000;
+}
+
+.loadingDiv{
+
+    position: absolute;
+    top: 50%;
+
+    
+}

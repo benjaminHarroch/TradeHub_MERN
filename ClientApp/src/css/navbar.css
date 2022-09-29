@@ -1,0 +1,80 @@
+
+
+
+.NavBarContainer{
+    display: flex;
+    margin: 0 auto;
+    padding: 0 15px;
+    padding-right: 20em;
+    height: 4em;
+    border-bottom: 2px solid #e8f3ff;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hamburgerMenu{
+    display: none;
+}
+
+.MuiAvatar-root.MuiAvatar-circular.css-1wlk0hk-MuiAvatar-root{
+
+    position: absolute;
+    left: 2;
+    right: 4em;
+    width: 3em;
+    height: 3em;
+}
+
+.MuiAvatar-root.MuiAvatar-circular.css-1wlk0hk-MuiAvatar-root:hover{
+
+    cursor: pointer;
+    box-shadow: 2px 2px rgb(207, 206, 206);
+}
+
+
+
+@media only screen and (max-width: 1500px){
+
+    .SearchBar{
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 1000px){
+
+    .links{
+        display: none;
+    }
+    .hamburgerMenu{
+        display: block;
+        position: absolute;
+        right: 5px;
+        top:5px;
+    }
+    .authButtons{
+        visibility: hidden;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.authButtons{
+    display: flex;
+}
+
+.authButtons>div{
+    display: flex;
+}
