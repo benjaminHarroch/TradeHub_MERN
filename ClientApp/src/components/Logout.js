@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from "../Context/userContext";
 
 
 const LogoutButton=styled.button`
@@ -25,12 +26,31 @@ border-radius: 4px;
 
 const Logout =()=>{
 
+    const {setUser}=useContext(UserContext);
+
+    function logout(){
+    
+        window.localStorage.removeItem('x-access-token');
+
+        setUser({
+              
+            user_id:'',
+            userName:'',
+            profilepic:'',
+            posts:[],
+            token:'',
+
+        });
+
+
+    }
+
 
 
     return (
 
         <div>
-        <LogoutButton onClick={()=> window.localStorage.removeItem('x-access-token')}>Logout </LogoutButton>
+        <LogoutButton onClick={()=> logout()}>Logout </LogoutButton>
         </div>
     )
 

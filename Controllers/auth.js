@@ -93,6 +93,32 @@ router.get('/getuser/:userId',async (req,res)=>{
 
 })
 
+router.post("/getUserWithtoken", async (req,res)=>{
+
+    
+  try{
+
+      const token=req.headers['x-access-token'];
+
+      if(!token){
+
+          return serverResponse(res,500,{message:"need to login"});
+      }else{
+              //decoded
+              const decoded = jwt.verify(token,KEY_SECRET);
+              console.log(decoded.id);
+              const user= await UserModel.findById({_id:decoded.id})
+              return serverResponse(res,200,user);
+
+      }
+  }catch(e){
+
+      console.log(e);
+      serverResponse(res,500,{message:"internal error occured"+e});
+  }
+
+})
+
 
 router.post('/register',async (req,res)=>{
 

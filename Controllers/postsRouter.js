@@ -81,7 +81,7 @@ router.put('/editPost/:postId',async (req,res)=>{
 
             keyarrays.forEach(key => Post[key]=req.body[key]);
             await Post.save();
-            return  serverResponse(res,200,"the post is get into the data base");
+            return  serverResponse(res,200,"the post have been updated");
 
         }else{
 
@@ -111,6 +111,59 @@ router.delete('/deletepost/:postid',async (req,res)=>{
 
       return   serverResponse(res,500,"the request to delete failed");
     }
+
+})
+
+router.put('/liketopost/:postid',async (req,res)=>{ 
+
+  const userId=req.body.userId;
+  const postid=req.params.postid;
+
+   try{
+
+
+       const post=await PostModel.findById({_id:postid});
+
+       if(post){
+
+         post.liked.push(userId);
+         await post.save();
+         return serverResponse(res,200,"success to add like");
+       
+
+       }
+
+   }catch(e){
+
+     return   serverResponse(res,500,"the request to add post to this user is failed");
+   }
+
+})
+
+router.put('/unliketopost/:postid',async (req,res)=>{ 
+
+  const userId=req.body.userId;
+  const postid=req.params.postid;
+
+   try{
+
+
+       const post=await PostModel.findById({_id:postid});
+
+       if(post){
+
+        const indexToRemove= post.liked.indexOf(userId);
+        post.liked.splice(indexToRemove, 1);
+         await post.save();
+         return serverResponse(res,200,"success to remove like");
+       
+
+       }
+
+   }catch(e){
+
+     return   serverResponse(res,500,"the request to add post to this user is failed");
+   }
 
 })
 

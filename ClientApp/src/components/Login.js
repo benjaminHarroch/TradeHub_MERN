@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
-import {useState ,useEffect} from 'react';
+import {useState ,useEffect,useContext} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import UserContext from '../Context/userContext';
 import '../css/login.css'
 
 const style = {
@@ -50,6 +51,8 @@ export const Login = () => {
       flage:false,
       errorMessage:''
     });
+
+    const {user,setUser}=useContext(UserContext);
 
    let errorFlage=false;
 
@@ -98,6 +101,18 @@ export const Login = () => {
         .then(res => {
           console.log('res',res);
           console.log(res.data.user);
+          
+          window.localStorage.setItem("x-access-token",res.data.token);
+          setUser({
+              
+            user_id:res.data.user._id,
+            userName:res.data.user.userName,
+            profilepic:res.data.user.profilepic,
+            posts:res.data.user.posts,
+            token:res.data.token,
+
+          })
+
         }).catch(err=>{console.log(err.response.data.message)
            seterror({flage:true,errorMessage:err.response.data.message})
           })

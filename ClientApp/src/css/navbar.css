@@ -7,28 +7,40 @@
     padding: 0 15px;
     padding-right: 20em;
     height: 4em;
-    border-bottom: 2px solid #e8f3ff;
+    /*border-bottom: 2px solid #e8f3ff;*/
     align-items: center;
     justify-content: space-between;
+    background-color: #222831;
+    color:#00ADB5;
 }
 
 .hamburgerMenu{
     display: none;
 }
 
-.MuiAvatar-root.MuiAvatar-circular.css-1wlk0hk-MuiAvatar-root{
+.avatarNavBar{
 
     position: absolute;
-    left: 2;
-    right: 4em;
-    width: 3em;
+    right: 15em;
+    top:2em;
+    width: 3.0em;
     height: 3em;
+    border-radius: 50%;
 }
 
-.MuiAvatar-root.MuiAvatar-circular.css-1wlk0hk-MuiAvatar-root:hover{
-
+.avatarNavBar:hover{
+   
     cursor: pointer;
-    box-shadow: 2px 2px rgb(207, 206, 206);
+}
+
+.authButtons button{
+
+    color: #00ADB5;
+}
+
+.SearchBar label,.SearchBar input{
+    color: #00ADB5;
+    border-color: #00ADB5;
 }
 
 

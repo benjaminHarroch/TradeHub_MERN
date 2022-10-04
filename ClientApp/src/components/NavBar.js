@@ -20,7 +20,7 @@ const ButtonNavigate=styled.button`
 padding:5px;
 background-color:inherit;
 border:none;
-color: #1976d2;
+color: #00ADB5;
 font-weight: 600;
 font-size: 0.875rem;
 line-height: 1.75;
@@ -80,7 +80,7 @@ const navigate=useNavigate();
                      maxWidth: '100%',
                     }}
                   >
-                 <TextField fullWidth label="search-user" id="fullWidth"  />
+                 <TextField fullWidth label="Search-user..." id="fullWidth" style={{ borderColor:'#00ADB5' }} />
                  </Box>
                 
                </div>
@@ -88,11 +88,10 @@ const navigate=useNavigate();
                <div className='authButtons'>
                 {user.token?<div className='authButtons-login'><Logout /> <Avatar
                                                     alt="Remy Sharp"
-                                                    src="/static/images/avatar/1.jpg"
-                                                    sx={{ width: 56, height: 56 }}
-                 /></div>:
+                                                    src={user.profilepic}
+                                                    sx={{ width: 48, height: 48 }}
+                 /><div style={{'margin':'0.5em' ,'font-weight':'600'}}>hello {user.userName}</div></div>:
                 <div className='authButtons-login' ><Register/> <Login/></div>}
-                <Avatar alt="Profile Pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvi-tJNqAm1Q2FS1SXHQDmC98jn0ylHzeP9FC68REFbQ&s" />
                </div>
    
                <div className='hamburgerMenu'> 

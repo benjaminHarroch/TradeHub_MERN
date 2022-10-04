@@ -1,0 +1,39 @@
+
+
+.containerPost{
+
+
+    display: flex;
+    width: 40em;
+    height: 25em;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 1em;
+    border: 1px solid #222831;
+    box-shadow: 2px 2px #00ADB5;
+}
+
+.avatarPostdiv{
+
+display: flex;
+align-items: center;
+margin-left: 1em;
+}
+
+.imagePost img{
+    width: 40em;
+    height: 15em;
+}
+
+.titlePost{
+
+ font-size: large;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-weight: 500;
+ margin-left: 1em;
+}
+
+.descriptionPost{
+margin-left: 1em;
+
+}
