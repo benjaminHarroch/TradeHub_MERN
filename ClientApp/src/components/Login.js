@@ -146,7 +146,7 @@ export const Login = () => {
                      </div>
 
                      <div className='password-login'>
-                     <label>password: </label>
+                     <label>Password: </label>
                      <input type="text" placeholder='please enter your password' onChange={(e)=>setPassword(e.target.value)}></input>
                      </div>
 

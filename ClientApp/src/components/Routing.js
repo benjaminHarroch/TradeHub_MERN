@@ -6,6 +6,8 @@ import { HomePage } from './HomePage';
 import NavBar from './NavBar';
 import { News } from './News';
 import axios from 'axios';
+import { Profile } from './Profile';
+import { DayStock } from './DayStock';
 
 
 
@@ -56,6 +58,8 @@ useEffect(()=>{
               
         <Route path='/News' element={<News />} />
         <Route path='/' element={<HomePage />} />
+        <Route path='/profile/:userid' element={<Profile />} />
+        <Route path='/daystock' element={<DayStock />} />
        
     
 

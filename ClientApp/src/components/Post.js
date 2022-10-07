@@ -10,6 +10,7 @@ import { AddPost } from './AddPost';
 import '../css/post.css'
 import styled from 'styled-components';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,6 +26,8 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
 
   const [like,setLike]=useState(numOfLike);
   const [likeCliked,setLikeCliked]=useState(false);
+
+  const navigate =useNavigate();
 
   function chekeIfalreadydolike(){
 
@@ -56,6 +59,14 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
   margin-right: 1em;
   color:#fff;
   cursor:pointer;
+
+   @media only screen and (max-width: 1000px){
+     
+    font-size:0.8em;
+
+   }
+
+
   `
 
   function chekeIfLikeCliked(){
@@ -124,7 +135,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
 
     <div className='containerPost' onClick={()=>setCliked('notvisible')} >
 
-         <div className='avatarPostdiv'> <Avatar  alt="pofile pic" src={`${userPost.image}`}/> <UserName>{userPost.userName}</UserName> </div>
+         <div className='avatarPostdiv' onClick={()=>navigate(`/profile/${user_id}`)}> <Avatar  alt="pofile pic" src={`${userPost.image}`}/> <UserName>{userPost.userName}</UserName> </div>
 
          <div className='imagePost'>{ image&&<img src={`${image}`} alt='photo'></img>} </div>
 

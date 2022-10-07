@@ -82,3 +82,30 @@
 
     
 }
+
+@media only screen and (max-width: 1000px){
+
+
+   
+    
+    .searchBarForNews{
+        width: 10em;
+        padding: 1.5em;
+        margin-left: -3em;
+    }
+    
+    .searchBarForNews input{
+        width: 100%;
+        padding: 1.5em;
+        border-radius: 7px;
+    }
+    
+    
+    
+    
+   
+
+
+
+}
+

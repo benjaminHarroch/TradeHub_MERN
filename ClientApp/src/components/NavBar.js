@@ -47,8 +47,10 @@ padding:7px;
 
 const NavBar =()=>{
 
-
 const {user}=useContext(UserContext);
+
+
+{user.user_id!=''&&console.log(user.user_id)}
 
 const navigate=useNavigate();
     
@@ -67,7 +69,11 @@ const navigate=useNavigate();
 
                <ButtonNavigate onClick={()=>{navigate('/News')}}> News </ButtonNavigate>
                <ButtonNavigate onClick={()=>{navigate('/')}}> Home </ButtonNavigate>
-               <ButtonNavigate onClick={()=>{navigate('/')}}> Day Stocks </ButtonNavigate>
+               <ButtonNavigate onClick={()=>{navigate('/daystock')}}> Day Stocks </ButtonNavigate>
+               {user.user_id!=''&&<ButtonNavigate onClick={()=>{navigate(`/profile/${user.user_id}`)}}> My profile </ButtonNavigate>}
+
+
+               
                
                
                </div>

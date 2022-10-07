@@ -41,6 +41,22 @@ router.get('/getPostOfid/:userId',async (req,res)=>{
 
 })
 
+router.get('/getspecificePost/:postId',async (req,res)=>{
+
+  const _id=req.params.postId;
+
+  try{
+  
+  const Post=await PostModel.findById({_id});
+  return  serverResponse(res,200,Post);
+
+  }catch(e){
+
+    return   serverResponse(res,500,"the request to fetch all post is failed");
+  }
+
+})
+
 router.post('/addPost',async (req,res)=>{
 
 

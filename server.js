@@ -9,9 +9,12 @@ const routerComment=require('./Controllers/commentRouter');
 const auth=require('./Controllers/auth');
 const finnhub = require('finnhub');
 const axios = require("axios");
+const yahooStockAPI  = require('yahoo-stock-api');
 
 
 const app=express();
+
+let priceData;
 
 
 //----- midellewire for the application 
@@ -51,7 +54,21 @@ app.get('/news',(req,res)=>{
 
   });
 
+})
+
+app.get('/getpricedata/:tiker',async (req,res)=>{
   
+  const tiker=req.params.tiker;
+  console.log(tiker)
+
+    try{
+
+     await main(tiker);
+     return serverResponse(res,200,priceData);
+    }catch(e){
+
+      console.log('error with the chart data');
+    }
 
 })
 
@@ -77,7 +94,7 @@ https://www.npmjs.com/package/yahoo-stock-api
 */
 
 
-/*
+
 function getTimeConvert(UNIX_timestamp){
 
 
@@ -92,7 +109,7 @@ function getTimeConvert(UNIX_timestamp){
     date='0'+date;
   }
   
-  var time = year + '-' + month + '-' + date ;
+  var time = `${year}-${month}-${date}` ;
   return time;
 
 }
@@ -125,21 +142,20 @@ function getData(data){
 }
 
 
-const yahooStockAPI  = require('yahoo-stock-api');
-
-async function main()  {
+async function main(tiker)  {
 	const startDate = new Date('09/21/2022');
 	const endDate = new Date('09/29/2022');
 	//console.log(await yahooStockAPI.getHistoricalPrices(startDate, endDate, 'AAPL', '1d'));
-  const data=await yahooStockAPI.getHistoricalPrices(startDate, endDate, 'AAPL', '1d');
-  const response=getData(data);
-  console.log(response);
+  const data=await yahooStockAPI.getHistoricalPrices(startDate, endDate, tiker, '1d');
+  const response=await getData(data);
+  priceData=response;
+  console.log('pricedata1',priceData);
 
 }
 
-main();
 
-*/
+
+
 
 app.listen('8000',()=>{
     console.log('the application is runnig on PORT 8000');

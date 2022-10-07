@@ -18,6 +18,7 @@
 display: flex;
 align-items: center;
 margin-left: 1em;
+cursor: pointer;
 }
 
 .imagePost img{
@@ -37,3 +38,48 @@ margin-left: 1em;
 margin-left: 1em;
 
 }
+
+@media only screen and (max-width: 1000px){
+
+
+    .containerPost{
+
+
+        display: flex;
+        width: 18em;
+        height: 25em;
+        flex-direction: column;
+     
+    }
+    
+    .avatarPostdiv{
+    
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+    }
+    
+    .imagePost img{
+        width: 18em;
+        height: 10em
+    }
+    
+    .titlePost{
+    
+     font-size: 1.1em;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     font-weight: 500;
+     margin-left: 1em;
+    }
+    
+    .descriptionPost{
+    margin-left: 1em;
+    font-size: 0.9em;
+    overflow: scroll;
+    }
+
+
+
+
+}
+

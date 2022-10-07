@@ -1,0 +1,93 @@
+
+  .containerProfilePage{
+
+    display: flex;
+    color: #222831;
+  }
+
+
+  .profileAvatar{
+
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+
+  }
+
+  .profileAvatar .profileUserName{
+
+    font-size: 2em;
+    font-weight: 600;
+    margin: 2em;
+  }
+
+  .profileAvatar .profileImg img{
+
+    margin: 2em;
+    width: 18em;
+    height: 22em;
+    border-radius: 15px;
+
+  }
+
+  .profilePost{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60em;
+
+
+  }
+
+
+  
+
+
+@media only screen and (max-width: 1000px){
+
+    .containerProfilePage{
+
+        display: flex;
+        flex-direction: column;
+        color: #222831;
+      }
+    
+
+  .profileAvatar{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30em;
+   border-bottom: 1px solid #222831;
+  }
+
+  .profileAvatar .profileUserName{
+
+    font-size: 0.9em;
+    font-weight: 700;
+    margin: 0.8em;
+  }
+
+  .profileAvatar .profileImg img{
+
+    margin: 0.8em;
+    width: 7em;
+    height: 12em;
+    border-radius: 15px;
+
+  }
+
+  .profilePost{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30em;
+
+
+  }
+
+   
+}
