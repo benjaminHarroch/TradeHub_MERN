@@ -14,18 +14,19 @@ const getData=  async ()=>{
     requestTimeout: 1000,
   }
 
-   const  tickers = await finviz(options)
+   array = await finviz(options)
     .change('Up 5%')
     .averageVolume('Over 300K')
     .relativeVolume('Over 2')
     .sharesOutstanding('Under 100M')
     .scan()
 
-   console.log(tickers) //=> ['AAPL', 'MSFT', 'IBM', ... ]
+   return array //=> ['AAPL', 'MSFT', 'IBM', ... ]
+   
 }
 
-getData();
-
+//getData();
+/*
 //the yahoo api return me all the data about one tickers 
 const options = {
     method: 'GET',
@@ -46,3 +47,5 @@ const options = {
   }).catch(function (error) {
       console.error(error);
   });
+*/
+  module.exports=getData;

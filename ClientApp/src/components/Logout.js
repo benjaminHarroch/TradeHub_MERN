@@ -49,7 +49,7 @@ const Logout =()=>{
 
     return (
 
-        <div>
+        <div  style={{"margin-top":"0.3em"}}>
         <LogoutButton onClick={()=> logout()}>Logout </LogoutButton>
         </div>
     )

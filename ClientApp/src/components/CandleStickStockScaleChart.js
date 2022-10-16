@@ -9,10 +9,10 @@ import axios from "axios";
 import { createChart, CrosshairMode } from "lightweight-charts";
 
 
-export default function CandleStickStockScaleChart({priceData,volumeData}) {
+export default function CandleStickStockScaleChart({priceData,volumeData,stockName}) {
 
-  console.log('gfg',priceData);
-  console.log('gfddg',volumeData);
+  console.log('priceData',priceData);
+  console.log('Voloume data',volumeData);
 
   const chartContainerRef = useRef();
   const chart = useRef();
@@ -46,8 +46,8 @@ export default function CandleStickStockScaleChart({priceData,volumeData}) {
     useEffect(()=>{
 
       chart.current = createChart(chartContainerRef.current, {
-        width: 250,//chartContainerRef.current.clientWidth,
-        height: 250, //"300px", //chartContainerRef.current.clientHeight,
+        width: 350,//chartContainerRef.current.clientWidth,
+        height: 450, //"300px", //chartContainerRef.current.clientHeight,
         layout: {
           backgroundColor: "#253248",
           textColor: "rgba(255, 255, 255, 0.9)"
@@ -71,7 +71,7 @@ export default function CandleStickStockScaleChart({priceData,volumeData}) {
         }
       });
   
-      console.log(chart.current);
+     // console.log(chart.current);
   
       const candleSeries = chart.current.addCandlestickSeries({
         upColor: "#4bffb5",
@@ -83,6 +83,8 @@ export default function CandleStickStockScaleChart({priceData,volumeData}) {
       });
   
       candleSeries.setData(priceData);
+      //candleSeries.update(priceData[0])
+      //candleSeries.update(priceData[1])
   
   
       const volumeSeries = chart.current.addHistogramSeries({
@@ -176,12 +178,12 @@ export default function CandleStickStockScaleChart({priceData,volumeData}) {
   }, []);*/
 
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
+    <div className="chart-container">
+      <h1>{stockName}</h1>
     
       <div
         ref={chartContainerRef}
-        className="chart-container"
+        className="chart"
          //style={{ height: "10%" }}
       />
     </div>

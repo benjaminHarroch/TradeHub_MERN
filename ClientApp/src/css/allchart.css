@@ -1,0 +1,38 @@
+
+.Container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+
+.Container .loading{
+
+    margin-top: 20em;
+    
+}
+
+
+.Container h1{
+
+     font-size: 4em;
+     color: #222831;
+     font-weight: 300;
+     text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.containreallchart{
+
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    margin-top: 5em;
+
+
+
+}

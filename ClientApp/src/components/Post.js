@@ -11,7 +11,8 @@ import '../css/post.css'
 import styled from 'styled-components';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { useNavigate } from 'react-router-dom';
-
+import BuildIcon from '@mui/icons-material/Build';
+import { Poper } from './Poper';
 
 
 export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,setCliked,liked}) => {
@@ -23,6 +24,9 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
    image:''
 
   })
+
+  const {user}=useContext(UserContext);
+  console.log(user);
 
   const [like,setLike]=useState(numOfLike);
   const [likeCliked,setLikeCliked]=useState(false);
@@ -70,6 +74,10 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
   `
 
   function chekeIfLikeCliked(){
+
+    if(user.user_id.length<1){
+      return
+    }
 
     let newlike;
 
@@ -136,6 +144,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
     <div className='containerPost' onClick={()=>setCliked('notvisible')} >
 
          <div className='avatarPostdiv' onClick={()=>navigate(`/profile/${user_id}`)}> <Avatar  alt="pofile pic" src={`${userPost.image}`}/> <UserName>{userPost.userName}</UserName> </div>
+         {user.user_id==user_id&&<div className='buildicon'><Poper postid={postid} /></div>}
 
          <div className='imagePost'>{ image&&<img src={`${image}`} alt='photo'></img>} </div>
 

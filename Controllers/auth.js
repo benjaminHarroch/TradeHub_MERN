@@ -4,6 +4,7 @@ const serverResponse=require('../utilsServer/serverResponse');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const UserModel=require('../models/User');
+const PostModel=require('../models/Post');
 const array=require('../utilsServer/arraysVallidator');
 
 
@@ -268,6 +269,31 @@ router.put('/addposttouser/:userId',async (req,res)=>{
       }
   
   })
+
+  
+router.delete('/deletepostfromuser/:postid',async (req,res)=>{
+
+  const postid=req.params.postid;
+
+   try{
+   
+    const post=await PostModel.findById({_id:postid});
+    const userid=post.user_id;
+    const user =await UserModel.findById({_id:userid});
+
+    const indexitem=user.posts.findIndex((item)=>item===postid);
+    
+    user.posts.splice(indexitem,1);
+    await user.save();
+    
+    return  serverResponse(res,200,"the post have been delete from user post array");
+
+   }catch(e){
+
+     return   serverResponse(res,500,"the request delete failed");
+   }
+
+})
 
 
 

@@ -8,6 +8,7 @@ import { News } from './News';
 import axios from 'axios';
 import { Profile } from './Profile';
 import { DayStock } from './DayStock';
+import {TradeJournale} from './TradeJournale'
 
 
 
@@ -21,6 +22,8 @@ const [user,setUser]=useState({
   token:''
 })
 
+const [arrayStock,setArrayStock]=useState([]);
+
 const token=window.localStorage.getItem("x-access-token");
 
 
@@ -28,7 +31,7 @@ useEffect(()=>{
 
 {token&&axios.post(`http://localhost:8000/auth/getUserWithtoken`, {},{ headers: {"x-access-token":token}})
               .then(res => {
-              console.log(res);
+              
               setUser({
                  
                  user_id:res.data._id,
@@ -38,11 +41,12 @@ useEffect(()=>{
                  token:token,
 
               });              
-
+              console.log(user);
             }).catch((e=>{
                console.log('error with the toke session ',e); 
 }));}
 
+axios.get(`http://localhost:8000/getMomentumStok`).then(res => setArrayStock(res.data))
 },[])
   
 
@@ -59,7 +63,8 @@ useEffect(()=>{
         <Route path='/News' element={<News />} />
         <Route path='/' element={<HomePage />} />
         <Route path='/profile/:userid' element={<Profile />} />
-        <Route path='/daystock' element={<DayStock />} />
+        <Route path='/daystock' element={<DayStock arrayStock={arrayStock}/>} />
+        <Route path='/Myjournale' element={<TradeJournale />} />
        
     
 

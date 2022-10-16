@@ -2,8 +2,15 @@
 
 .chart-container {
 
-  display: flex;
- padding: 2em;
+ 
+  padding: 2em;
+  
 }
 
 
+
+.chart {
+
+  padding: 3em;
+
+}

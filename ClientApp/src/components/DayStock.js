@@ -1,19 +1,22 @@
 
 
 
-import { priceData } from "../Utils/priceData";
+//import { priceData } from "../Utils/priceData";
 //import { areaData } from './areaData';
 import { volumeData } from "../Utils/VolumData";
 import axios from 'axios'
 import React, { useEffect,useState } from 'react'
 import CandleStickStockScaleChart from './CandleStickStockScaleChart'
+import { Loading } from "./Loading";
+import '../css/allchart.css'
 
-export const DayStock = () => {
+export const DayStock = ({arrayStock}) => {
 
 
 const[price,setPrice]=useState([]);
 
-const arraoyOfTIker=['AAPL','AMZN'];
+const arraoyOfTIker=arrayStock;
+console.log(arraoyOfTIker);
 
 
 async function getPriceDataFromDB (arrayoftiker){
@@ -26,11 +29,11 @@ async function getPriceDataFromDB (arrayoftiker){
       //console.log(posts[i])
       const res=await axios.get(`http://localhost:8000/getpricedata/${arrayoftiker[i]}`)
       const data=await res.data;
-      //console.log(data)
+      //console.log('sda',data)
       priceData=[data,...priceData]
-      console.log(priceData)
+      //console.log('array after add change',priceData)
      }
-     console.log('out')
+     //console.log('after get data from api')
      setPrice(priceData);
     
 
@@ -39,7 +42,7 @@ async function getPriceDataFromDB (arrayoftiker){
 
 useEffect(()=>{
 
-    console.log('real',priceData)
+   // console.log('real',priceData)
 
  getPriceDataFromDB(arraoyOfTIker);
  //console.log(price)
@@ -47,10 +50,10 @@ useEffect(()=>{
 },[])
 
 useEffect(()=>{
-    let i=0;
+   
 
     (price.length===arraoyOfTIker.length&&console.log('end',price))
-    console.log(i++);
+    console.log('price change');
 },[price])
 
 
@@ -59,17 +62,16 @@ useEffect(()=>{
   return (
 
 
-    <div>
+    <div className="Container">
 
-
+     <h1>Momentum Stock's For Tdoay</h1>
     
+      <div className="containreallchart">
     {
-        
-            <CandleStickStockScaleChart priceData={item} volumeData={volumeData}/>
-
-
+    price.length===arraoyOfTIker.length?price.map((item,index)=>{console.log(index); return (<CandleStickStockScaleChart priceData={item.reverse()} volumeData={volumeData} stockName={arraoyOfTIker[(arraoyOfTIker.length-1)-index]}/>)}):<div className="loading"><Loading type={'balls'} color={'#lightblue'} height={'5em'} width={'5em'} /></div>
     
     }
+     </div>
 
     </div>
 

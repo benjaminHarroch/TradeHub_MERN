@@ -10,6 +10,9 @@ const auth=require('./Controllers/auth');
 const finnhub = require('finnhub');
 const axios = require("axios");
 const yahooStockAPI  = require('yahoo-stock-api');
+const getTikerArrays=require('./utilsServer/finviz');
+
+
 
 
 const app=express();
@@ -56,6 +59,20 @@ app.get('/news',(req,res)=>{
 
 })
 
+app.get('/getMomentumStok',async (req,res)=>{
+  
+    try{
+
+     const arrayTiker =await getTikerArrays()
+     console.log(arrayTiker);
+     return serverResponse(res,200,arrayTiker);
+    }catch(e){
+
+      console.log('error with the chart data');
+    }
+
+})
+
 app.get('/getpricedata/:tiker',async (req,res)=>{
   
   const tiker=req.params.tiker;
@@ -67,7 +84,7 @@ app.get('/getpricedata/:tiker',async (req,res)=>{
      return serverResponse(res,200,priceData);
     }catch(e){
 
-      console.log('error with the chart data');
+      console.log(e+'error with the chart data');
     }
 
 })
@@ -93,6 +110,24 @@ https://www.npmjs.com/package/yahoo-stock-api
 
 */
 
+function getToday(){
+
+  var today = new Date();
+  today.setDate(today.getDate() - 1);
+  console.log('her',today.toLocaleDateString())
+ const yesterday=today.toLocaleDateString();
+
+  return yesterday;
+}
+
+function getoneMonthAgo(){
+
+  var d = new Date();
+  d.setMonth(d.getMonth() - 2);
+  console.log(d.toLocaleDateString());
+  const onemonthago=d.toLocaleDateString();
+  return onemonthago;
+}
 
 
 function getTimeConvert(UNIX_timestamp){
@@ -109,7 +144,12 @@ function getTimeConvert(UNIX_timestamp){
     date='0'+date;
   }
   
-  var time = `${year}-${month}-${date}` ;
+ // var time = `${year}-${month}-${date}` ;
+  var time ={
+    day:parseInt(date),
+    month:parseInt(month),
+    year:parseInt(year)
+  }
   return time;
 
 }
@@ -127,10 +167,10 @@ function getData(data){
       {
 
         time:timeConvert,
-        open:day.open,
-        high:day.high,
-        low:day.low,
-        close:day.close
+        open:parseFloat(day.open.toFixed(2)),
+        high:parseFloat(day.high.toFixed(2)),
+        low:parseFloat(day.low.toFixed(2)),
+        close:parseFloat(day.close.toFixed(2))
 
       }
     )
@@ -143,13 +183,25 @@ function getData(data){
 
 
 async function main(tiker)  {
-	const startDate = new Date('09/21/2022');
-	const endDate = new Date('09/29/2022');
+
+  const yesterday=getToday();
+  
+  const oneMonthAgo=getoneMonthAgo();
+	const startDate = new Date(oneMonthAgo);
+  //console.log(startDate);
+	const endDate = new Date(yesterday);
 	//console.log(await yahooStockAPI.getHistoricalPrices(startDate, endDate, 'AAPL', '1d'));
+  try{
+
+  
   const data=await yahooStockAPI.getHistoricalPrices(startDate, endDate, tiker, '1d');
   const response=await getData(data);
   priceData=response;
-  console.log('pricedata1',priceData);
+  }catch(e){
+    console.log(e)
+
+  }
+  //console.log('pricedata1',priceData);
 
 }
 
