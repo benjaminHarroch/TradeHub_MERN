@@ -15,6 +15,7 @@ import HamburgerMenu from './HamburgerMenu';
 
 
 
+
 const ButtonNavigate=styled.button`
 
 padding:5px;
@@ -71,6 +72,7 @@ const navigate=useNavigate();
                <ButtonNavigate onClick={()=>{navigate('/')}}> Home </ButtonNavigate>
                <ButtonNavigate onClick={()=>{navigate('/daystock')}}> Day Stocks </ButtonNavigate>
                {user.user_id!=''&&<ButtonNavigate onClick={()=>{navigate(`/profile/${user.user_id}`)}}> My profile </ButtonNavigate>}
+               {user.user_id!=''&&<ButtonNavigate onClick={()=>{navigate(`/Mytrade`)}}> My trade journal </ButtonNavigate>}
 
 
                

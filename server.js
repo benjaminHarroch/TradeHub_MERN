@@ -11,6 +11,7 @@ const finnhub = require('finnhub');
 const axios = require("axios");
 const yahooStockAPI  = require('yahoo-stock-api');
 const getTikerArrays=require('./utilsServer/finviz');
+const routerTrade=require('./Controllers/TradeRouter');
 
 
 
@@ -28,6 +29,7 @@ app.use(express.static("ClientApp/build"));
 app.use('/post',routerPost);
 app.use('/comment',routerComment);
 app.use('/auth',auth);
+app.use('/trade',routerTrade);
 
 
 

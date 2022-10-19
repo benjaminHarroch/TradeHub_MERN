@@ -1,0 +1,85 @@
+
+.containerNewTrade{
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.containerNewTrade>div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    padding: 5px 0px;
+}
+
+.containerNewTrade>div>label{
+    color: #222831;
+    font-weight: 500;
+    padding: 5px 0;
+}
+
+.containerNewTrade>div>input{
+    padding: 12px 0;
+    text-decoration: none;
+    border:1px solid  #9fa1a3;
+    
+}
+
+ .button-submit>button{
+    
+    padding: 14px 7px;
+    border:none;
+    color:antiquewhite;
+    font-weight: 400;
+    background-color: #222831;
+    cursor: pointer;
+} 
+
+.button-submit{
+    border: 1px solid antiquewhite;
+    background-color: #222831;
+    cursor: pointer;
+}
+
+
+/*
+className='containerNewTrade'>
+
+<div className='tikers'>
+ <label>Tikers : </label>
+ <input type="text" placeholder='' onChange={(e)=>setTikers(e.target.value)}></input>
+ </div>
+
+ <TimePickers />
+
+ <div className='buy'>
+ <label>price avg buy : </label>
+ <input type="text" placeholder='' onChange={(e)=>settradebuy(e.target.value)}></input>
+ </div>
+
+ <div className='sell'>
+ <label> price avg sale:</label>
+ <input type="text" placeholder='' onChange={(e)=>setTradeSell(e.target.value)}></input>
+ </div>
+
+ <div className='description'>
+ <label> why take this trade ? </label>
+ <input type="text" placeholder='some reison to trade .' onChange={(e)=>setDescription(e.target.value)}></input>
+ </div>
+
+
+
+ <div className='position'>
+ <label>long or short : </label>
+ <input type="text" placeholder='' onChange={(e)=>setPosition(e.target.value)}></input>
+ </div>
+
+ <div className='quantity'>
+ <label>quantity : </label>
+ <input type="text" placeholder='' onChange={(e)=>setQuantity(e.target.value)}></input>
+ </div>
+
+ <div className='button-submit'>
+ */

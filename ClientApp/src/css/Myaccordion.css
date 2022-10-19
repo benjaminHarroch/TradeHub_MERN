@@ -1,0 +1,31 @@
+
+
+.containerAllaccordions >div{
+
+
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-family: ui-sans-serif;
+    margin: 0 2em;
+
+}
+
+.containerAllaccordions .data-trade{
+
+    margin: 12px 0;
+
+}
+
+.containerAllaccordions .data-trade.gain{
+
+   color:green;
+   font-weight: 600;
+
+}
+
+.containerAllaccordions .data-trade.lose{
+
+    color:red;
+    font-weight: 600;
+ }

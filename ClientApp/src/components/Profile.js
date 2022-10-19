@@ -1,12 +1,14 @@
 
 
-import { Avatar } from '@mui/material';
+import { Avatar, Input } from '@mui/material';
 import axios from 'axios';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect,useState,useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Post } from './Post';
 import '../css/profile.css'
 import styled from 'styled-components';
+import {UploadPhoto} from './UploadPhoto';
+import UserContext from '../Context/userContext';
 
 
 export const Profile = () => {
@@ -16,7 +18,7 @@ export const Profile = () => {
     const [postProfile ,setPostProfile]=useState([]);
     const [cliked,setCliked]=useState('notvisible');
     const [postResponse,setpostResponse]=useState();
-    
+    const {user,setUser}=useContext(UserContext);
 
     function getProfileFromDb(){
 
@@ -28,18 +30,18 @@ export const Profile = () => {
     }
     
    async function  getPostofThisId(posts){
-    
-    let arrayPost=[];
+      
+      let arrayPost=[];
 
-     for(let i=0;i<posts.length;i++){
-    
-        console.log(posts[i])
-      const response =await axios.get(`http://localhost:8000/post/getspecificePost/${posts[i]}`);
-      const data=await response.data;
-      arrayPost=[data,...arrayPost]
-      //console.log(arrayPost)
-     }
-     console.log('out')
+          for(let i=0;i<posts.length;i++){
+          
+              console.log(posts[i])
+            const response =await axios.get(`http://localhost:8000/post/getspecificePost/${posts[i]}`);
+            const data=await response.data;
+            arrayPost=[data,...arrayPost]
+            //console.log(arrayPost)
+          }
+      console.log('out')
       setPostProfile(arrayPost);
 
    }
@@ -53,7 +55,7 @@ export const Profile = () => {
     useEffect(()=>{
 
         (userProfile&&getPostofThisId(userProfile.posts))
-       
+       console.log('userprofile',userProfile)
      },[userProfile])
    
 
@@ -75,8 +77,12 @@ export const Profile = () => {
     <div className='containerProfilePage'>
 
         <div className='profileAvatar'>
-            <div className='profileImg'><img src={userProfile?.profilepic} /></div>
+
+            <div className='profileImg'>{userProfile?.profilepic!=''?<img src={userProfile?.profilepic} alt={"profilePhoto"} />:<UploadPhoto userProfile={userProfile} setUserProfile={setUserProfile}/>}</div>
             <div className='profileUserName'>{userProfile?.userName}</div>
+            <div className='profileUserName'>{userProfile?.trades.lenght>10?'expert':'new trader'}</div>
+            <div className='profileUserName'>{"amount of trades"+ userProfile?.trades.lenght}</div>
+
         </div>
 
         <div className='profilePost'>

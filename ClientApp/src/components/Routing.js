@@ -19,7 +19,8 @@ const [user,setUser]=useState({
   userName:'',
   profilepic:'',
   posts:[],
-  token:''
+  token:'',
+  trades:[]
 })
 
 const [arrayStock,setArrayStock]=useState([]);
@@ -39,7 +40,7 @@ useEffect(()=>{
                  profilepic:res.data.profilepic,
                  posts:res.data.posts,
                  token:token,
-
+                 trades:res.data.trades
               });              
               console.log(user);
             }).catch((e=>{
@@ -64,7 +65,7 @@ axios.get(`http://localhost:8000/getMomentumStok`).then(res => setArrayStock(res
         <Route path='/' element={<HomePage />} />
         <Route path='/profile/:userid' element={<Profile />} />
         <Route path='/daystock' element={<DayStock arrayStock={arrayStock}/>} />
-        <Route path='/Myjournale' element={<TradeJournale />} />
+        <Route path='/Mytrade' element={<TradeJournale />} />
        
     
 

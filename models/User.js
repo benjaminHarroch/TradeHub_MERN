@@ -6,8 +6,9 @@ const UserSchema =new mongoose.Schema({
 
     userName:{type:String,required:true},
     password:{type:String,required:true},
-    profilepic:{type:String},
+    profilepic:{type:String,default: ''},
     posts:[{ type :mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+    trades:[{ type :mongoose.Schema.Types.ObjectId, ref: 'trades' }],
 
 
 })

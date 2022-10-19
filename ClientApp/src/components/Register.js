@@ -1,11 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
-import {useState ,useEffect} from 'react';
+import {useState ,useEffect,useContext  } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import '../css/register.css'
+import UserContext from '../Context/userContext';
+
 
 const style = {
   position: 'absolute',
@@ -52,15 +54,13 @@ export const Register = () => {
     });
 
     let errorFlage=false;
+    
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const {user,setUser}=useContext(UserContext);
 
-    useEffect(()=>{
-
-
-    },[password,userName])
 
     function chekeIfValideRegister(){
 
@@ -129,9 +129,21 @@ export const Register = () => {
         .then(res => {
           console.log('res',res);
           console.log(res.data.message);
+
+          setUser({
+              
+            user_id:res.data.newUser._id,
+            userName:res.data.newUser.userName,
+            profilepic:res.data.newUser.profilepic,
+            posts:res.data.newUser.posts,
+            token:res.data.token,
+
+          })
         }).catch(err=>{console.log(err.response.data.message)
            seterror({flage:true,errorMessage:err.response.data.message})
           })
+
+
 
       }
 

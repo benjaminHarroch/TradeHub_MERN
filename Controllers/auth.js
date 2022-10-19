@@ -146,7 +146,7 @@ router.post('/register',async (req,res)=>{
             const IDuser=newUser._id;
 
             let token = jwt.sign({ id: IDuser },KEY_SECRET,{expiresIn:7200});
-            return serverResponse(res,200,{token:token,message:"the register is success"});
+            return serverResponse(res,200,{token:token,message:"the register is success",newUser});
     });
 
     }catch(e){

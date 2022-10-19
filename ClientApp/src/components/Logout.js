@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useContext } from 'react';
 import UserContext from "../Context/userContext";
+import { useNavigate } from "react-router-dom";
 
 
 const LogoutButton=styled.button`
@@ -27,6 +28,7 @@ border-radius: 4px;
 const Logout =()=>{
 
     const {setUser}=useContext(UserContext);
+    const navigate=useNavigate();
 
     function logout(){
     
@@ -41,6 +43,8 @@ const Logout =()=>{
             token:'',
 
         });
+
+        navigate('/');
 
 
     }

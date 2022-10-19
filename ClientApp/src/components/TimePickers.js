@@ -7,13 +7,14 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 
-export const TimePickers=()=> {
+export const TimePickers=({setTime})=> {
 
-  const [tradeDate,setTradeDate] = React.useState(dayjs('2014-08-18T21:11:54'));
+  const [tradeDate,setTradeDate] = React.useState(dayjs('2022-08-18T21:11:54'));
 
   const handleChange = (newValue) => {
-    setTradeDate(newValue);
-    console.log(JSON.stringify(tradeDate.$d))
+    setTime(JSON.stringify(tradeDate.$d));
+    //console.log(JSON.stringify(tradeDate.$d))
+    //setNewTrade((prev)=>{...prev,time:JSON.stringify(tradeDate.$d)})
   };
 
 
