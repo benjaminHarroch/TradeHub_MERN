@@ -4,14 +4,14 @@
 .NavBarContainer{
     display: flex;
     margin: 0 auto;
-    padding: 0 15px;
-    padding-right: 20em;
     height: 4em;
-    /*border-bottom: 2px solid #e8f3ff;*/
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: #222831;
-    color:#00ADB5;
+    color: #00ADB5;
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
 }
 
 .hamburgerMenu{
@@ -31,6 +31,7 @@
 .avatarNavBar:hover{
    
     cursor: pointer;
+ 
 }
 
 .authButtons button{
@@ -69,15 +70,6 @@
     }
 
 }
-
-
-
-
-
-
-
-
-
 
 
 

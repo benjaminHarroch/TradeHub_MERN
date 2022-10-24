@@ -12,7 +12,7 @@ export const UploadPhoto=({userProfile,setUserProfile})=> {
 
   const [images, setImages] = React.useState([]);
   const {user,setUser}=useContext(UserContext);
-
+  console.log("user",user)
   const maxNumber = 69;
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
@@ -64,7 +64,7 @@ export const UploadPhoto=({userProfile,setUserProfile})=> {
         }) => (
           // write your building UI
           <div className="upload__image-wrapper">
-           {user._id==userProfile._id&&<button
+           {user.user_id==userProfile._id&&<button
               style={isDragging ? { color: "red" } : null}
               onClick={onImageUpload}
               {...dragProps}

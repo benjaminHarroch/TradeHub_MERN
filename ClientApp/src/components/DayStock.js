@@ -68,7 +68,7 @@ useEffect(()=>{
     
       <div className="containreallchart">
     {
-    price.length===arraoyOfTIker.length?price.map((item,index)=>{console.log(index); return (<CandleStickStockScaleChart priceData={item.reverse()} volumeData={volumeData} stockName={arraoyOfTIker[(arraoyOfTIker.length-1)-index]}/>)}):<div className="loading"><Loading type={'balls'} color={'#lightblue'} height={'5em'} width={'5em'} /></div>
+    price.length===arraoyOfTIker.length?price.map((item,index)=>{ return (<CandleStickStockScaleChart priceData={item.reverse()} volumeData={volumeData} stockName={arraoyOfTIker[(arraoyOfTIker.length-1)-index]}/>)}):<div className="loading"><Loading type={'balls'} color={'#lightblue'} height={'5em'} width={'5em'} /></div>
     
     }
      </div>

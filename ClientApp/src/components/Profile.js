@@ -80,8 +80,8 @@ export const Profile = () => {
 
             <div className='profileImg'>{userProfile?.profilepic!=''?<img src={userProfile?.profilepic} alt={"profilePhoto"} />:<UploadPhoto userProfile={userProfile} setUserProfile={setUserProfile}/>}</div>
             <div className='profileUserName'>{userProfile?.userName}</div>
-            <div className='profileUserName'>{userProfile?.trades.lenght>10?'expert':'new trader'}</div>
-            <div className='profileUserName'>{"amount of trades"+ userProfile?.trades.lenght}</div>
+            <div className='profileUserName'>{userProfile?.trades.length>10?'expert':'new trader'}</div>
+            <div className='profileUserName'>{"amount of trades : "+ userProfile?.trades.length}</div>
 
         </div>
 

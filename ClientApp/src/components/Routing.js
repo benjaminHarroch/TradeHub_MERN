@@ -9,7 +9,8 @@ import axios from 'axios';
 import { Profile } from './Profile';
 import { DayStock } from './DayStock';
 import {TradeJournale} from './TradeJournale'
-
+import BreakingNews from './BreakingNews';
+import WatchList from './WatchList';
 
 
 export const Routing = () => {
@@ -71,7 +72,8 @@ axios.get(`http://localhost:8000/getMomentumStok`).then(res => setArrayStock(res
 
         </Routes>
         
-      
+        <WatchList />
+        <BreakingNews />
         
         </BrowserRouter>
 

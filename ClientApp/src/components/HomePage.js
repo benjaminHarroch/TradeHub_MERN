@@ -9,6 +9,7 @@ import UserContext from '../Context/userContext';
 import { AddPost } from './AddPost';
 import { Post } from './Post';
 import '../css/HomePage.css'
+import BreakingNews from './BreakingNews';
 
 
 
@@ -59,6 +60,7 @@ export const HomePage = () => {
     <div className='containerHomePage' >
 
         <AddPost post={post} setPost={setPost} cliked={cliked} setCliked={setCliked} />
+
 
         {
         
