@@ -1,7 +1,7 @@
 
 .containerWatchList{
 
-    position: sticky;
+    position: fixed;
    z-index: 50;
    bottom: 0em;
    left: 2em;

@@ -9,14 +9,12 @@ import Ticker, { FinancialTicker, NewsTicker } from 'nice-react-ticker';
 function BreakingNews() {
 
     const [BreakingNews,setBreakingNews]=useState([]);
+
     function getLastNews(){
 
-        var url = 'https://newsapi.org/v2/top-headlines?' +
-          'country=us&' +
-          'apiKey=115d6fe212f643f7a5b85170e936bffc';
+        var url = 'https://cloud.iexapis.com/v1/data/CORE/NEWS?last=10&token=sk_3cad52afb9f44347a29b11bc14838c95'
         axios.get(url)
-        .then((response)=> { console.log(response) 
-            return (setBreakingNews(response.data.articles))})
+        .then((response)=> setBreakingNews(response.data))
         .catch((e)=>console.log(e))
     }
 
@@ -35,7 +33,7 @@ function BreakingNews() {
     <div className="newsticker">
       <Ticker  slideSpeed={50}> 
 
-      {BreakingNews.map((news,index)=><NewsTicker id={index}  title={news.title} url={news.url} />)}
+      {BreakingNews.map((news,index)=><NewsTicker id={index}  title={news.headline} url={news.url} />)}
  
       </Ticker>
     </div>

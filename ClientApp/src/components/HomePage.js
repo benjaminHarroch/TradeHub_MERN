@@ -57,7 +57,7 @@ export const HomePage = () => {
 
         {
         
-        post.map((item)=>
+        post?.map((item)=>
 
         
         <Post 

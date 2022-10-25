@@ -35,6 +35,8 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
 
   function chekeIfalreadydolike(){
 
+    console.log(liked);
+    
     if(liked.includes(user_id)){
 
       setLikeCliked(true);

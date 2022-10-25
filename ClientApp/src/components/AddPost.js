@@ -39,7 +39,7 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
   function updateArrayofUser(postid){
 
     console.log(postid);
-    axios.put(`http://localhost:8000/auth/addposttouser/${user.user_id}`,{postid})
+    axios.put(`https://juniortraders.onrender.com/auth/addposttouser/${user.user_id}`,{postid})
     .then((res)=>console.log())
     .catch((e)=>console.log(e));
 
@@ -64,13 +64,14 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
       title:title,
       description:description,
       numOfLike:0,
-      image:image
+      image:image,
+      liked:[]
 
     }
 
     console.log(newPost);
     
-    axios.post('http://localhost:8000/post/addPost',newPost)
+    axios.post('https://juniortraders.onrender.com/post/addPost',newPost)
     .then((res)=>{ postid=res.data.postid; updateArrayofUser(postid);})
     .catch((e)=>console.log(e));
   

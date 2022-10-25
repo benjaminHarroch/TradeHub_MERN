@@ -28,7 +28,7 @@ async function getPriceDataFromDB (arrayoftiker){
      for(let i=0;i<arrayoftiker.length;i++){
     
       //console.log(posts[i])
-      const res=await axios.get(`http://localhost:8000/getpricedata/${arrayoftiker[i]}`)
+      const res=await axios.get(`https://juniortraders.onrender.com/getpricedata/${arrayoftiker[i]}`)
       const data=await res.data;
       //console.log('sda',data)
       priceData=[data,...priceData]
