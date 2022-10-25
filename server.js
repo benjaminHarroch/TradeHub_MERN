@@ -31,8 +31,11 @@ app.use('/comment',routerComment);
 app.use('/auth',auth);
 app.use('/trade',routerTrade);
 
+require("dotenv").config();
+const {DB_USER,DB_PASS,DB_HOST,DB_NAME,PORT}=process.env;
 
 
+/*
 //--- mongoose connection -- 
 mongoose.connect("mongodb://localhost:27017/JuniorTraders" ,function(err) {
   if (err) {
@@ -40,7 +43,7 @@ mongoose.connect("mongodb://localhost:27017/JuniorTraders" ,function(err) {
   }else{
     console.log("Connected to DB"); 
   }
-});
+});*/
 
 app.get('/news',(req,res)=>{
 
@@ -211,6 +214,17 @@ async function main(tiker)  {
 
 
 
-app.listen('8000',()=>{
+/*pp.listen('8000',()=>{
     console.log('the application is runnig on PORT 8000');
-})
+})*/
+
+mongoose.connect(
+  `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err) => {
+    app.listen(PORT || 8000, () => {
+      console.log("err", err);
+      console.log("Ani maazin!");
+    });
+  }
+);
