@@ -1,32 +1,43 @@
 
-
 .containerWatchList{
-    position: fixed;
-    right: 40px;
-    top: 5em;
-    width: 22em;
-    border: 1px solid #fff;
-    background-color: #fff;
-    display: flex;
-    padding: 4px;
-    border-radius: 3px;
-    flex-direction: column;
-    z-index: 50;
+
+    position: sticky;
+   z-index: 50;
+   bottom: 0em;
+   left: 2em;
+
+
 }
 
-.containerWatchList input{
+.containerWatchList button{
+padding: 0.54em 2em;
+background-color: cadetblue;
+font-weight: 600;
+font-family: cursive;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.WatchList{
+    width: 20em;
+    padding: 2em;
+}
+
+.WatchList input{
     border: none;
     width: 100%;
     padding: 3px;
     outline: none;
 }
 
-.containerWatchList button{
+.WatchList button{
     background: #fff;
     border: none;
     font-size: 1.7em;
     font-weight: 600;
     font-family: monospace;
+    cursor: pointer;
+    font-size: 1.1em;
 }
 
 .heading{
@@ -38,6 +49,7 @@
 
 .formTicker{
     display: flex;
+    padding: 2em 0;
 }
 .heading p{
  
@@ -45,7 +57,7 @@
     
 }
 
-.containerWatchList input::placeholder{
+.WatchList input::placeholder{
     margin-left: 5em;
 }
 

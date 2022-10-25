@@ -34,9 +34,10 @@ function HamburgerMenu (){
            
             >
             
-            <div ><button className='barButton'>posts</button></div>
-            <div ><button className='barButton'>momentum stock</button></div>
-            <div ><button className='barButton'>News</button></div>
+          
+            <div ><button className='barButton' onClick={()=>{navigate('/News')}}> News</button></div>
+            <div ><button className='barButton' onClick={()=>{navigate('/')}}> Home </button></div>
+            <div ><button className='barButton'onClick={()=>{navigate('/daystock')}}> Day Stocks </button></div>
             <div ><button className='barButton'>login</button></div>
             <div ><button className='barButton'>Register</button></div>
             

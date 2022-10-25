@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import ImageUploading from "react-images-uploading";
 import { useContext } from 'react';
 import UserContext from '../Context/userContext';
+import '../css/upload.css';
 
 
 export const UploadPhoto=({userProfile,setUserProfile})=> {
@@ -16,7 +17,7 @@ export const UploadPhoto=({userProfile,setUserProfile})=> {
   const maxNumber = 69;
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
+    //console.log(imageList, addUpdateIndex);
     setImages(imageList);
     setUserProfile({...userProfile,profilepic:imageList[0].data_url})
 
@@ -63,11 +64,12 @@ export const UploadPhoto=({userProfile,setUserProfile})=> {
           dragProps
         }) => (
           // write your building UI
-          <div className="upload__image-wrapper">
+          <div className="upload__image-wrapper" >
            {user.user_id==userProfile._id&&<button
               style={isDragging ? { color: "red" } : null}
               onClick={onImageUpload}
               {...dragProps}
+              className="buttonUploadPhoto"
             >
               choose your profile picture
             </button>

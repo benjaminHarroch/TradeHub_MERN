@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import {useState ,useEffect,useContext} from 'react';
 import axios from "axios";
 import "../css/Myaccordion.css"
+import { textAlign } from "@mui/system";
 
 
     const Accordion = styled((props) => (
@@ -75,7 +76,7 @@ function MyAccordion({trades,setTrades}) {
 
       <div className="containerAllaccordions">
 
-            {trades.length>0&&trades?.map((tradeobj,index)=>{
+            {trades.length>0?trades?.map((tradeobj,index)=>{
         
 
                        var rounded = Math.round(tradeobj.gain * 10) / 10
@@ -124,7 +125,7 @@ function MyAccordion({trades,setTrades}) {
 
             )
             
-            })}
+            }):<div><h1 style={{color:"black" ,textAlign:"center"}}>please add your new trades </h1></div>}
 
       </div>
     );

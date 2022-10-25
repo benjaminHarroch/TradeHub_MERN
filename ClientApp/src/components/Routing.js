@@ -43,7 +43,7 @@ useEffect(()=>{
                  token:token,
                  trades:res.data.trades
               });              
-              console.log(user);
+              //console.log(user);
             }).catch((e=>{
                console.log('error with the toke session ',e); 
 }));}

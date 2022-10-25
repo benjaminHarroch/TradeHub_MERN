@@ -11,8 +11,8 @@ import { createChart, CrosshairMode } from "lightweight-charts";
 
 export default function CandleStickStockScaleChart({priceData,volumeData,stockName}) {
 
-  console.log('priceData',priceData);
-  console.log('Voloume data',volumeData);
+  //console.log('priceData',priceData);
+ // console.log('Voloume data',volumeData);
 
   const chartContainerRef = useRef();
   const chart = useRef();

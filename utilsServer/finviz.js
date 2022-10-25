@@ -15,9 +15,9 @@ const getData=  async ()=>{
   }
 
    array = await finviz(options)
-    .change('Up 5%')
-    .averageVolume('Over 300K')
-    .relativeVolume('Over 2')
+    .performance('Week +20%')
+    .averageVolume('Over 400K')
+    //.relativeVolume('Over 2')
     .sharesOutstanding('Under 100M')
     .scan()
 

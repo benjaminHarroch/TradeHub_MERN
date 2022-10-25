@@ -35,13 +35,13 @@ export const Profile = () => {
 
           for(let i=0;i<posts.length;i++){
           
-              console.log(posts[i])
+              //console.log(posts[i])
             const response =await axios.get(`http://localhost:8000/post/getspecificePost/${posts[i]}`);
             const data=await response.data;
             arrayPost=[data,...arrayPost]
             //console.log(arrayPost)
           }
-      console.log('out')
+      //console.log('out')
       setPostProfile(arrayPost);
 
    }
@@ -50,12 +50,12 @@ export const Profile = () => {
 
      getProfileFromDb();
     
-    },[])
+    },[userid])
 
     useEffect(()=>{
 
         (userProfile&&getPostofThisId(userProfile.posts))
-       console.log('userprofile',userProfile)
+      // console.log('userprofile',userProfile)
      },[userProfile])
    
 
@@ -64,7 +64,7 @@ export const Profile = () => {
      font-size:2em;
      font-weight: 700;
      color:#00ADB5;
-     margin:1em
+     padding:2em
 
      `
 

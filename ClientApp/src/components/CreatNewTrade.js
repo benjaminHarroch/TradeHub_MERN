@@ -212,7 +212,7 @@ export const CreatNewTrade = ({trades,setTrades}) => {
 
   return (
 
-     <div  className='createNewTradeContainer'style={{display:"flex", justifyContent:"center",margin:"2em 0"}}>
+     <div  className='createNewTradeContainer'style={{display:"flex", justifyContent:"center",padding:"6em 0"}}>
 
 
          <Button onClick={handleOpen}  >Add New Trade</Button>

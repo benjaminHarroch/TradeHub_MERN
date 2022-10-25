@@ -33,6 +33,8 @@ const Logout =()=>{
     function logout(){
     
         window.localStorage.removeItem('x-access-token');
+        window.localStorage.removeItem('WatchList');
+       // window.localStorage.removeItem('x-access-token');
 
         setUser({
               

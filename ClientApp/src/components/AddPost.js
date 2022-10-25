@@ -40,7 +40,7 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
 
     console.log(postid);
     axios.put(`http://localhost:8000/auth/addposttouser/${user.user_id}`,{postid})
-    .then((res)=>console.log(res))
+    .then((res)=>console.log())
     .catch((e)=>console.log(e));
 
   }

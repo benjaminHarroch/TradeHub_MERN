@@ -26,7 +26,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
   })
 
   const {user}=useContext(UserContext);
-  console.log(user);
+  //console.log(user);
 
   const [like,setLike]=useState(numOfLike);
   const [likeCliked,setLikeCliked]=useState(false);
@@ -88,7 +88,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
     setLikeCliked(false);
 
     axios.put(`http://localhost:8000/post/unliketopost/${postid}`,{userId:user_id})
-    .then((res)=>console.log(res))
+    .then((res)=>console.log())
     .catch((e)=>console.log(e))
 
    }else{
@@ -98,13 +98,13 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
     setLikeCliked(true);
 
     axios.put(`http://localhost:8000/post/liketopost/${postid}`,{userId:user_id})
-    .then((res)=>console.log(res))
+    .then((res)=>console.log())
     .catch((e)=>console.log(e))
 
    }
 
    axios.put(`http://localhost:8000/post/editPost/${postid}`,{numOfLIke:newlike})
-    .then((res)=>console.log(res))
+    .then((res)=>console.log())
     .catch((e)=>console.log(e))
 
 
