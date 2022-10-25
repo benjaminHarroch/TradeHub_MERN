@@ -133,34 +133,3 @@ function MyAccordion({trades,setTrades}) {
 
 export default MyAccordion;
 
-/*
-buy
-: 
-"50"
-date
-: 
-"2022-04-05"
-description
-: 
-"cros smo 50 and finbonachi , moemtum news"
-dollars
-: 
-"50"
-gain
-: 
-"100"
-position
-: 
-"long"
-quantity
-: 
-"5"
-sell
-: 
-"100"
-success
-: 
-true
-tiker
-: 
-"AAPL"*/

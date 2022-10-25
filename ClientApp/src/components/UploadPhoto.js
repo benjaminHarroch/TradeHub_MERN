@@ -15,15 +15,12 @@ export const UploadPhoto=({userProfile,setUserProfile})=> {
   const {user,setUser}=useContext(UserContext);
   console.log("user",user)
   const maxNumber = 69;
+  
   const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    //console.log(imageList, addUpdateIndex);
+   
     setImages(imageList);
     setUserProfile({...userProfile,profilepic:imageList[0].data_url})
 
-    /*axios.put(`http://localhost:8000/auth/editUser/${userProfile._id}`,{profilepic:imageList[0].data_url})
-    .then((res)=>console.log(res))
-    .cath((e)=>console.log(e))*/
 
     uploadImage(imageList);
 

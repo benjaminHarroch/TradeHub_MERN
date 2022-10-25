@@ -4,8 +4,8 @@
 
 
     display: flex;
-    width: 40em;
-    height: 25em;
+    max-width: 40em;
+    max-height: 30em;
     flex-direction: column;
     justify-content: space-around;
     margin-top: 1em;
@@ -38,8 +38,9 @@ padding: 1em 0;
 
 .descriptionPost{
 
- margin-left: 1em;
- padding: 1em 0;
+    margin-left: 1em;
+    padding-top: 0.5em;
+    overflow-y: auto;
 
 }
 

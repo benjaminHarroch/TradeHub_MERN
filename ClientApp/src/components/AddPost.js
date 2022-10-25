@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import { Avatar } from '@mui/material';
 import '../css/addPost.css'
 import styled from 'styled-components';
+import ImageUploading from "react-images-uploading";
+
+
 
 export const AddPost = ({post,setPost,cliked,setCliked}) => {
 
@@ -20,6 +23,9 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
   let flage=false;
   let newPost;
   let postid;
+  const maxNumber = 69;
+ 
+  
 
   const ErrorMessage=styled.div`
   color: red;
@@ -35,6 +41,26 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
   font-size:1.1em;
   font-weight:600;
   `
+
+  const handleChange = (imageList, addUpdateIndex) => {
+  
+   uploadImage(imageList);
+
+  };
+
+  
+  const uploadImage=(imageList)=>{
+
+
+    const formdata= new FormData();
+    formdata.append("file",imageList[0].data_url);
+    formdata.append("upload_preset","juniortraders")
+
+    axios.post("https://api.cloudinary.com/v1_1/dtdpe49rg/image/upload",formdata)
+    .then((res)=>setImage(res.data.url))
+    .catch((e)=>console.log(e))
+  }
+
 
   function updateArrayofUser(postid){
 
@@ -57,7 +83,7 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
     }
 
     if(!flage){
-      
+
       newPost={
 
       user_id:user.user_id,
@@ -69,7 +95,6 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
 
     }
 
-    console.log(newPost);
     
     axios.post('https://juniortraders.onrender.com/post/addPost',newPost)
     .then((res)=>{ postid=res.data.postid; updateArrayofUser(postid);})
@@ -82,8 +107,16 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
     
   }
 
-  }
+  setImage('')
+  setDescription('')
+  setTitle('')
+ 
+}
 
+
+useEffect(()=>{
+  console.log('image',image);
+},[image])
 
   return (
 
@@ -101,12 +134,40 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
 
       </div>
 
-      {user.token?<div className='Button'>
-        <label for="file-upload" class="custom-file-upload">
-           {image!=''?'photo choosen':'upload a photo'}
-        </label>
-        <input id="file-upload" type="file" onChange={(e)=>setImage(e.target.value)} />
-        <Button variant="contained" style={{  width: '12em',backgroundColor:'#00ADB5' }} onClick={()=>addNewPost()}>Add new Post</Button>
+      {user.token?<div className={'Button'+cliked}>
+      
+        <ImageUploading
+        multiple
+        value={image}
+        onChange={handleChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+        acceptType={["jpg"]}
+      >
+        {({
+          imageList,
+          onImageUpload,
+          isDragging,
+          dragProps
+        }) => (
+          // write your building UI
+          <div className="upload__image" >
+           {<button
+              style={isDragging ? { color: "red" } : null}
+              onClick={onImageUpload}
+              {...dragProps}
+              className="buttonUploadPhoto"
+            >
+              upload photo
+            </button>
+            }
+    
+          </div>
+        )}
+      </ImageUploading>
+
+
+        {image!=''?<button onClick={()=>addNewPost()}>Add new Post</button>:<button  >upload photo befor add post</button>}
       </div>:<div></div>}
 
       <ErrorMessage>{error}</ErrorMessage>

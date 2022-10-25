@@ -125,7 +125,7 @@ export const Register = () => {
 
       }else{
 
-        axios.post(`http://localhost:8000/auth/register`, {userName,password})
+        axios.post(`https://juniortraders.onrender.com/auth/register`, {userName,password})
         .then(res => {
           console.log('res',res);
           console.log(res.data.message);

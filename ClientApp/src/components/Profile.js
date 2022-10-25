@@ -22,7 +22,7 @@ export const Profile = () => {
 
     function getProfileFromDb(){
 
-       axios.get(`http://localhost:8000/auth/getuser/${userid}`)
+       axios.get(`https://juniortraders.onrender.com/auth/getuser/${userid}`)
        .then((res)=>setUserProfile(res.data[0]))
        .catch(error=>console.log(error))
 
@@ -36,7 +36,7 @@ export const Profile = () => {
           for(let i=0;i<posts.length;i++){
           
               //console.log(posts[i])
-            const response =await axios.get(`http://localhost:8000/post/getspecificePost/${posts[i]}`);
+            const response =await axios.get(`https://juniortraders.onrender.com/post/getspecificePost/${posts[i]}`);
             const data=await response.data;
             arrayPost=[data,...arrayPost]
             //console.log(arrayPost)
