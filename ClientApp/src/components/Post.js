@@ -87,7 +87,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
     setLike((prev)=>prev-1);
     setLikeCliked(false);
 
-    axios.put(`http://localhost:8000/post/unliketopost/${postid}`,{userId:user_id})
+    axios.put(`https://juniortraders.onrender.com/post/unliketopost/${postid}`,{userId:user_id})
     .then((res)=>console.log())
     .catch((e)=>console.log(e))
 
@@ -97,13 +97,13 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
     setLike((prev)=>prev+1);
     setLikeCliked(true);
 
-    axios.put(`http://localhost:8000/post/liketopost/${postid}`,{userId:user_id})
+    axios.put(`https://juniortraders.onrender.com/post/liketopost/${postid}`,{userId:user_id})
     .then((res)=>console.log())
     .catch((e)=>console.log(e))
 
    }
 
-   axios.put(`http://localhost:8000/post/editPost/${postid}`,{numOfLIke:newlike})
+   axios.put(`https://juniortraders.onrender.com/post/editPost/${postid}`,{numOfLIke:newlike})
     .then((res)=>console.log())
     .catch((e)=>console.log(e))
 
@@ -113,7 +113,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
   function getProfileWhoPostThePost(){
      
 
-    axios.get(`http://localhost:8000/auth/getuser/${user_id}`)
+    axios.get(`https://juniortraders.onrender.com/auth/getuser/${user_id}`)
     .then(res => {
 
       setUserPost({

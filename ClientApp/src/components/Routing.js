@@ -31,7 +31,7 @@ const token=window.localStorage.getItem("x-access-token");
 
 useEffect(()=>{ 
 
-{token&&axios.post(`http://localhost:8000/auth/getUserWithtoken`, {},{ headers: {"x-access-token":token}})
+{token&&axios.post(`https://juniortraders.onrender.com/auth/getUserWithtoken`, {},{ headers: {"x-access-token":token}})
               .then(res => {
               
               setUser({

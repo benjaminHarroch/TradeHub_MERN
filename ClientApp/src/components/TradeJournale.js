@@ -17,7 +17,7 @@ export const TradeJournale = () => {
 
              for(let i=0;i<user.trades.length;i++){
 
-                    axios.get(`http://localhost:8000/trade/gettrade/${user.trades[i]}`)
+                    axios.get(`https://juniortraders.onrender.com/trade/gettrade/${user.trades[i]}`)
                     .then((res)=>{
                       
                         newarray=[...newarray,res.data.trade];

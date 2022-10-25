@@ -97,7 +97,7 @@ export const Login = () => {
 
       }else{
 
-        axios.post(`http://localhost:8000/auth/login`, {userName,password})
+        axios.post(`https://juniortraders.onrender.com/auth/login`, {userName,password})
         .then(res => {
           console.log('res',res);
           console.log(res.data.user);

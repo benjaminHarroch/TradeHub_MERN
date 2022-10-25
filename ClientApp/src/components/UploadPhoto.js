@@ -39,7 +39,7 @@ export const UploadPhoto=({userProfile,setUserProfile})=> {
     axios.post("https://api.cloudinary.com/v1_1/dtdpe49rg/image/upload",formdata)
     .then((res)=>{
 
-       axios.put(`http://localhost:8000/auth/editUser/${userProfile._id}`,{profilepic:res.data.secure_url})
+       axios.put(`https://juniortraders.onrender.com/auth/editUser/${userProfile._id}`,{profilepic:res.data.secure_url})
       .then((res)=>console.log(res))
       .cath((e)=>console.log(e))
 

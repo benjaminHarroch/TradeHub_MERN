@@ -27,12 +27,12 @@ export const Poper = ({postid}) => {
     function deleteItem(){
 
         //delete post from post array in the user array
-        axios.delete(`http://localhost:8000/auth/deletepostfromuser/${postid}`)
+        axios.delete(`https://juniortraders.onrender.com/auth/deletepostfromuser/${postid}`)
         .then((res)=>console.log(res))
         .catch((e)=>console.log(e));
 
         //delete post from post db
-         axios.delete(`http://localhost:8000/post/deletepost/${postid}`)
+         axios.delete(`https://juniortraders.onrender.com/post/deletepost/${postid}`)
          .then(()=>window.location.reload())
          .catch((e)=>console.log(e));
     }

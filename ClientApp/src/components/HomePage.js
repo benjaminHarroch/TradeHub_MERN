@@ -25,9 +25,9 @@ export const HomePage = () => {
     function getPostFromDb(){
 
 
-        axios.get(`http://localhost:8000/post/getAllPost`)
+        axios.get(`https://juniortraders.onrender.com/post/getAllPost`)
         .then(res => {
-          console.log('res',res);
+          //console.log('res',res);
           setPost(res.data);
         }).catch(err=>console.log(err.response.data.message));
 
@@ -45,13 +45,6 @@ export const HomePage = () => {
     },[])
 
     
-    useEffect(()=>{
-
-
-      console.log('post from homep page',post);
-
-
-  },[post])
   
 
   return (
@@ -90,25 +83,3 @@ export const HomePage = () => {
 }
 
 
-/*
-description
-: 
-"this is the new momentuon stock for the week pleas follow me and give a likie sdsdg sdgsg"
-image
-: 
-"https://th.bing.com/th/id/OIP.zUDVWGRKDte1W9TR65ZB0gHaF0?w=226&h=180&c=7&r=0&o=5&pid=1.7"
-numOfLIke
-: 
-0
-title
-: 
-" stock fasaf"
-user_id
-: 
-"632abbc9d22fdd37f4fb36ae"
-__v
-: 
-0
-_id
-: 
-"632acf936e6199cf64192c01"*/

@@ -36,7 +36,7 @@ export const News = () => {
 
         
             try {
-              const response = await axios.get('http://localhost:8000/news');
+              const response = await axios.get('https://juniortraders.onrender.com/news');
               //console.log(response.data.data);
               setNews(response.data.data);
               settempNews(response.data.data);

@@ -129,12 +129,12 @@ export const CreatNewTrade = ({trades,setTrades}) => {
         setQuantity("");
 
 
-        axios.post('http://localhost:8000/trade/newTrade',newTrade)
+        axios.post('https://juniortraders.onrender.com/trade/newTrade',newTrade)
         .then((res)=>{
 
           console.log(res.data)
 
-          axios.post(`http://localhost:8000/trade/newTrade/${user.user_id}`,{tradeid:res.data.newtrade})
+          axios.post(`https://juniortraders.onrender.com/trade/newTrade/${user.user_id}`,{tradeid:res.data.newtrade})
           .then((res)=>console.log(res))
           .catch((e)=>console.log('second',e))
 

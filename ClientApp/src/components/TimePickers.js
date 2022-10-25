@@ -13,8 +13,7 @@ export const TimePickers=({setTime})=> {
 
   const handleChange = (newValue) => {
     setTime(JSON.stringify(tradeDate.$d));
-    //console.log(JSON.stringify(tradeDate.$d))
-    //setNewTrade((prev)=>{...prev,time:JSON.stringify(tradeDate.$d)})
+   
   };
 
 
