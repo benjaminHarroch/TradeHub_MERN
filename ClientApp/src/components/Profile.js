@@ -23,7 +23,10 @@ export const Profile = () => {
     function getProfileFromDb(){
 
        axios.get(`https://juniortraders.onrender.com/auth/getuser/${userid}`)
-       .then((res)=>setUserProfile(res.data[0]))
+       .then((res)=>{
+       // console.log('response',res)
+        setUserProfile(res.data[0])
+      })
        .catch(error=>console.log(error))
 
       
@@ -39,9 +42,9 @@ export const Profile = () => {
             const response =await axios.get(`https://juniortraders.onrender.com/post/getspecificePost/${posts[i]}`);
             const data=await response.data;
             arrayPost=[data,...arrayPost]
-            //console.log(arrayPost)
+           console.log(arrayPost)
           }
-      //console.log('out')
+    // console.log('arraypost',arrayPost)
       setPostProfile(arrayPost);
 
    }
@@ -49,14 +52,16 @@ export const Profile = () => {
     useEffect(()=>{
 
      getProfileFromDb();
+    //console.log('userid',userid)
     
     },[userid])
 
     useEffect(()=>{
 
         (userProfile&&getPostofThisId(userProfile.posts))
-      // console.log('userprofile',userProfile)
+      console.log('userprofile',userProfile)
      },[userProfile])
+
    
 
      const UserPost=styled.div`
@@ -89,7 +94,7 @@ export const Profile = () => {
 
            {postProfile.length>0?<UserPost> User Post : </UserPost>:<UserPost>this user not posted yet </UserPost>}
 
-            {postProfile?.map((p)=>{
+            {postProfile.length>0&&postProfile.map((p)=>{
 
                 
 
@@ -114,7 +119,7 @@ export const Profile = () => {
             
             
             
-        }
+          }
 
         </div>
 
