@@ -57,9 +57,9 @@ export const Profile = () => {
     },[userid])
 
     useEffect(()=>{
-
-        (userProfile&&getPostofThisId(userProfile.posts))
       console.log('userprofile',userProfile)
+       getPostofThisId(userProfile?.posts)
+     
      },[userProfile])
 
    
@@ -92,9 +92,9 @@ export const Profile = () => {
 
         <div className='profilePost'>
 
-           {postProfile.length>0?<UserPost> User Post : </UserPost>:<UserPost>this user not posted yet </UserPost>}
+           {postProfile?.length>0?<UserPost> User Post : </UserPost>:<UserPost>this user not posted yet </UserPost>}
 
-            {postProfile.length>0&&postProfile.map((p)=>{
+            {postProfile?.length>0&&postProfile?.map((p)=>{
 
                 
 

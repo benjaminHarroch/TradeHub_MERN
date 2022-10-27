@@ -48,7 +48,13 @@ useEffect(()=>{
                console.log('error with the toke session ',e); 
 }));}
 
-axios.get(`https://juniortraders.onrender.com/getMomentumStok`).then(res => setArrayStock(res.data))
+axios.get(`https://juniortraders.onrender.com/getMomentumStok`).then(res =>{
+
+  //console.log(res.data)
+  setArrayStock(res.data)
+
+})
+
 },[])
   
 

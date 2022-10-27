@@ -15,27 +15,40 @@ export const DayStock = ({arrayStock}) => {
 
 const[price,setPrice]=useState([]);
 
-const arraoyOfTIker=arrayStock;
+
 //console.log(arrayStock);
+
 const [storedArray,setstoredArray]=useState([]);
 
 
-async function getPriceDataFromDB (arrayoftiker){
+async function getPriceDataFromDB (){
 
     let priceData=[];
 
 
-     for(let i=0;i<arrayoftiker.length;i++){
+     /*for(let i=0;i<arrayStock.length;i++){
     
       //console.log(posts[i])
-      const res=await axios.get(`https://juniortraders.onrender.com/getpricedata/${arrayoftiker[i]}`)
+      const res=await axios.get(`https://juniortraders.onrender.com/getpricedata/${arrayStock[i]}`)
       const data=await res.data;
       //console.log('sda',data)
       priceData=[data,...priceData]
-      //console.log('array after add change',priceData)
-     }
+      console.log('array after add change',priceData)
+      setPrice(priceData);
+     }*/
+
+     arrayStock.forEach(async (stockName)=>{
+
+      const res=await axios.get(`https://juniortraders.onrender.com/getpricedata/${stockName}`)
+      const data=await res.data;
+
+      priceData=[data,...priceData]
+      console.log('array after add change',priceData)
+      setPrice(priceData);
+
+     })
      //console.log('after get data from api')
-     setPrice(priceData);
+     
     
 
 }
@@ -64,7 +77,7 @@ useEffect(()=>{
    
    }else{
     console.log('second')
-    getPriceDataFromDB(arraoyOfTIker);
+    getPriceDataFromDB();
     console.log('real',price)
 
    }
@@ -76,10 +89,10 @@ useEffect(()=>{
 useEffect(()=>{
    
      //let storedArray = JSON.parse(localStorage.getItem("array-data"));
-     //console.log('5',price)
+     console.log('5',price)
      if(price.length!=0){                                                                                                                                                                                                                                                                                                                                                              
 
-      (price.length===arraoyOfTIker.length&&localStorage.setItem("array-data", JSON.stringify(price)))
+      (price.length===arrayStock.length&&localStorage.setItem("array-data", JSON.stringify(price)))
        setstoredArray(JSON.parse(localStorage.getItem("array-data")))
       //console.log('price change');
       //console.log('storage',storedArray)
@@ -102,8 +115,8 @@ useEffect(()=>{
     
       <div className="containreallchart">
     {
-
-    price.length===arraoyOfTIker.length?price.map((item,index)=>{ return (<CandleStickStockScaleChart priceData={item.reverse()} volumeData={volumeData} stockName={arraoyOfTIker[(arraoyOfTIker.length-1)-index]}/>)}):<div className="loading"><Loading type={'balls'} color={'#lightblue'} height={'5em'} width={'5em'} /></div>
+   
+    price?.length!=0?price?.map((item,index)=>{ return (<CandleStickStockScaleChart priceData={item.reverse()} volumeData={volumeData} stockName={arrayStock[(arrayStock.length-1)-index]}/>)}):<div className="loading"><Loading type={'balls'} color={'#lightblue'} height={'5em'} width={'5em'} /></div>
     
     }
      </div>
