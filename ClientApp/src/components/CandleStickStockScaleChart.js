@@ -57,8 +57,7 @@ export default function CandleStickStockScaleChart({priceData,volumeData,stockNa
       });
   
       candleSeries.setData(priceData);
-      //candleSeries.update(priceData[0])
-      //candleSeries.update(priceData[1])
+
   
   
       const volumeSeries = chart.current.addHistogramSeries({
