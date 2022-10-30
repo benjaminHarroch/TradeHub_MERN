@@ -60,26 +60,17 @@ function MyAccordion({trades,setTrades}) {
       setExpanded(newExpanded ? panel : false);
     };
 
-    const {user,setUser}=useContext(UserContext);
 
    
 
-    useEffect(()=>{
-
-
-        console.log('array',trades)
-      
-
-    },[trades])
-  
     return (
 
       <div className="containerAllaccordions">
 
-            {trades.length>0?trades?.map((tradeobj,index)=>{
+            {trades?.length>0?trades?.map((tradeobj,index)=>{
         
 
-                       var rounded = Math.round(tradeobj.gain * 10) / 10
+                       var rounded = Math.round(tradeobj?.gain * 10) / 10
     
             return(
 
@@ -93,28 +84,28 @@ function MyAccordion({trades,setTrades}) {
                             <AccordionSummary aria-controls={"panel" + index+1 + "d-content"} id={"panel" + index+1 + "d-header"}>
 
                                 <Typography>  
-                                 {tradeobj.date.slice(1,11)}
+                                 {tradeobj?.date.slice(1,11)}
                                 </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <div>
                                     
-                                    <h2>{tradeobj.tiker}</h2>
+                                    <h2>{tradeobj?.tiker}</h2>
 
                                     <div className="data-trade">
-                                        price avg buy : {tradeobj.buy}
+                                        price avg buy : {tradeobj?.buy}
                                     </div>
                                     <div className="data-trade">
-                                        price avg sell : {tradeobj.sell}
+                                        price avg sell : {tradeobj?.sell}
                                     </div>
                                     <div className="data-trade">
-                                        trend of the trade : {tradeobj.position}
+                                        trend of the trade : {tradeobj?.position}
                                     </div>
                                     <div className="data-trade">
-                                        why take this trade? : {tradeobj.description}
+                                        why take this trade? : {tradeobj?.description}
                                     </div>
-                                   {tradeobj.success?<div className="data-trade gain"> the trade is take : {rounded +"%"} </div>:<div className="data-trade lose">  the trade is lose : {"-"+rounded+"%"} </div>}
-                                   {tradeobj.success?<div className="data-trade gain">amount of : {tradeobj.dollars +"$"} </div>:<div className="data-trade lose">  amount of: {"-" + tradeobj.dollars + "$"} </div>}
+                                   {tradeobj?.success?<div className="data-trade gain"> the trade is take : {rounded +"%"} </div>:<div className="data-trade lose">  the trade is lose : {"-"+rounded+"%"} </div>}
+                                   {tradeobj?.success?<div className="data-trade gain">amount of : {tradeobj?.dollars +"$"} </div>:<div className="data-trade lose">  amount of: {"-" + tradeobj?.dollars + "$"} </div>}
                                     
                                 </div>
                                 </AccordionDetails>

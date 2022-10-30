@@ -282,7 +282,7 @@ router.delete('/deletepostfromuser/:postid',async (req,res)=>{
     const user =await UserModel.findById({_id:userid});
 
     const indexitem=user.posts.findIndex((item)=>item===postid);
-    
+    console.log(indexitem)
     user.posts.splice(indexitem,1);
     await user.save();
     

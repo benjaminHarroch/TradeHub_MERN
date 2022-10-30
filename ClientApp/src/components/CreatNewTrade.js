@@ -13,7 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-//import { TradeJournale } from './TradeJournale';
+
 
 
 const style = {
@@ -132,7 +132,7 @@ export const CreatNewTrade = ({trades,setTrades}) => {
         axios.post('https://juniortraders.onrender.com/trade/newTrade',newTrade)
         .then((res)=>{
 
-          console.log(res.data)
+         // console.log(res.data)
 
           axios.post(`https://juniortraders.onrender.com/trade/newTrade/${user.user_id}`,{tradeid:res.data.newtrade})
           .then((res)=>console.log(res))

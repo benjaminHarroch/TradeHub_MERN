@@ -59,7 +59,7 @@ export const Register = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const {user,setUser}=useContext(UserContext);
+    const {setUser}=useContext(UserContext);
 
 
     function chekeIfValideRegister(){
@@ -127,8 +127,8 @@ export const Register = () => {
 
         axios.post(`https://juniortraders.onrender.com/auth/register`, {userName,password})
         .then(res => {
-          console.log('res',res);
-          console.log(res.data.message);
+          //console.log('res',res);
+         // console.log(res.data.message);
 
           setUser({
               
@@ -137,6 +137,7 @@ export const Register = () => {
             profilepic:res.data.newUser.profilepic,
             posts:res.data.newUser.posts,
             token:res.data.token,
+            trades:[]
 
           })
         }).catch(err=>{console.log(err.response.data.message)

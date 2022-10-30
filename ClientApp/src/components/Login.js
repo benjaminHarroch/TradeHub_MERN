@@ -99,8 +99,8 @@ export const Login = () => {
 
         axios.post(`https://juniortraders.onrender.com/auth/login`, {userName,password})
         .then(res => {
-          console.log('res',res);
-          console.log(res.data.user);
+         // console.log('res',res);
+         // console.log(res.data.user);
           
           window.localStorage.setItem("x-access-token",res.data.token);
           setUser({
@@ -110,7 +110,7 @@ export const Login = () => {
             profilepic:res.data.user.profilepic,
             posts:res.data.user.posts,
             token:res.data.token,
-
+            trades:res.data.user.trades
           })
 
         }).catch(err=>{console.log(err.response.data.message)

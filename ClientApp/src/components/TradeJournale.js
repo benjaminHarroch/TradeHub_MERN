@@ -10,7 +10,9 @@ import axios from "axios";
 export const TradeJournale = () => {
   
   const [trades,setTrades]=useState([]);
-  const {user,setUser}=useContext(UserContext);
+  const {user}=useContext(UserContext);
+
+   //console.log(user);
 
   function  getTradesofUser(){
           

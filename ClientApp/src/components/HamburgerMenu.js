@@ -44,7 +44,7 @@ function HamburgerMenu (){
             <div ><button className='barButton' onClick={()=>{navigate('/News')}}> News</button></div>
             <div ><button className='barButton' onClick={()=>{navigate('/')}}> Home </button></div>
             <div ><button className='barButton'onClick={()=>{navigate('/daystock')}}> Day Stocks </button></div>
-            <div ><button className='barButton'onClick={()=>{navigate('/Mytrade')}}> Trade Journale </button></div>
+            {user.token&&<div ><button className='barButton'onClick={()=>{navigate('/Mytrade')}}> Trade Journale </button></div>}
            {user.token?<div ><button className='barButton'><Logout /></button></div>:<div><div><button className='barButton'><Login /></button></div><div><button className='barButton'><Register /></button></div></div>}
             
             </Drawer>
