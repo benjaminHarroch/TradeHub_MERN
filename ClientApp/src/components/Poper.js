@@ -24,17 +24,24 @@ export const Poper = ({postid}) => {
       setPlacement(newPlacement);
     };
 
+    //console.log(postid);
+
     function deleteItem(){
 
         //delete post from post array in the user array
         axios.delete(`https://juniortraders.onrender.com/auth/deletepostfromuser/${postid}`)
-        .then((res)=>console.log(res))
+        .then((res)=>{
+
+              console.log(res)
+
+              //delete post from post db
+            axios.delete(`https://juniortraders.onrender.com/post/deletepost/${postid}`)
+            .then((response)=>console.log(response))
+            .catch((e)=>console.log(e));
+
+        })
         .catch((e)=>console.log(e));
 
-        //delete post from post db
-         axios.delete(`https://juniortraders.onrender.com/post/deletepost/${postid}`)
-         .then(()=>window.location.reload())
-         .catch((e)=>console.log(e));
     }
 
 

@@ -35,7 +35,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
 
   function chekeIfalreadydolike(){
 
-    console.log(liked);
+    //console.log(liked);
     
     if(liked.includes(user_id)){
 
@@ -50,7 +50,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
    
     chekeIfalreadydolike()
 
-  },[])
+  },[postid])
   
   const UserName=styled.div`
   
@@ -106,7 +106,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
    }
 
    axios.put(`https://juniortraders.onrender.com/post/editPost/${postid}`,{numOfLIke:newlike})
-    .then((res)=>console.log())
+    .then((res)=>console.log(res))
     .catch((e)=>console.log(e))
 
 
@@ -118,6 +118,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
     axios.get(`https://juniortraders.onrender.com/auth/getuser/${user_id}`)
     .then(res => {
 
+      console.log('userpost',res)
       setUserPost({
         
         userName:res.data[0].userName,
@@ -137,7 +138,7 @@ export const Post = ({description,title,image,numOfLike,user_id,postid,cliked,se
       getProfileWhoPostThePost()
    
 
-    },[])
+    },[user_id])
 
 
   return (

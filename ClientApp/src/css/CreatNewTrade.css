@@ -45,42 +45,26 @@
 }
 
 
-/*
-className='containerNewTrade'>
-
-<div className='tikers'>
- <label>Tikers : </label>
- <input type="text" placeholder='' onChange={(e)=>setTikers(e.target.value)}></input>
- </div>
-
- <TimePickers />
-
- <div className='buy'>
- <label>price avg buy : </label>
- <input type="text" placeholder='' onChange={(e)=>settradebuy(e.target.value)}></input>
- </div>
-
- <div className='sell'>
- <label> price avg sale:</label>
- <input type="text" placeholder='' onChange={(e)=>setTradeSell(e.target.value)}></input>
- </div>
-
- <div className='description'>
- <label> why take this trade ? </label>
- <input type="text" placeholder='some reison to trade .' onChange={(e)=>setDescription(e.target.value)}></input>
- </div>
 
 
+@media only screen and (max-width: 1500px){
 
- <div className='position'>
- <label>long or short : </label>
- <input type="text" placeholder='' onChange={(e)=>setPosition(e.target.value)}></input>
- </div>
+   
+}
 
- <div className='quantity'>
- <label>quantity : </label>
- <input type="text" placeholder='' onChange={(e)=>setQuantity(e.target.value)}></input>
- </div>
+@media only screen and (max-width: 1000px){
 
- <div className='button-submit'>
- */
+    .containerNewTrade {
+        display: flex;
+        flex-direction: column;
+        padding-top: 5em;
+        height: 25em;
+        overflow: auto;
+    }
+
+    .MuiBox-root.css-1wnsr1i{
+        width: 17em;
+
+    }
+
+}

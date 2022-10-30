@@ -24,7 +24,7 @@ export const Profile = () => {
 
        axios.get(`https://juniortraders.onrender.com/auth/getuser/${userid}`)
        .then((res)=>{
-       // console.log('response',res)
+        console.log('response',res)
         setUserProfile(res.data[0])
       })
        .catch(error=>console.log(error))
@@ -42,9 +42,9 @@ export const Profile = () => {
             const response =await axios.get(`https://juniortraders.onrender.com/post/getspecificePost/${posts[i]}`);
             const data=await response.data;
             arrayPost=[data,...arrayPost]
-           console.log(arrayPost)
+           //console.log(arrayPost)
           }
-    // console.log('arraypost',arrayPost)
+     console.log('arraypost',arrayPost)
       setPostProfile(arrayPost);
 
    }
@@ -52,7 +52,7 @@ export const Profile = () => {
     useEffect(()=>{
 
      getProfileFromDb();
-    //console.log('userid',userid)
+    console.log('userid',userid)
     
     },[userid])
 

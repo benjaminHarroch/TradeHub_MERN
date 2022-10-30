@@ -6,6 +6,7 @@ import {useState ,useEffect,useContext} from 'react';
 import UserContext from '../Context/userContext';
 import axios from "axios";
 
+
 export const TradeJournale = () => {
   
   const [trades,setTrades]=useState([]);

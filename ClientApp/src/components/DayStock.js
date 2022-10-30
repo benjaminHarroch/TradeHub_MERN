@@ -56,7 +56,7 @@ async function getPriceDataFromDB (){
 
 useEffect(()=>{
 
-  console.log('stored array1',storedArray)
+ // console.log('stored array1',storedArray)
 
   let storedarrayfromlocalstorage=localStorage.getItem("array-data");
   if(storedarrayfromlocalstorage!=null){
@@ -65,20 +65,20 @@ useEffect(()=>{
     storedarrayfromlocalstorage=[];
   }
 
-  console.log('storedfrom local',storedarrayfromlocalstorage)
+ // console.log('storedfrom local',storedarrayfromlocalstorage)
 
   storedarrayfromlocalstorage&&setstoredArray(storedarrayfromlocalstorage)
 
-  console.log('stored array2',storedArray)
+  //console.log('stored array2',storedArray)
 
    if(storedarrayfromlocalstorage.length!=0){
     console.log('first')
     setPrice(storedarrayfromlocalstorage)
    
    }else{
-    console.log('second')
+   // console.log('second')
     getPriceDataFromDB();
-    console.log('real',price)
+   // console.log('real',price)
 
    }
 
@@ -89,7 +89,7 @@ useEffect(()=>{
 useEffect(()=>{
    
      //let storedArray = JSON.parse(localStorage.getItem("array-data"));
-     console.log('5',price)
+    // console.log('5',price)
      if(price.length!=0){                                                                                                                                                                                                                                                                                                                                                              
 
       (price.length===arrayStock.length&&localStorage.setItem("array-data", JSON.stringify(price)))

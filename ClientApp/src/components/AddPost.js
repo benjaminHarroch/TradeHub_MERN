@@ -20,12 +20,13 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
   const [description,setDescription]=useState('');
   const [image,setImage]=useState('');
   const [error,setError]=useState('');
+  
   let flage=false;
   let newPost;
   let postid;
   const maxNumber = 69;
  
-  
+  console.log(user)
 
   const ErrorMessage=styled.div`
   color: red;
@@ -64,9 +65,9 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
 
   function updateArrayofUser(postid){
 
-    console.log(postid);
+    //console.log(postid);
     axios.put(`https://juniortraders.onrender.com/auth/addposttouser/${user.user_id}`,{postid})
-    .then((res)=>console.log())
+    .then((res)=>console.log(res))
     .catch((e)=>console.log(e));
 
   }
@@ -95,15 +96,29 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
 
     }
 
-    
-    axios.post('https://juniortraders.onrender.com/post/addPost',newPost)
-    .then((res)=>{ postid=res.data.postid; updateArrayofUser(postid);})
+  
+     //updateArrayofUser(postid)
+
+     axios.post('https://juniortraders.onrender.com/post/addPost',newPost)
+     .then((res)=>{ 
+      // console.log('newpost',newPost)
+      postid=res.data.postid;
+
+     axios.put(`https://juniortraders.onrender.com/auth/addposttouser/${user.user_id}`,{postid})
+     .then((res)=>{
+        //console.log('res from add post to user',res.data)
+        //console.log('post',post)
+
+        const newPostArray=[newPost,...post];
+        setPost(newPostArray);
+
+    })
+     .catch((e)=>console.log(e));
+
+ 
+    })
     .catch((e)=>console.log(e));
   
-
-
-     const newPostArray=[newPost,...post];
-     setPost(newPostArray);
     
   }
 
@@ -113,10 +128,6 @@ export const AddPost = ({post,setPost,cliked,setCliked}) => {
  
 }
 
-
-useEffect(()=>{
-  console.log('image',image);
-},[image])
 
   return (
 
