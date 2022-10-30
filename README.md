@@ -1,4 +1,4 @@
-<h1> Junior Traders >/h1>
+<h1> Junior Traders </h1>
 
 <h3>The purpose of the project : <h/3>
 
