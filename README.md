@@ -1,5 +1,7 @@
 <h1> Junior Traders </h1>
 
+<p> https://juniortraders.onrender.com </p>
+
 <h3>The purpose of the project : <h/3>
 
 <p>1.Build a platform of stock traders who can share trading ideas together. </p>
@@ -22,9 +24,6 @@
 [![2.png](https://i.postimg.cc/63W8jwt6/2.png)](https://postimg.cc/f3PWyGV1)
 [![Screenshot-2022-08-25-103713.png](https://i.postimg.cc/zBQqC1fc/Screenshot-2022-08-25-103713.png)](https://postimg.cc/7Ggv4d03)
 [![image.png](https://i.postimg.cc/L4r1ScVD/image.png)](https://postimg.cc/5jS0qkTQ)
-
-
-<h6>To enter the province that I uploaded to the cloud with the help of RENDER, go to this link : <h/6>
 
 <p> https://juniortraders.onrender.com </p>
 
