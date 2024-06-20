@@ -1,4 +1,3 @@
-
 const express =require('express');
 const mongoose =require('mongoose');
 const cors = require("cors");
@@ -35,7 +34,7 @@ require("dotenv").config();
 const {DB_USER,DB_PASS,DB_HOST,DB_NAME,PORT}=process.env;
 
 
-/*
+
 //--- mongoose connection -- 
 mongoose.connect("mongodb://localhost:27017/JuniorTraders" ,function(err) {
   if (err) {
@@ -43,7 +42,7 @@ mongoose.connect("mongodb://localhost:27017/JuniorTraders" ,function(err) {
   }else{
     console.log("Connected to DB"); 
   }
-});*/
+});
 
 app.get('/news',(req,res)=>{
 
@@ -214,10 +213,10 @@ async function main(tiker)  {
 
 
 
-/*pp.listen('8000',()=>{
+app.listen('8000',()=>{
     console.log('the application is runnig on PORT 8000');
-})*/
-
+})
+/*
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true },
@@ -227,4 +226,4 @@ mongoose.connect(
       console.log("Ani maazin!");
     });
   }
-);
+);*/

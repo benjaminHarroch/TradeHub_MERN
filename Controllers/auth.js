@@ -44,13 +44,17 @@ const chekeIfExistUserNamewithThisPassword=async (userName,password)=>{
 
     response.user=user;
     response.userfound=true;
+
+    //encrypte the password from db 
     const match = await bcrypt.compare(password, user.password);
-    if(match){
+
+    //cheke if after encrypt this is the same passwrod
+    if(match==true){
       response.userpasswordmatch=true;
       response.message="the user is found with a good password";
       response.user=user;
     }else{
-      response.message="the user is found but wothout a good password";
+      response.message="the user is found but the password is not matching";
     }
 
   }else{
@@ -84,8 +88,8 @@ router.get('/getuser/:userId',async (req,res)=>{
 
     try{
     
-    const allUser=await UserModel.find({_id:user_id});
-    return  serverResponse(res,200,allUser);
+    const user=await UserModel.find({_id:user_id});
+    return  serverResponse(res,200,user);
 
     }catch(e){
 
@@ -101,7 +105,7 @@ router.post("/getUserWithtoken", async (req,res)=>{
 
       const token=req.headers['x-access-token'];
 
-      if(!token){
+      if(token==""){
 
           return serverResponse(res,500,{message:"need to login"});
       }else{
@@ -112,10 +116,10 @@ router.post("/getUserWithtoken", async (req,res)=>{
               return serverResponse(res,200,user);
 
       }
-  }catch(e){
+  }catch(error){
 
-      console.log(e);
-      serverResponse(res,500,{message:"internal error occured"+e});
+      console.log(error);
+      serverResponse(res,500,{message:"internal error occured"+error});
   }
 
 })
