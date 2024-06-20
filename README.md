@@ -1,7 +1,5 @@
 <h1> Junior Traders </h1>
 
-<p> https://juniortraders.onrender.com </p>
-
 <h3>The purpose of the project : <h/3>
 
 <p>1.Build a platform of stock traders who can share trading ideas together. </p>
