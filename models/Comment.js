@@ -1,7 +1,8 @@
 
 const mongoose = require('mongoose');
 
-
+//schema for data base 
+//coment -{user_id,post_id,_comment,_numOfLike}
 const CommentShema =new mongoose.Schema({
 
     user_id:{ type:mongoose.Schema.Types.ObjectId, ref: 'User' ,required:true},

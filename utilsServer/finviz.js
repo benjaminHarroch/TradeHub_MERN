@@ -25,27 +25,4 @@ const getData=  async ()=>{
    
 }
 
-//getData();
-/*
-//the yahoo api return me all the data about one tickers 
-const options = {
-    method: 'GET',
-    url: 'https://candlestick-chart.p.rapidapi.com/binance',
-    params: {symbol: 'BTCUSDT', interval: '1m', limit: '16', lastPrice: '57500'},
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'X-RapidAPI-Key': '74be6b9229msh5867c40d09f13eep14472bjsn89ae26ed14e3',
-      'X-RapidAPI-Host': 'candlestick-chart.p.rapidapi.com'
-    }
-  };
-  
-  
-  
-  axios.request(options).then(function (response) {
-      console.log(response.data);
-      
-  }).catch(function (error) {
-      console.error(error);
-  });
-*/
-  module.exports=getData;
+module.exports=getData;

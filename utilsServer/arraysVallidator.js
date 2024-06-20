@@ -1,5 +1,5 @@
 
-
+ //validation arrays 
  exports.arraysValidationKeysPost=["title",
  "description",
  "image",

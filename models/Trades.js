@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 const TradeSchema =new mongoose.Schema({
 
-
     tiker:{type:String,required:true},
     description:{type:String,required:true},
     buy:{type:String,required:true},
