@@ -93,26 +93,6 @@ app.get('/getpricedata/:tiker',async (req,res)=>{
 
 })
 
-/*app.get('/',(req,res)=>{
-
-  console.log(__dirname);
-  res.sendFile(__dirname + "/ClientApp/public/index.html");
-
-})*/
-
-
-/*app.get('*',(req,res)=>{
-
-  console.log(__dirname);
-  res.sendFile(__dirname + "/ClientApp/public/index.html");
-
-})
-
-
-https://www.npmjs.com/package/yahoo-stock-api
-
-
-*/
 
 function getToday(){
 

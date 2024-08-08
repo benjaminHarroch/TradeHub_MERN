@@ -1,32 +1,45 @@
 import React, { useState } from 'react';
 import './css/AddPost.css'
+import { useContext } from 'react';
+import axios from 'axios';
 
 // icons
 import Avatar from '@mui/material/Avatar';
 import Videocam from '@mui/icons-material/Videocam';
 import PhotoLibrary from '@mui/icons-material/PhotoLibrary'
 import InsertEmoticon from '@mui/icons-material/InsertEmoticon'
+//context
+import UserContext from './context/userContext';
 
 
 
-function AddPost () {
+function AddPost ({posts,setPost}) {
 
 
     const [input, setInput] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+    const {user,setUser}=useContext(UserContext);
+    //console.log(user);
 
     const handleSubmit = e => {
 
         e.preventDefault();
+        console.log(input);
+        const date=new Date().toLocaleDateString();
+        console.log(date);
 
-        // send data to database
-        /*db.collection('posts').add({
-            message: input,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            profilePic: user.photoURL,
-            username: user.displayName,
-            image: imageUrl
-        })*/
+        const newPost={
+            "userName":user.userName,
+            "user_id": user.user_id,
+            "description": input,
+            "numOfLIke": 0,
+            "image": "https://th.bing.com/th/id/OIP.zUDVWGRKDte1W9TR65ZB0gHaF0?w=226&h=180&c=7&r=0&o=5&pid=1.7",
+            "date":date
+        }
+
+        axios.post('http://localhost:8000/post/addPost',newPost)
+       
+        setPost([...posts,newPost])
 
         // clear form
         setInput('');

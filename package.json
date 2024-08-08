@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "dev": "concurrently \"nodemon index.js\" \"cd ClientApp && npm start\"",
-    "render-postbuild" : "cd ClientApp && yarn install && yarn build"
+    "dev": "concurrently \"nodemon index.js\" \"cd ClientSide && npm start\"",
+    "render-postbuild": "cd ClientApp && yarn install && yarn build"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,6 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
-    "concurrently": "7.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
@@ -26,5 +25,8 @@
     "nodemon": "^2.0.20",
     "yahoo-stock-api": "^1.1.10"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }

@@ -12,6 +12,7 @@ const CommentShema =new mongoose.Schema({
 
 })
 
+//'comment' -the name of the colletion in the db ,and 
 const CommentModel =mongoose.model('Comment',CommentShema);
 
 module.exports=CommentModel;

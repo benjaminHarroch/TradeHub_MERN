@@ -62,15 +62,15 @@ router.post('/addPost',async (req,res)=>{
 
     try{
 
-    const {title,description,image,user_id,numOfLike}=req.body;
-    const newPostFromClient={title,description,image,user_id,numOfLike};
+    const {description,image,user_id,numOfLike,date,userName}=req.body;
+    const newPostFromClient={description,image,user_id,numOfLike,date,userName};
     const newPost=new PostModel(newPostFromClient);
     await newPost.save();
     return  serverResponse(res,200,{postid:newPost._id});
 
     }catch(e){
 
-      return   serverResponse(res,500,"the request to put into the data base");
+      return   serverResponse(res,500,"the try to post data into the data base is failed");
     }
 
 })

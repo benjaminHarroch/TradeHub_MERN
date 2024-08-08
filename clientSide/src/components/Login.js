@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./css/Login.css"
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import UserContext from './context/userContext';
 
 export const Login = () => {
 
@@ -11,6 +12,7 @@ export const Login = () => {
         existError:false,
         errorMessage:""
     });
+    const {user,setUser}=useContext(UserContext);
     const navigate=useNavigate();
 
     function chekeIfValideLogin(password,userName){
@@ -49,8 +51,19 @@ export const Login = () => {
                 "userName":userName,
                 "password":userPassword
             }).then(
-                response => {
-                    console.log(response);
+                res => {
+                    //console.log("response from db",res);
+                    //save the token of the user after success to authenticat
+                    window.localStorage.setItem("access-token",res.data.token);
+                    setUser({
+                        
+                      user_id:res.data.user._id,
+                      userName:res.data.user.userName,
+                      profilepic:res.data.user.profilepic,
+                      posts:res.data.user.posts,
+                      token:res.data.token,
+                      trades:res.data.user.trades
+                    })
                     navigate('/HomePage');
                 }
             ).catch(error =>{
@@ -60,10 +73,12 @@ export const Login = () => {
                     errorMessage:`error - ${error.response.data.message}`
                 });*/
             })
+        }
 
-
-      
-    }
+        setError({
+            existError:false,
+            errorMessage:""
+        })
 
     }
 

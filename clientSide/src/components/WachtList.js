@@ -20,6 +20,7 @@ function WatchList() {
         message:'',
         found:false
     });
+    const [newStock,setNewStock]=useState({});
 
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
@@ -33,13 +34,10 @@ function WatchList() {
 
         const token="am9yS0JoVnp1amtRVjhQSkR5UFI2M0ZQUzU4cVdBal81TlVaZUY3QnhxZz0";
     
-        let newStock;
-        let newwacthlist=[];
-
         const found = watchList.find(element => element.name ===ticker);
 
        if(found){
-        setError(error.found=true)
+        setError(error.found=true,error.message="the tikecr is already exist")
         return
        }
         
@@ -48,21 +46,26 @@ function WatchList() {
          axios.get(url)
          .then((res)=>{
 
-            console.log(res)
-            newStock={
+            if (res.status!=200) {
+              throw new Error('Network response was not ok');
+          }
+          return res;
+        })
+          .then((res)=>{
+            setNewStock({
                 name:ticker,
                 price:res.data.last[0],
                 change:res.data.change[0]?res.data.change[0]:0.0,
-                changePercent:res.data.change[0]?res.change[0]/100:0.0
-               }
+                changePercent:res.data.changepct[0]?res.changepct[0]:0.0
+               })
 
-               newwacthlist=[...watchList,newStock]
-               setWatchList(newwacthlist)
+             //  newwacthlist=[...watchList,newStock]
+               setWatchList([...watchList,newStock])
     
                return
             
-            })
-            .catch((e)=>console.log(e))
+          })
+            .catch((e)=>console.log('error',e))
 
     }
 
@@ -104,7 +107,7 @@ function WatchList() {
                                     watchList?.map((stock)=>{
 
                                     return(
-                                        <div className='heading'><p>{stock.name}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.price}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.changePercent.toFixed(2)}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.change}</p> </div>
+                                        <div className='heading'><p>{stock.name}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.price}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.changePercent}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.change}</p> </div>
                                     )
                                     })
                                 }
