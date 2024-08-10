@@ -13,25 +13,25 @@ function StorysContainer() {
       },{
       user:"benjamin",
       imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+      },{
+        user:"benjamin",
+        imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+      },{
+      user:"benjamin",
+      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
     },{
       user:"benjamin",
       imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
     },{
     user:"benjamin",
     imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
-  },{
+    },{
+      user:"benjamin",
+      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+    },{
     user:"benjamin",
     imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
-  },{
-  user:"benjamin",
-  imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
-},{
-  user:"benjamin",
-  imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
-},{
-user:"benjamin",
-imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
-}]
+    }]
 
     
     var settings = {
