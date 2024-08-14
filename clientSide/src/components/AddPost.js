@@ -48,7 +48,10 @@ function AddPost ({posts,setPost}) {
     return (
         <div className="AddPostContainer">
             <div className="AddPostContainerTop">
-                <Avatar  />
+                <Avatar  
+                 alt="User Profile"
+                 src={user.profilepic}
+                />
                 <form>
                     <input 
                         value={input} 

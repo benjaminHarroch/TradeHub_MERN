@@ -3,6 +3,7 @@ import "./css/Login.css"
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import UserContext from './context/userContext';
+import MySnackbar from './MySnackbar';
 
 export const Login = () => {
 
@@ -84,7 +85,8 @@ export const Login = () => {
 
   return (
     <div className='container-login-page'>
-
+      
+      <MySnackbar />
         <div className='login-animation'>
 
             <img src="https://th.bing.com/th/id/OIP.TKaUFxDz8t2louvtN75DTgHaE7?rs=1&pid=ImgDetMain" alt="login page"/>
@@ -110,7 +112,7 @@ export const Login = () => {
 
                 <div className='Sign-up'>
                     <div className='Sign-up-text'>Don't have an account? </div>
-                    <button className='Sign-up-button'>Sign up</button>
+                    <button onClick={()=>navigate('/Register')}className='Sign-up-button'>Sign up</button>
                 </div>
 
             </div>

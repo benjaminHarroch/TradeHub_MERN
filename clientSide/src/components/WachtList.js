@@ -20,8 +20,7 @@ function WatchList() {
         message:'',
         found:false
     });
-    const [newStock,setNewStock]=useState({});
-
+    
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             getDataForTicker();
@@ -37,7 +36,7 @@ function WatchList() {
         const found = watchList.find(element => element.name ===ticker);
 
        if(found){
-        setError(error.found=true,error.message="the tikecr is already exist")
+        setError(error.found=true,error.message="the tiker is already exist")
         return
        }
         
@@ -52,12 +51,12 @@ function WatchList() {
           return res;
         })
           .then((res)=>{
-            setNewStock({
+            let newStock={
                 name:ticker,
                 price:res.data.last[0],
                 change:res.data.change[0]?res.data.change[0]:0.0,
                 changePercent:res.data.changepct[0]?res.changepct[0]:0.0
-               })
+               }
 
              //  newwacthlist=[...watchList,newStock]
                setWatchList([...watchList,newStock])

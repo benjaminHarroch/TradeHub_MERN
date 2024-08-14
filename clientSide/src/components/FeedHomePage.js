@@ -25,7 +25,7 @@ function FeedHomePage() {
       axios.get(`http://localhost:8000/post/getAllPost`)
       .then(res => {
         console.log('res',res);
-        setPost(res?.data);
+        setPost(res?.data.reverse());
       }).catch(err=>console.log("error",err.response));
   
   }

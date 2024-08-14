@@ -5,6 +5,9 @@ import RightSideHomePage from './RightSideHomePage'
 import './css/HomePage.css'
 
 function HomePage() {
+
+  
+  
   return (
     <div className='HomePageContainer'>
 

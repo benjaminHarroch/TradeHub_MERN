@@ -7,16 +7,18 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { useNavigate } from "react-router-dom";
 
 
 
-function Post({postImg,postUserName,postTime,postDescription}) {
+function Post({postImg,postUserName,postTime,postDescription,userId}) {
 
+    const Navigate=useNavigate();
       
   return (
         <div className="post">
             <div className="postTop">
-                <Avatar src="https://th.bing.com/th/id/OIP.TKaUFxDz8t2louvtN75DTgHaE7?rs=1&pid=ImgDetMain" className="postAvatar" />
+                <Avatar sx={{cursor:'pointer'}} onClick={()=>Navigate(`/Profile/${userId}`)} src="https://th.bing.com/th/id/OIP.TKaUFxDz8t2louvtN75DTgHaE7?rs=1&pid=ImgDetMain" className="postAvatar" />
 
                 <div className="postTopInfo">
                     <h3>{postUserName}</h3>

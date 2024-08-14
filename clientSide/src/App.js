@@ -7,6 +7,10 @@ import HomePage from './components/HomePage';
 import JournalTraderPage from './components/JournalTraderPage';
 import UserContext from './components/context/userContext';
 import {useState,useEffect} from 'react';
+import Profile from './components/Profile/Profile';
+import { SnackbarProvider } from './components/context/snackBarContext';
+import Register from './components/Register/Register';
+
 
 
 function App() {
@@ -20,12 +24,12 @@ function App() {
     trades:[]
   })
 
-
   return (
     <div className="App">
 
       <UserContext.Provider value={{user,setUser}} >
 
+         <SnackbarProvider>
             <BrowserRouter>
 
                     <Routes>
@@ -40,11 +44,14 @@ function App() {
                           <NavBar /> 
                           <JournalTraderPage />
                           </>} />
+                          <Route path="/Profile/:id" element={<Profile />} />
+                          <Route path="/Register" element={<Register />} />
                         
 
                   </Routes>
 
           </BrowserRouter>
+        </SnackbarProvider>
 
      </UserContext.Provider>
      

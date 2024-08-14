@@ -63,16 +63,19 @@ app.get('/news',(req,res)=>{
 
 })
 
-app.get('/getMomentumStok',async (req,res)=>{
+app.get('/getMomentumStock',async (req,res)=>{
   
     try{
 
-     const arrayTiker =await getTikerArrays()
-     console.log(arrayTiker);
-     return serverResponse(res,200,arrayTiker);
+     getTikerArrays().then((response)=>{
+       console.log('array ticker',response)
+       return serverResponse(res,200,response);
+    })
+     //console.log('array ticker',arrayTiker);
+     //return serverResponse(res,200,arrayTiker);
     }catch(e){
 
-      console.log('error with the chart data');
+      console.log('error with the request to get the stock array');
     }
 
 })
