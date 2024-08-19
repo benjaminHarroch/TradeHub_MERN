@@ -33,7 +33,7 @@ function AddPost ({posts,setPost}) {
             "user_id": user.user_id,
             "description": input,
             "numOfLIke": 0,
-            "image": "https://th.bing.com/th/id/OIP.zUDVWGRKDte1W9TR65ZB0gHaF0?w=226&h=180&c=7&r=0&o=5&pid=1.7",
+            "image": imageUrl,
             "date":date
         }
 

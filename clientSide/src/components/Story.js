@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions ,Avatar } from '@mui/material';
-import { deepOrange } from '@mui/material/colors';
+import { Button, CardActionArea} from '@mui/material';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import { useState } from 'react';
 import Candlestick from './Candlestick';
@@ -55,8 +52,8 @@ function Story() {
 
   return (
 
-    <div className='StoryContainer' style={{"padding":"0 10px","width":"10vw"}}>
-         <Card sx={{ maxWidth: 160 }} onClick={handleCardClick}>
+    <div className='StoryContainer' style={{"margin":"0 3px"}}>
+         <Card sx={{ maxWidth: 180 }} onClick={handleCardClick}>
                 <CardActionArea>
                     <CardMedia
                     component="img"
@@ -65,10 +62,9 @@ function Story() {
                     alt="green iguana"
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h6" component="div">
-                            Lizard
+                        <Typography gutterBottom variant="h6" component="div" >
+                            Momentum stock 
                         </Typography>
-                        <Avatar sx={{ bgcolor: deepOrange[500] }}>B</Avatar>
                     </CardContent>
                 </CardActionArea>
                 

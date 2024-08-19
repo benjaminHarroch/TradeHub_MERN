@@ -18,7 +18,7 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 
 function TablePaginationActions(props) {
   const theme = useTheme();
-  const { count, page, rowsPerPage, onPageChange } = props;
+ const { count, page, rowsPerPage, onPageChange } = props;
 
   const handleFirstPageButtonClick = (event) => {
     onPageChange(event, 0);
@@ -77,27 +77,10 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, fat,hkhi) {
-  return { name, calories, fat ,hkhi};
-}
 
-const rows = [
-  createData('Cupcake', 305, 3.7,'pok'),
-  createData('Donut', 452, 25.0),
-  createData('Eclair', 262, 16.0),
-  createData('Frozen yoghurt', 159, 6.0),
-  createData('Gingerbread', 356, 16.0),
-  createData('Honeycomb', 408, 3.2),
-  createData('Ice cream sandwich', 237, 9.0),
-  createData('Jelly Bean', 375, 0.0),
-  createData('KitKat', 518, 26.0),
-  createData('Lollipop', 392, 0.2),
-  createData('Marshmallow', 318, 0),
-  createData('Nougat', 360, 19.0),
-  createData('Oreo', 437, 18.0),
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
-export default function CustomPaginationActionsTable() {
+
+export default function CustomPaginationActionsTable({rows}) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -113,24 +96,36 @@ export default function CustomPaginationActionsTable() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
+//{ Sticker, entries, exit ,strategie,position,date,result,color}
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
         <TableBody>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            ? rows?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
-          ).map((row) => (
-            <TableRow key={row.name}>
+          )?.map((row) => (
+            <TableRow key={row.Sticker}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.Sticker}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.calories}
+                {row.entries}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.fat}
+                {row.exit}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {row.strategie}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {row.position}
+              </TableCell>
+              <TableCell style={{ width: 160 }} align="right">
+                {row.date}
+              </TableCell>
+              <TableCell style={{ width: 160, color:row.color}} align="right">
+                {row.result}
               </TableCell>
             </TableRow>
           ))}
@@ -143,9 +138,9 @@ export default function CustomPaginationActionsTable() {
         <TableFooter>
           <TableRow>
             <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+              rowsPerPageOptions={[5, 10, { label: 'All', value: -1 }]}
               colSpan={3}
-              count={rows.length}
+              count={rows?.length}
               rowsPerPage={rowsPerPage}
               page={page}
               slotProps={{

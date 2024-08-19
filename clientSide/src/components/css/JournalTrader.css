@@ -1,0 +1,54 @@
+.trade-journal {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+  
+  .trade-summary-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .trade-summary-table th, .trade-summary-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .trade-summary-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .statistics-overview, .strategy-performance-chart, .explanation-section {
+    margin:50px;
+  }
+  
+  .stat-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .explanation-section p {
+    font-size: 16px;
+    color: #7f8c8d;
+  }
+  
+  .strategy-performance-chart {
+    margin-top: 20px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  

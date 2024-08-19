@@ -1,12 +1,12 @@
 
 import axios from 'axios';
-import {useState ,useEffect,useContext} from 'react';
+import {useState ,useEffect} from 'react';
 import './css/WatchList.css'
 
 import Drawer from "@mui/material/Drawer";
 //import IconButton from '@mui/material/IconButton';
 
-//import UserContext from '../Context/userContext';
+
 
 
 
@@ -44,13 +44,7 @@ function WatchList() {
 
          axios.get(url)
          .then((res)=>{
-
-            if (res.status!=200) {
-              throw new Error('Network response was not ok');
-          }
-          return res;
-        })
-          .then((res)=>{
+          console.log(res)
             let newStock={
                 name:ticker,
                 price:res.data.last[0],

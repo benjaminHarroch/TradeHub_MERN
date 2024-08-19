@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 import UserContext from './context/userContext';
-import NestedList from './NestedList';
+import NestedList from './NestedList';  
 
 function NavBar({color}) {
 
@@ -25,7 +25,9 @@ function NavBar({color}) {
 
              <Avatar   onMouseEnter={() => SetshowListMenu(true)}
                        onClick={()=> Navigate(`/Profile/${user.user_id}`)}
-                       sx={{ bgcolor: deepOrange[500] ,cursor:'pointer' }} >B</Avatar>
+                       sx={{ cursor:'pointer' }} 
+                       alt="User Profile"
+                       src={user.profilepic}>B</Avatar>
              <div onMouseEnter={() => SetshowListMenu(true)} style={showListMenu?{position: 'absolute' ,top: '38px',left: '70px'}:{display:'none'}}><NestedList /></div>
              <i className="fas fa-envelope"></i> {/* Message icon */}
              <i className="fas fa-bell"></i> {/* Notification icon */}

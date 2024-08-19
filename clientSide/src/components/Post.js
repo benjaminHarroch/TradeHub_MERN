@@ -8,17 +8,30 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
 
 
 function Post({postImg,postUserName,postTime,postDescription,userId}) {
 
+    const [userPost ,setPostUser]=useState();
+
     const Navigate=useNavigate();
-      
+    
+    useEffect(()=>{
+          axios.get(`http://localhost:8000/auth/getuser/${userId}`)
+          .then((res)=>setPostUser(res.data[0]))
+          .catch((err)=>console.log('error with get user',err))
+    },[userId])
+
   return (
         <div className="post">
             <div className="postTop">
-                <Avatar sx={{cursor:'pointer'}} onClick={()=>Navigate(`/Profile/${userId}`)} src="https://th.bing.com/th/id/OIP.TKaUFxDz8t2louvtN75DTgHaE7?rs=1&pid=ImgDetMain" className="postAvatar" />
+                <Avatar sx={{cursor:'pointer'}}
+                        onClick={()=>Navigate(`/Profile/${userId}`)}
+                        src={`${userPost?.profilepic}`}
+                         className="postAvatar" />
 
                 <div className="postTopInfo">
                     <h3>{postUserName}</h3>
