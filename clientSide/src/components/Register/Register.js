@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/userContext';
 import { storage } from '../utils/firebase'; // Import the storage from Firebase
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import LoadingSpinner from '../LoadingSpinner';
 
 const Register = () => {
     const [userName, setUserName] = useState('');
@@ -17,7 +18,7 @@ const Register = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [preview, setPreview] = useState(null);
     const navigate = useNavigate();
-
+    const [loading, setLoading] = useState(false);
     const { setUser } = useContext(UserContext);
 
     // Handle file selection
@@ -38,19 +39,22 @@ const Register = () => {
     };
 
     const handleSubmit = async (event) => {
+        setLoading(true);
         event.preventDefault();
         console.log("Form submitted."); // Log when form is submitted
 
         if (password !== secondPassword) {
             setError(true);
             setMessage("Check your password - passwords do not match");
-            console.log("Passwords do not match."); // Log password mismatch
+            console.log("Passwords do not match.");
+            setLoading(false); // Log password mismatch
             return;
         }
 
         if (!selectedImage) {
             alert('Please select an image before submitting.');
-            console.log("No image selected."); // Log when no image is selected
+            console.log("No image selected."); 
+            setLoading(false);// Log when no image is selected
             return;
         }
 
@@ -95,11 +99,12 @@ const Register = () => {
                         token: newUser.token,
                         trades: newUser.trades
                     });
-
+                    setLoading(false);
                     alert("Registered successfully! Please Login to proceed.");
                     navigate('/HomePage');
                       
                     }).catch((err)=>{
+                      setLoading(false);
                       if (err.response?.data?.message === 'the user is already exist') {
                         alert("Username already registered! Please Login to proceed.");
                         navigate('/');
@@ -108,16 +113,17 @@ const Register = () => {
                 }
             );
         } catch (err) {
+            setLoading(false);
             console.error('Error during registration:', err); // Log any errors during registration
         }
     }
 
     return (
         <div>
-            <div className="d-flex justify-content-center align-items-center text-center vh-100" style={{ backgroundImage: "linear-gradient(#00d5ff,#0095ff,rgba(93,0,255,.555))" }}>
+           <div className="d-flex justify-content-center align-items-center text-center vh-100" style={{ backgroundImage: "linear-gradient(#00d5ff,#0095ff,rgba(93,0,255,.555))" }}>
                 <div className="bg-white p-3 rounded" style={{ width: '40%' }}>
                     <h2 className='mb-3 text-primary'>Register</h2>
-                    <form onSubmit={handleSubmit}>
+                    {loading?<LoadingSpinner />: <form onSubmit={handleSubmit}>
                         <div className="mb-3 text-start">
                             <label htmlFor="exampleInputEmail1" className="form-label">
                                 <strong>UserName</strong>
@@ -173,11 +179,12 @@ const Register = () => {
                         <button type="submit" className="btn btn-primary">Register</button>
                         {error && <p className="text-danger">{message}</p>}
                     </form>
-
+}
                     <p className='container my-2'>Already have an account?</p>
                     <Link to='/' className="btn btn-secondary">Login</Link>
                 </div>
             </div>
+
         </div>
     )
 }

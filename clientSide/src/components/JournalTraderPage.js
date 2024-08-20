@@ -1,52 +1,91 @@
-import React,{useState , useEffect } from 'react'
+import React,{useState , useEffect, useContext } from 'react'
 import LeftSideHomePage from './LeftSideHomePage'
 import TradeJournal from './TradeJournal'
 import RightSideHomePage from './RightSideHomePage'
 import aggregateData from './utils/aggregateData'
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function JournalTraderPage() {
 
-   
-  const [rows,setRows] = useState([])
+  const [userTrade, setUserTrade] = useState([]);
+  const { id } = useParams();
+  const [chartData, setChartData] = useState([]);
+  
+  function fetchUserFromDb() {
+    axios.get(`http://localhost:8000/auth/getuser/${id}`)
+      .then(res => {
+        const tradeIds = res?.data[0]?.trades || [];  // Extract trade IDs from the response
 
+        // Create an array of promises to fetch each trade detail
+        const tradeRequests = tradeIds.map(tradeId => 
+          axios.get(`http://localhost:8000/trade/gettrade/${tradeId}`)
+        );
+
+        // Wait for all trade requests to complete
+        Promise.all(tradeRequests)
+          .then(responses => {
+            // Extract trade data from responses
+            const trades = responses.map(response => response.data.trade);
+            trades.forEach((trade)=>createData(
+              trade.sticker, 
+              trade.entries, 
+              trade.exit, 
+              trade.strategy, 
+              trade.position, 
+              trade.date
+            ))
+            // Update the state with fetched trades
+           // setUserTrade(prevTrades => {
+             // const updatedTrades = [...prevTrades, ...trades];
+              //console.log('Updated trades: fetch from db', updatedTrades);
+              //eturn updatedTrades;
+            //});
+          })
+          .catch(err => console.log("Error fetching trades", err));
+      })
+      .catch(err => console.log("Error fetching user", err));
+}
+
+  
   function createData(Sticker, entries, exit, strategy, position, date) {
     let result = position === 'long' ? exit - entries : entries - exit;
     let color = result > 0 ? 'green' : 'red';
-    
-    // Assuming you want to count wins and losses
     let win = result > 0 ? 1 : 0;
     let loss = result <= 0 ? 1 : 0;
-    
-    // Create a new trade object
-    let newTrade = { Sticker, entries, exit, strategy, position, date, result, color, win, loss };
   
-    // Update the rows state with the new trade
-    setRows(prevRows => [...prevRows, newTrade]);
+    let newTrade = { Sticker, entries, exit, strategy, position, date, result, color, win, loss };
+    
+    // Update the trades state with the new trade
+    setUserTrade(prevTrades => {
+      const updatedTrades = [...prevTrades, newTrade];
+      console.log('Updated trades: creat data', updatedTrades);
+      return updatedTrades;
+    });
   }
   
   useEffect(()=>{
-
-    createData('AAPL', 132, 142, 'ABC', 'long', '17/08/2024')
-    createData('MSFT', 300, 330, 'cat in the bag', 'long', '17/08/2024')
-    createData('NFLX', 262, 400, 'swing 2 week open', 'long', '17/08/2024')
-    createData('MRNA', 180, 170, 'news momentum', 'long', '17/08/2024')
-    createData('AAPL', 132, 142, 'ABC', 'long', '17/08/2024')
-    createData('MSFT', 300, 330, 'cat in the bag', 'long', '17/08/2024')
-    createData('NFLX', 262, 400, 'swing 2 week open', 'long', '17/08/2024')
-    createData('MRNA', 180, 170, 'news momentum', 'long', '17/08/2024')
-    createData('DDG', 132, 142, 'ABC', 'long', '17/08/2024')
-    createData('SPY', 500, 450, 'sort swing', 'short', '17/08/2024')
-    createData('QQQ', 262, 400, 'swing 2 week open', 'long', '17/08/2024')
-    createData('TSLA', 180, 170, 'news momentum', 'long', '17/08/2024')
-    createData('BTC', 13200, 60000, 'investment for long duration', 'long', '17/08/2024')
-    createData('NVDA', 300, 700, 'SWING', 'long', '17/08/2024')
-    createData('GOOG', 262, 400, 'swing 2 week open', 'long', '17/08/2024')
-    createData('META', 400, 600, 'news momentum', 'long', '17/08/2024')
+  // Initialize with dummy data
+  createData('AAPL', '132', '142', 'ABC', 'long', '17/08/2024');
+  createData('MSFT', '300', '330', 'cat in the bag', 'long', '17/08/2024');
 
   },[])
 
+  useEffect(() => {
+    // Fetch user trades from the database after initializing dummy data
+    fetchUserFromDb();
+  }, [id]);
+  
+  useEffect(() => {
+    // This useEffect will only run when userTrade changes
+    if (userTrade.length > 0) {
+      setChartData(aggregateData(userTrade));
+      console.log('Chart data updated:', chartData);
+    }
+  }, [userTrade]);
+  
+  
 
-  const chartData = aggregateData(rows);
   
   // Now `rows` is sorted by date
   
@@ -55,7 +94,7 @@ function JournalTraderPage() {
 
         <div className='HomePageContainer-LeftSideHomePageContainer'><LeftSideHomePage /></div>
         <div className='HomePageContainer-FeedSideHomePageContainer'>
-          <TradeJournal traders={rows} chartData={chartData}/>
+          <TradeJournal userTrade={userTrade} setUserTrade={setUserTrade} chartData={chartData} id={id}/>
           </div>
         <div className='HomePageContainer-RightSideHomePageContainer'><RightSideHomePage /></div>
   

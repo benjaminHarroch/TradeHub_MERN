@@ -9,7 +9,6 @@ import NavBar from '../NavBar';
 const Profile = () => {
 
     const [post,setPost]=useState([]);
-    const {user,setUser}=useContext(UserContext)
     const {id}=useParams();
 
 

@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Modal, Box, TextField, MenuItem } from '@mui/material';
 import './css/JournalTrader.css';  // Assuming you want to keep some custom styles
 import UserContext from './context/userContext';
+import axios from 'axios';
 
 const strategies = ['ABC', 'cat in the bag', 'swing 2 week open',
    'news momentum', 'sort swing', 'investment for long duration', 'SWING'];
 
-const AddTradeButton = () => {
+const AddTradeButton = ({setUserTrade,id}) => {
   const [open, setOpen] = useState(false);
   const [trade, setTrade] = useState({
     sticker: '',
@@ -16,7 +17,14 @@ const AddTradeButton = () => {
     position: 'long',
     date: '',
   });
+  const [idAuthen,setIdAuthen]=useState(true);
   const {user,setUser}=useContext(UserContext);
+
+
+  function chekeIdAuthentication(){
+     console.log(user.user_id)
+     user.user_id!==id?setIdAuthen(false):setIdAuthen(true)
+  }
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -29,24 +37,33 @@ const AddTradeButton = () => {
   };
 
   const handleSubmit = () => {
-    setUser(prevUser => ({
-      ...prevUser,
-      trades: [...prevUser.trades, trade]
-    }));
-  
-    setTrade({ sticker: '', entries: '', exit: '', strategy: '', position: 'long', date: '' });
-    handleClose();
-  };
+    axios.post(`http://localhost:8000/trade/newTrade/${id}`, trade)
+        .then(res => {
+            console.log('Response from db add trade button', res.data);
+            
+            // Update local state with the new trade
+            setUserTrade(prevTrades => [...prevTrades, trade]);
+
+            // Reset the form and close the modal
+            setTrade({ sticker: '', entries: '', exit: '', strategy: '', position: 'long', date: '' });
+            handleClose();
+        })
+        .catch(err => console.log('Error trying to save a trade in db', err));
+};
+
+  useEffect(()=>{
+ chekeIdAuthentication();
+  },[])
 
   return (
     <>
-      <Button 
+      {idAuthen&&<Button 
         variant="contained" 
         color="primary" 
         onClick={handleOpen} 
-        style={{ borderRadius: '20px', padding: '10px 20px', fontSize: '16px' }}>
+        style={{ borderRadius: '20px', padding: '10px 20px', fontSize: '16px' ,marginTop:'20px'}}>
         Add New Trade
-      </Button>
+      </Button>}
       <Modal open={open} onClose={handleClose}>
         <Box 
           component="form" 

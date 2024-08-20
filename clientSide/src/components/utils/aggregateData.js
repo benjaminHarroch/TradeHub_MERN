@@ -16,5 +16,5 @@ const aggregateData = (trades) => {
   };
 
 
-  export default aggregateData;
+  export default aggregateData
   

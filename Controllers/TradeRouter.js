@@ -56,31 +56,22 @@ router.get('/getalltradeofuser/:userid',async (req,res)=>{
 
 })
 
-router.get('/gettrade/:tradeid',async (req,res)=>{
+router.get('/gettrade/:tradeid', async (req, res) => {
+    const tradeid = req.params.tradeid;
+    try {
+        const trade = await TradeModel.findById(tradeid);
 
-    const tradeid=req.params.tradeid;
-    try{
-
-        const trade=await TradeModel.findById({_id:tradeid})
-
-        if(trade){
-
-        return serverResponse(res,200,{trade});
-
-        }else{
-
-            return serverResponse(res,200,{message:"no such trade"});
+        if (trade) {
+            return serverResponse(res, 200, { trade });
+        } else {
+            return serverResponse(res, 404, { message: "No such trade found" });
         }
-
-
-    }catch(e){
-
-        return serverResponse(res,500,{message:"problem with gell this trade"});
+    } catch (e) {
+        console.error("Error fetching trade:", e); // Enhanced error logging
+        return serverResponse(res, 500, { message: "Problem with fetching this trade" });
     }
+});
 
-
-
-})
 
 
 
@@ -105,33 +96,28 @@ router.post('/newTrade',async (req,res)=>{
 })
 
 
-router.post('/newTrade/:userId',async (req,res)=>{
+router.post('/newTrade/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    const newTrade = req.body;
 
-    const userId=req.params.userId;
-    const newTradeid=req.body.tradeid;
-     
+    try {
+        // Create a new trade
+        const trade = new TradeModel(newTrade);
+        await trade.save();
 
-   
-    try{
+        // Find the user and add the new trade's id to their trades
+        const user = await UserModel.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
 
-        const user=await UserModel.findById({_id:userId});
-        //console.log(user)
-        user.trades.push(newTradeid);
-       // console.log(user.trades)
+        user.trades.push(trade._id);
         await user.save();
-        return serverResponse(res,200,{trades:user.trades});
 
-
-    }catch(e){
-
-        return serverResponse(res,500,{message:"problem with save trades to the user"+e});
+        res.status(200).json({ trades: user.trades });
+    } catch (e) {
+        res.status(500).json({ message: "Problem saving trade to the user", error: e.message });
     }
-
-
- return serverResponse(res,500,{message:"problem with id"});
-
-
-
-})
+});
 
 module.exports =router;

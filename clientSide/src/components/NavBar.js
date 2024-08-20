@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./css/NavBar.css"
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 import UserContext from './context/userContext';
 import NestedList from './NestedList';  
@@ -11,8 +10,6 @@ function NavBar({color}) {
   const Navigate=useNavigate();
   const {user}=useContext(UserContext);
   const [showListMenu,SetshowListMenu]=useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  
 
  
 
@@ -36,7 +33,7 @@ function NavBar({color}) {
 
              <div className={'NavBar-MidleSide'} style={{ backgroundColor: color }}>
              <i onClick={()=>Navigate(`/HomePage`)} className="fas fa-home"></i> {/* Home icon */}
-             <i className="fas fa-chart-bar"></i> {/* Chart icon */}
+             <i onClick={()=>Navigate(`/journalTrader/${user.user_id}`)}className="fas fa-chart-bar"></i> {/* Chart icon */}
              <i className="fas fa-plus-circle"></i> {/* Add more icon */}
 
            

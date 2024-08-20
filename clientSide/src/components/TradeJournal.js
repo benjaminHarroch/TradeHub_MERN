@@ -6,16 +6,17 @@ import ExplanationSection from './ExplanationTraderPage';
 import './css/JournalTrader.css';
 import AddTradeButton from './AddTradeButton';
 
-const TradeJournal = ({traders,chartData}) => {
+const TradeJournal = ({userTrade,setUserTrade,chartData,id}) => {
 
+   console.log('tradejournal',userTrade);
 
   return (
     <div className="trade-journal">
       <ExplanationSection />
-      <StatisticsOverview  data={traders} />
+      <StatisticsOverview  data={userTrade} setUserTrade={setUserTrade} />
       <StrategyPerformanceChart data={chartData} />
-      <TableJournalTrader rows={traders} />
-      <AddTradeButton />
+      <TableJournalTrader rows={userTrade} setUserTrade={setUserTrade} />
+      <AddTradeButton setUserTrade={setUserTrade} id={id}/>
     </div>
   );
 };

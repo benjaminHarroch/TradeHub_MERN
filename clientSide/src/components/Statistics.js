@@ -8,7 +8,7 @@ const Statistics = ({data}) => {
     <div className="statistics-overview">
       <h2>Statistics Overview</h2>
       <div className="stat-item">
-        <span>Total Trades:</span> {data.length}
+        <span>Total Trades:</span> {data?.length}
       </div>
       <div className="stat-item">
         <span>Win Rate:</span> {50}%
