@@ -1,26 +1,42 @@
 .profile-page {
-    width: 850px;
+    width: 90%; /* Adjust width for responsiveness */
+    max-width: 850px; /* Set a max width */
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    padding: 20px 0; /* Add padding for spacing */
 }
 
 .cover-photo img {
     width: 100%;
-    height: 315px;
+    height: auto; /* Maintain aspect ratio */
     object-fit: cover;
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 .profile-info {
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
     margin-top: -75px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a modern touch */
+    text-align: center; /* Center text on smaller screens */
+}
+
+@media (min-width: 768px) {
+    .profile-info {
+        flex-direction: row; /* Return to row layout on larger screens */
+        text-align: left; /* Left-align text on larger screens */
+    }
 }
 
 .profile-picture {
     margin-right: 20px;
+    margin-bottom: 15px; /* Add margin at the bottom for small screens */
 }
 
 .profile-picture img {
@@ -28,26 +44,35 @@
     height: 150px;
     border-radius: 50%;
     border: 3px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow around the profile picture */
 }
 
 .user-details h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 24px; /* Adjusted font size for better spacing */
+    color: #333;
 }
 
 .user-details p {
     color: #666;
     margin: 5px 0;
+    font-size: 16px; /* Improved font size */
 }
 
 .user-details button {
     margin-right: 10px;
-    padding: 8px 12px;
+    padding: 8px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 25px; /* Rounded corners for a modern look */
     background-color: #FF6F61;
     color: #fff;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.user-details button:hover {
+    background-color: #e65b50; /* Darker shade on hover */
 }
 
 .profile-content {
@@ -55,6 +80,8 @@
     border: 1px solid #ddd;
     margin-top: 20px;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
 }
 
 .profile-nav ul {
@@ -64,11 +91,19 @@
     justify-content: space-around;
     border-bottom: 1px solid #ddd;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .profile-nav ul li {
     padding: 10px 20px;
     cursor: pointer;
+    font-weight: bold;
+    color: #666;
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+.profile-nav ul li:hover {
+    color: #FF6F61; /* Change color on hover */
 }
 
 .posts .post-profile {
@@ -78,4 +113,46 @@
 
 .posts .post-profile:last-child {
     border-bottom: none;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .profile-page {
+        width: 95%; /* Adjust width for smaller screens */
+    }
+
+    .profile-info {
+        margin-top: -50px; /* Adjust margin for smaller screens */
+        padding: 15px;
+    }
+
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .user-details h1 {
+        font-size: 22px;
+    }
+
+    .user-details p {
+        font-size: 14px;
+    }
+
+    .user-details button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .profile-content {
+        padding: 15px;
+    }
+
+    .profile-nav ul li {
+        padding: 8px 15px;
+    }
+
+    .posts .post-profile {
+        padding: 10px;
+    }
 }

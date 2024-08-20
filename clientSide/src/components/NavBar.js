@@ -34,7 +34,7 @@ function NavBar({color}) {
              <div className={'NavBar-MidleSide'} style={{ backgroundColor: color }}>
              <i onClick={()=>Navigate(`/HomePage`)} className="fas fa-home"></i> {/* Home icon */}
              <i onClick={()=>Navigate(`/journalTrader/${user.user_id}`)}className="fas fa-chart-bar"></i> {/* Chart icon */}
-             <i className="fas fa-plus-circle"></i> {/* Add more icon */}
+             <i onClick={()=>Navigate(`/stockNews`)} className="fas fa-plus-circle"></i> {/* Add more icon */}
 
            
 

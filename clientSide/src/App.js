@@ -10,6 +10,7 @@ import Profile from './components/Profile/Profile';
 import { SnackbarProvider } from './components/context/snackBarContext';
 import Register from './components/Register/Register';
 import JournalTraderPage from './components/JournalTraderPage';
+import StockNews from './components/StockNews';
 
 
 
@@ -46,6 +47,10 @@ function App() {
                           </>} />
                           <Route path="/Profile/:id" element={<Profile />} />
                           <Route path="/Register" element={<Register />} />
+                          <Route path="/stockNews" element={<>
+                            <NavBar /> 
+                            <StockNews />
+                            </>} />
                         
 
                   </Routes>
