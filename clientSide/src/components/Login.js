@@ -56,6 +56,8 @@ export const Login = () => {
                     //console.log("response from db",res);
                     //save the token of the user after success to authenticat
                     window.localStorage.setItem("access-token",res.data.token);
+                    window.localStorage.setItem("user-detaille",JSON.stringify(res.data.user));
+
                     setUser({
                         
                       user_id:res.data.user._id,

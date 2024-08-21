@@ -2,7 +2,7 @@ const express =require('express');
 const mongoose =require('mongoose');
 const cors = require("cors");
 const serverResponse=require('./utilsServer/serverResponse');
-//const routerUser=require('./Controllers/');
+const http = require('http');
 const routerPost=require('./Controllers/postsRouter');
 const routerComment=require('./Controllers/commentRouter');
 const auth=require('./Controllers/auth');
@@ -11,11 +11,23 @@ const axios = require("axios");
 const yahooStockAPI  = require('yahoo-stock-api');
 const getTikerArrays=require('./utilsServer/finviz');
 const routerTrade=require('./Controllers/TradeRouter');
+const { Server } = require('socket.io');
+const handleSocket = require('./Controllers/chatrouter'); 
 
 
 
 
 const app=express();
+const server = http.createServer(app);
+const io = new Server(server,{
+  cors: {
+    origin: "*", // Allow all origins, adjust as needed for security
+    methods: ["GET", "POST"]
+  }
+});;
+
+// Pass the io instance to the socket logic
+handleSocket(io);
 
 let priceData;
 
@@ -31,6 +43,8 @@ app.use('/auth',auth);
 app.use('/trade',routerTrade);
 
 require("dotenv").config();
+// Start the server
+const PORTSERVER = 8000;
 const {DB_USER,DB_PASS,DB_HOST,DB_NAME,PORT}=process.env;
 
 
@@ -196,7 +210,11 @@ async function main(tiker)  {
 
 
 
-app.listen('8000',()=>{
+server.listen(PORTSERVER, () => {
+    console.log(`Server is running on port ${PORTSERVER}`);
+});
+
+/*app.listen('8000',()=>{
     console.log('the application is runnig on PORT 8000');
 })
 /*

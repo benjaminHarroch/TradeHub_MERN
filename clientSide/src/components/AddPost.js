@@ -18,7 +18,7 @@ function AddPost ({posts,setPost}) {
 
     const [input, setInput] = useState('');
     const [imageUrl, setImageUrl] = useState('');
-    const {user,setUser}=useContext(UserContext);
+    const {user}=useContext(UserContext);
     //console.log(user);
 
     const handleSubmit = e => {

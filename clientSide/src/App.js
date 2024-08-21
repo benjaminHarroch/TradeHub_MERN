@@ -16,6 +16,7 @@ import StockNews from './components/StockNews';
 
 function App() {
 
+
   const [user,setUser]=useState({
     user_id:'',
     userName:'',
@@ -24,6 +25,25 @@ function App() {
     token:'',
     trades:[]
   })
+
+  useEffect(()=>{
+
+    // Retrieve user from local storage
+   const res = JSON.parse(localStorage.getItem('user-detaille'));
+
+    if(!user.id&&res){
+      setUser({            
+        user_id:res._id,
+        userName:res.userName,
+        profilepic:res.profilepic,
+        posts:res.posts,
+        token:res.token,
+        trades:res.trades
+      })
+
+    }
+
+  },[])
 
   return (
     <div className="App">

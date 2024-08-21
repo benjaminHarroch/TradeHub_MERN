@@ -6,9 +6,10 @@ import Post from "./Post";
 
 function PostFeed({posts}) {
 
-   
+   //show all the post i get
+   console.log('post from post',posts);
     return (
-        posts?.map(post => <Post  userId={post.user_id} postImg={post.image}
+        posts?.map(post => <Post  userId={post?.user_id} postImg={post.image}
         postUserName={post.userName} postTime={post.date} postDescription={post.description} />)
   )
 }

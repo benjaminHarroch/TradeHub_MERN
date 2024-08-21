@@ -19,6 +19,7 @@ function Post({postImg,postUserName,postTime,postDescription,userId}) {
 
     const Navigate=useNavigate();
     
+    //after get the post with is detaille i fetch the data of the authore of this post
     useEffect(()=>{
           axios.get(`http://localhost:8000/auth/getuser/${userId}`)
           .then((res)=>setPostUser(res.data[0]))

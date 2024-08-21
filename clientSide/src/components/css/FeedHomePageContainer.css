@@ -3,4 +3,42 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
+
+.loading-container, .error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Adjust height as necessary to match the content area */
+    width: 100%; /* Ensure it takes up full width */
+    text-align: center;
+    font-size: 18px;
+    color: #555; /* Set color and font size for better visibility */
+}
+
+/* Ensure that StorysContainer and PostFeed maintain their original alignment */
+.StorysContainer, .PostFeedContainer {
+    width: 100%; /* Ensure containers take up full width */
+    max-width: 800px; /* Set a max width for consistency */
+    margin: 0 auto; /* Center the containers */
+}
+
+  @media (min-width: 768px) {
+    .FeedHomePageContainer {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .StorysContainer {
+      width: 30%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .PostFeedContainer {
+      width: 65%;
+    }
+  }
