@@ -160,7 +160,7 @@ const StockNews = () => {
                                 />
                             )}
                             <CardContent>
-                                <NewsTitle variant="h5">{article.title}</NewsTitle>
+                                <NewsTitle variant="h5">{article.headline}</NewsTitle>
                                 <Typography variant="body2" color="text.secondary">
                                     {article.summary}
                                 </Typography>
