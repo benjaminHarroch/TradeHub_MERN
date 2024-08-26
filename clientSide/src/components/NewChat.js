@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { Box, TextField, Button, Avatar, Typography, Paper, List, ListItem, ListItemAvatar, ListItemText, Modal } from '@mui/material';
 import UserContext from './context/userContext';
 
-const socket = io.connect('http://localhost:8000'); // Ensure this is your server URL
+const socket = io.connect('https://tradehub-mern.onrender.com'); // Ensure this is your server URL
 
 const NewChat = ({ otherUser, open, handleClose }) => {
     const { user } = useContext(UserContext);   

@@ -53,9 +53,12 @@ const StockNews = () => {
     const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
     const [page, setPage] = useState(1);
     const itemsPerPage = 30;
+    
 
     useEffect(() => {
-        axios.get('https://newsapi.org/v2/everything?q=stocks&apiKey=27f376a2ad634e758d78d0fdc9515231')
+        axios.get('https://newsapi.org/v2/everything?q=stocks&apiKey=27f376a2ad634e758d78d0fdc9515231',{headers: {
+            'Upgrade-Insecure-Requests': '1',}, // or other necessary headers
+          })
             .then(response => {
                 setNews(response.data.articles);
                 setFilteredNews(response.data.articles);

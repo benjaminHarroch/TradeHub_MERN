@@ -23,12 +23,12 @@ function Post({postImg,postUserName,postTime,postDescription,userId,postID,posts
     const [hover,setHover]=useState(false);
     const {user}=useContext(UserContext)
     const Navigate=useNavigate();
-    console.log('user',user)
-    console.log('befor delete',posts)
+    //console.log('user',user)
+    //console.log('befor delete',posts)
     
     //after get the post with is detaille i fetch the data of the authore of this post
     useEffect(()=>{
-          axios.get(`http://localhost:8000/auth/getuser/${userId}`)
+          axios.get(`https://tradehub-mern.onrender.com/auth/getuser/${userId}`)
           .then((res)=>setPostUser(res.data[0]))
           .catch((err)=>console.log('error with get user',err))
     },[userId])
@@ -36,7 +36,7 @@ function Post({postImg,postUserName,postTime,postDescription,userId,postID,posts
     const handleDelte=()=>{
         let remove=alertFunction();
         if(remove){
-        axios.delete(`http://localhost:8000/post/deletepost/${postID}`)
+        axios.delete(`https://tradehub-mern.onrender.com/post/deletepost/${postID}`)
         let indexToDelete=posts.findIndex((element)=>element._id==postID)
         posts.splice(indexToDelete,1);
         let newArrayOfPost=[...posts];

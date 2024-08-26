@@ -37,7 +37,7 @@ const AddTradeButton = ({setUserTrade,id}) => {
   };
 
   const handleSubmit = () => {
-    axios.post(`http://localhost:8000/trade/newTrade/${id}`, trade)
+    axios.post(`https://tradehub-mern.onrender.com/trade/newTrade/${id}`, trade)
         .then(res => {
             console.log('Response from db add trade button', res.data);
             

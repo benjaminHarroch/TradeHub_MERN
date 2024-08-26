@@ -27,7 +27,7 @@ const Profile = () => {
     function fetchUser(userId) {
         axios.get(`https://tradehub-mern.onrender.com/auth/getuser/${userId}`)
             .then(res => {
-                console.log(res);
+                console.log('res from get user',res);
                 setUserProfile(res.data[0]);
                 setShowChat(true);
             })

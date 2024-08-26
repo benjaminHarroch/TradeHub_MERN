@@ -13,13 +13,13 @@ function JournalTraderPage() {
   const [chartData, setChartData] = useState([]);
   
   function fetchUserFromDb() {
-    axios.get(`http://localhost:8000/auth/getuser/${id}`)
+    axios.get(`https://tradehub-mern.onrender.com/auth/getuser/${id}`)
       .then(res => {
         const tradeIds = res?.data[0]?.trades || [];  // Extract trade IDs from the response
 
         // Create an array of promises to fetch each trade detail
         const tradeRequests = tradeIds.map(tradeId => 
-          axios.get(`http://localhost:8000/trade/gettrade/${tradeId}`)
+          axios.get(`https://tradehub-mern.onrender.com/trade/gettrade/${tradeId}`)
         );
 
         // Wait for all trade requests to complete
@@ -35,12 +35,7 @@ function JournalTraderPage() {
               trade.position, 
               trade.date
             ))
-            // Update the state with fetched trades
-           // setUserTrade(prevTrades => {
-             // const updatedTrades = [...prevTrades, ...trades];
-              //console.log('Updated trades: fetch from db', updatedTrades);
-              //eturn updatedTrades;
-            //});
+           
           })
           .catch(err => console.log("Error fetching trades", err));
       })

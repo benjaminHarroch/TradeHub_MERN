@@ -26,8 +26,19 @@ const io = new Server(server,{
   }
 });;
 
+const allowedOrigins = [
+  'https://tradehub-mern-1.onrender.com', // Add other allowed origins here if needed
+  'https://http://localhost:3000'
+];
+
 const corsOptions = {
-  origin: 'https://tradehub-mern-1.onrender.com', // Replace with your frontend URL
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }, // Replace with your frontend URL
   methods: ['GET', 'POST' ,'DELETE'],
   credentials: true,
 };
