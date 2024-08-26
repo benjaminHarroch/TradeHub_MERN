@@ -47,16 +47,8 @@ require("dotenv").config();
 const PORTSERVER = 8000;
 const {DB_USER,DB_PASS,DB_HOST,DB_NAME,PORT}=process.env;
 
+mongoose.set('strictQuery', false);
 
-
-//--- mongoose connection -- 
-mongoose.connect("mongodb://localhost:27017/JuniorTraders" ,function(err) {
-  if (err) {
-    console.log(err);
-  }else{
-    console.log("Connected to DB"); 
-  }
-});
 
 app.get('/news',(req,res)=>{
 
@@ -85,8 +77,6 @@ app.get('/getMomentumStock',async (req,res)=>{
        console.log('array ticker',response)
        return serverResponse(res,200,response);
     })
-     //console.log('array ticker',arrayTiker);
-     //return serverResponse(res,200,arrayTiker);
     }catch(e){
 
       console.log('error with the request to get the stock array');
@@ -144,8 +134,7 @@ function getTimeConvert(UNIX_timestamp){
   if(date>0&&date<10){
     date='0'+date;
   }
-  
- // var time = `${year}-${month}-${date}` ;
+
   var time ={
     day:parseInt(date),
     month:parseInt(month),
@@ -189,7 +178,6 @@ async function main(tiker)  {
   
   const oneMonthAgo=getoneMonthAgo();
 	const startDate = new Date(oneMonthAgo);
-  //console.log(startDate);
 	const endDate = new Date(yesterday);
 	//console.log(await yahooStockAPI.getHistoricalPrices(startDate, endDate, 'AAPL', '1d'));
   try{
@@ -202,29 +190,20 @@ async function main(tiker)  {
     console.log(e)
 
   }
-  //console.log('pricedata1',priceData);
-
 }
 
+const mongoUri = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
-
-
-
-server.listen(PORTSERVER, () => {
-    console.log(`Server is running on port ${PORTSERVER}`);
-});
-
-/*app.listen('8000',()=>{
-    console.log('the application is runnig on PORT 8000');
+mongoose.connect(mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
-/*
-mongoose.connect(
-  `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err) => {
-    app.listen(PORT || 8000, () => {
-      console.log("err", err);
-      console.log("Ani maazin!");
+  .then(() => {
+    console.log('Connected to DB');
+    server.listen(PORT || 8000, () => {
+      console.log(`Server is running on port ${PORT || 8000}`);
     });
-  }
-);*/
+  })
+  .catch(err => {
+    console.error('Error connecting to DB:', err);
+  });

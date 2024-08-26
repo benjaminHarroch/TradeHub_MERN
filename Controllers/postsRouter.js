@@ -119,13 +119,13 @@ router.delete('/deletepost/:postid',async (req,res)=>{
    const postid=req.params.postid;
 
     try{
-    
+    //find by id and delete the post object
      await PostModel.findByIdAndDelete({_id:postid});
     return  serverResponse(res,200,"the post have been delete from POST DB");
 
     }catch(e){
 
-      return   serverResponse(res,500,"the request to delete failed");
+      return   serverResponse(res,500,"the request to delete a post is failed");
     }
 
 })
