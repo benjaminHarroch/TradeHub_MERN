@@ -76,24 +76,27 @@ mongoose.set('strictQuery', false);
 
 let priceData;
 
-app.get('/news',(req,res)=>{
+// Initialize Finnhub client
+const api_key = 'cqsindhr01qg43b8popgcqsindhr01qg43b8poq0';  // Replace with your Finnhub API key
+const finnhubClient = new finnhub.DefaultApi();
+const apiClient = finnhub.ApiClient.instance;
+apiClient.authentications['api_key'].apiKey = api_key;
 
-
-  const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-  api_key.apiKey = "ccjf0liad3i47ghodgv0ccjf0liad3i47ghodgvg"
-  const finnhubClient = new finnhub.DefaultApi()
-
-  finnhubClient.marketNews("general", {}, (error, data, response) => {
-
-    if(error){
-      return serverResponse(res,500,{error})
+// Endpoint to fetch news
+app.get('/news', (req, res) => {
+  finnhubClient.marketNews('general', {}, (error, data, response) => {
+    if (error) {
+      console.error('Error fetching news:', error);
+      return res.status(500).json({ error: 'Failed to fetch news' });
     }
 
-      serverResponse(res,200,{data})
+    // Log data for debugging
+    console.log('API response data:', data);
 
+    // Send response to client
+    res.status(200).json(data);
   });
-
-})
+});
 
 app.get('/getMomentumStock',async (req,res)=>{
   
