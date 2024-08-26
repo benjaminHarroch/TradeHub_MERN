@@ -8,16 +8,23 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
+import UserContext from "./context/userContext";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
 
-function Post({postImg,postUserName,postTime,postDescription,userId}) {
+
+
+function Post({postImg,postUserName,postTime,postDescription,userId,postID,posts,setPost}) {
 
     const [userPost ,setPostUser]=useState();
-
+    const [hover,setHover]=useState(false);
+    const {user}=useContext(UserContext)
     const Navigate=useNavigate();
+    console.log('user',user)
+    console.log('befor delete',posts)
     
     //after get the post with is detaille i fetch the data of the authore of this post
     useEffect(()=>{
@@ -26,8 +33,28 @@ function Post({postImg,postUserName,postTime,postDescription,userId}) {
           .catch((err)=>console.log('error with get user',err))
     },[userId])
 
+    const handleDelte=()=>{
+        let remove=alertFunction();
+        if(remove){
+        axios.delete(`http://localhost:8000/post/deletepost/${postID}`)
+        let indexToDelete=posts.findIndex((element)=>element._id==postID)
+        posts.splice(indexToDelete,1);
+        let newArrayOfPost=[...posts];
+        setPost(newArrayOfPost)
+        }
+
+    }
+
+    function alertFunction() {
+        if (window.confirm('you are sure you want to remove this post?')) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
   return (
-        <div className="post">
+        <div className="post" onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>
             <div className="postTop">
                 <Avatar sx={{cursor:'pointer'}}
                         onClick={()=>Navigate(`/Profile/${userId}`)}
@@ -35,6 +62,7 @@ function Post({postImg,postUserName,postTime,postDescription,userId}) {
                          className="postAvatar" />
 
                 <div className="postTopInfo">
+                    {(hover&&user.user_id==userPost?._id)&&<div onClick={handleDelte} style={{position: 'absolute',top: '30px',right: '30px',fontWeight: '800',cursor:'pointer'}}><DeleteForeverIcon /></div>}
                     <h3>{postUserName}</h3>
                   
                     <p>{postTime}</p>

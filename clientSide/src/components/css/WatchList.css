@@ -65,7 +65,7 @@
 }
 
 .wacthListminicontainer{
-    height: 20em;
+    height: 100%;
     overflow: hidden;
     overflow-y:auto;
     font-weight: 500;

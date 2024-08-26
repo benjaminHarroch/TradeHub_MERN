@@ -48,12 +48,13 @@ function WatchList() {
             let newStock={
                 name:ticker,
                 price:res.data.last[0],
-                change:res.data.change[0]?res.data.change[0]:0.0,
-                changePercent:res.data.changepct[0]?res.changepct[0]:0.0
+                change:res?.data.change[0],
+                changePercent:res?.data.changepct[0]
                }
 
-             //  newwacthlist=[...watchList,newStock]
-               setWatchList([...watchList,newStock])
+               let newwacthlist=[...watchList,newStock]
+               setWatchList(newwacthlist)
+               window.localStorage.setItem('watchList',JSON.stringify(newwacthlist));
     
                return
             
@@ -65,14 +66,10 @@ function WatchList() {
 
     useEffect(() => {
 
-   
+      const wathListFromLocalStorage=JSON.parse(window.localStorage.getItem('watchList'))
+      wathListFromLocalStorage?setWatchList(wathListFromLocalStorage):setWatchList([]);
      
     },[])
-
-    useEffect(() => {
-
-     
-    },[watchList])
     
 
 
@@ -100,7 +97,7 @@ function WatchList() {
                                     watchList?.map((stock)=>{
 
                                     return(
-                                        <div className='heading'><p>{stock.name}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.price}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.changePercent}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.change}</p> </div>
+                                        <div className='heading'><p>{stock.name}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.price}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.changePercent+'%'}</p> <p style={stock.changePercent<0?{color:"red"}:{color:"green"}}>{stock.change}</p> </div>
                                     )
                                     })
                                 }

@@ -11,6 +11,7 @@ import { SnackbarProvider } from './components/context/snackBarContext';
 import Register from './components/Register/Register';
 import JournalTraderPage from './components/JournalTraderPage';
 import StockNews from './components/StockNews';
+import StockWatcher from './components/Stockwatcher';
 
 
 
@@ -59,6 +60,7 @@ function App() {
                           <Route  path="/" element={<Login />} />
                           <Route path="/HomePage" element={<>
                           <NavBar /> 
+                          <StockWatcher />
                           <HomePage />
                           </>} />
                           <Route path="/JournalTrader/:id" element={<>

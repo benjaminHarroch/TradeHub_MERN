@@ -15,11 +15,13 @@ export const Login = () => {
     });
     const {user,setUser}=useContext(UserContext);
     const navigate=useNavigate();
+    let boolianEror=false;
 
     function chekeIfValideLogin(password,userName){
 
         if(password.length<8 ||(userName.length<1||userName.length>30)){
 
+            boolianEror=true;
             setError({
                 existError:true,
                 errorMessage:"the user name or password is incorrect"
@@ -29,6 +31,7 @@ export const Login = () => {
   
         if(password.length===0 ||userName.length===0){
 
+            boolianEror=true;
             setError({
                 existError:true,
                 errorMessage:"please fille all inputes"
@@ -43,7 +46,7 @@ export const Login = () => {
         chekeIfValideLogin(userPassword,userName);
         console.log(error.errorMessage);
 
-        if(error.existError===false){
+        if(!boolianEror){
 
         const jsonObject=JSON.stringify({userName:userName,password:userPassword})
         console.log(jsonObject);
@@ -71,17 +74,14 @@ export const Login = () => {
                 }
             ).catch(error =>{
                 console.log("error -->" ,error.response.data);
-                /*setError({
+                setError({
                     existError:true,
                     errorMessage:`error - ${error.response.data.message}`
-                });*/
+                });
             })
-        }
+        }else{
 
-        setError({
-            existError:false,
-            errorMessage:""
-        })
+    }
 
     }
 
@@ -108,7 +108,7 @@ export const Login = () => {
                 </div>
 
                 <div className='Login-btn' onClick={()=>GetUserFromDataBase()}><button>Log-in</button></div>
-                <div className='error-text'>{error.errorMessage}</div>
+                <div className='error-text' style={{color:'red',fontWeight:'800'}}>{error.existError&&error.errorMessage+' please try again'}</div>
                 <div className='forgot-btn'><button>forgot-password?</button></div>
                 
 
