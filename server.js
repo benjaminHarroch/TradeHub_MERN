@@ -26,6 +26,13 @@ const io = new Server(server,{
   }
 });;
 
+const corsOptions = {
+  origin: 'https://your-deployed-frontend-url.com', // Replace with your frontend URL
+  methods: ['GET', 'POST'],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 // Pass the io instance to the socket logic
 handleSocket(io);
 
@@ -33,7 +40,6 @@ let priceData;
 
 
 //----- midellewire for the application 
-app.use(cors());
 app.use(express.json());
 app.use(express.static("ClientApp/build"));
 

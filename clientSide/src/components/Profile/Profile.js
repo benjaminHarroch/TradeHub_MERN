@@ -15,7 +15,7 @@ const Profile = () => {
 
     // Function to fetch posts based on profile ID
     function fetchPostsFromDb() {
-        axios.get(`http://localhost:8000/post/getPostOfid/${id}`)
+        axios.get(`https://tradehub-mern.onrender.com/post/getPostOfid/${id}`)
             .then(res => {
                 setPost(res?.data);
                 fetchUser(id); // Fetch user details after posts are fetched
@@ -25,7 +25,7 @@ const Profile = () => {
 
     // Function to fetch user details
     function fetchUser(userId) {
-        axios.get(`http://localhost:8000/auth/getuser/${userId}`)
+        axios.get(`https://tradehub-mern.onrender.com/auth/getuser/${userId}`)
             .then(res => {
                 console.log(res);
                 setUserProfile(res.data[0]);
@@ -42,17 +42,12 @@ const Profile = () => {
         fetchUser(id);
     }, [id]);
 
-    /* // Toggle chat visibility
-    const handleChatToggle = () => {
-        setShowChat(prev => !prev);
-    };*/
-
     return (
         <div>
             <NavBar color={'#FFDAB9'} />
             <div className="profile-page">
-                <div className="cover-photo">
-                    <img src={`${userProfile?.profilepic}`} alt="Cover" />
+                <div className="cover-photo" >
+                    <img style={{height:'500px'}} src={`${userProfile?.profilepic}`} alt="Cover" />
                 </div>
                 <div className="profile-info">
                     <div className="profile-picture">
@@ -91,13 +86,7 @@ const Profile = () => {
                         ))}
                     </div>
                 </div>
-                {/* Show chat component if visible */}
-                {/*showChat && (
-                    <Chat
-                        otherUser={userProfile} // Pass the user to chat with
-                        //onClose={handleChatToggle} // Function to close chat
-                    />
-                )*/}
+               
             </div>
         </div>
     );

@@ -60,7 +60,7 @@ function FeedHomePage() {
     }, []);
 
     const fetchPostsFromDb = () => {
-        axios.get(`http://localhost:8000/post/getAllPost`)
+        axios.get(`https://tradehub-mern.onrender.com/post/getAllPost`)
             .then(res => {
                 setPost(res?.data.reverse());
                 setLoading(false);

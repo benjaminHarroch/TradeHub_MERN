@@ -51,13 +51,11 @@ export const Login = () => {
         const jsonObject=JSON.stringify({userName:userName,password:userPassword})
         console.log(jsonObject);
         
-            axios.post('http://localhost:8000/auth/login',{
+            axios.post('https://tradehub-mern.onrender.com/auth/login',{
                 "userName":userName,
                 "password":userPassword
             }).then(
                 res => {
-                    //console.log("response from db",res);
-                    //save the token of the user after success to authenticat
                     window.localStorage.setItem("access-token",res.data.token);
                     window.localStorage.setItem("user-detaille",JSON.stringify(res.data.user));
 
@@ -73,13 +71,14 @@ export const Login = () => {
                     navigate('/HomePage');
                 }
             ).catch(error =>{
-                console.log("error -->" ,error.response.data);
+                console.log("error -->" ,error.response);
                 setError({
                     existError:true,
                     errorMessage:`error - ${error.response.data.message}`
                 });
             })
         }else{
+
 
     }
 
