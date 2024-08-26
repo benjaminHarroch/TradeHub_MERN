@@ -79,7 +79,7 @@ const Register = () => {
                     setProfilePic(downloadURL);
 
                     console.log("Registering user..."); // Log before registration
-                    axios.post('http://localhost:8000/auth/register', {
+                    axios.post('https://tradehub-mern.onrender.com/auth/register', {
                         userName,
                         password,
                         profilepic: downloadURL
