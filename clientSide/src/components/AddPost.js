@@ -34,7 +34,7 @@ function AddPost({ posts, setPost }) {
                 date: new Date().toLocaleDateString()
             };
             try {
-                await axios.post('http://localhost:8000/post/addPost', newPost);
+                await axios.post('https://tradehub-mern.onrender.com/post/addPost', newPost);
                 setPost([...posts, newPost]);
             } catch (err) {
                 alert('Error creating post');
@@ -83,7 +83,7 @@ function AddPost({ posts, setPost }) {
                     };
 
                     try {
-                        await axios.post('http://localhost:8000/post/addPost', newPost);
+                        await axios.post('https://tradehub-mern.onrender.com/post/addPost', newPost);
                         let arrayNewPost=[...posts,newPost];
                         setPost(arrayNewPost);
                     } catch (err) {

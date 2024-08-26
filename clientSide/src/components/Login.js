@@ -71,7 +71,7 @@ export const Login = () => {
                     navigate('/HomePage');
                 }
             ).catch(error =>{
-                console.log("error -->" ,error.response);
+                console.log("error -->" ,error);
                 setError({
                     existError:true,
                     errorMessage:`error - ${error.response.data.message}`

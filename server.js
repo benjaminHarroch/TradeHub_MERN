@@ -27,8 +27,8 @@ const io = new Server(server,{
 });;
 
 const corsOptions = {
-  origin: 'https://your-deployed-frontend-url.com', // Replace with your frontend URL
-  methods: ['GET', 'POST'],
+  origin: 'https://tradehub-mern-1.onrender.com', // Replace with your frontend URL
+  methods: ['GET', 'POST' ,'DELETE'],
   credentials: true,
 };
 app.use(cors(corsOptions));
