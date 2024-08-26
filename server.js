@@ -51,7 +51,6 @@ handleSocket(io);
 
 //----- midellewire for the application 
 app.use(express.json());
-app.use(express.static("ClientApp/build"));
 
 app.use('/post',routerPost);
 app.use('/comment',routerComment);
