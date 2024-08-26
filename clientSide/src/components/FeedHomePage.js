@@ -84,9 +84,9 @@ function FeedHomePage() {
                 <div className='error-container'>
                     {error}
                 </div>
-            ) : (
+            ) : posts.length>0?(
                 <PostFeed posts={posts} setPost={setPost} />
-            )}
+            ) : <div>please insert the first porst in the TradeHub social</div>}
         </div>
     );
 }
