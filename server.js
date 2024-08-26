@@ -58,14 +58,16 @@ app.use('/comment',routerComment);
 app.use('/auth',auth);
 app.use('/trade',routerTrade);
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
+// Use the correct path to the build directory
+const buildPath = path.join(__dirname, './clientSide/build');
 
-// Add a catch-all route to serve index.html for all non-API requests
+// Serve static files from the correct build directory
+app.use(express.static(buildPath));
+
+// Serve index.html for all non-API requests
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
-
 require("dotenv").config();
 // Start the server
 const PORTSERVER = 8000;
