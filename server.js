@@ -58,7 +58,7 @@ app.use('/auth',auth);
 app.use('/trade',routerTrade);
 
 // Use the correct path to the build directory
-const buildPath = path.join(__dirname, 'clientSide/build');
+const buildPath = path.join(__dirname, 'clientSide','build');
 
 // Serve static files from the correct build directory
 app.use(express.static(buildPath));
