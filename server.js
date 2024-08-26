@@ -28,7 +28,7 @@ const io = new Server(server,{
 
 const allowedOrigins = [
   'https://tradehub-mern-1.onrender.com', // Add other allowed origins here if needed
-  'https://http://localhost:3000'
+  'https://localhost:3000'
 ];
 
 const corsOptions = {
@@ -47,8 +47,6 @@ app.use(cors(corsOptions));
 // Pass the io instance to the socket logic
 handleSocket(io);
 
-let priceData;
-
 
 //----- midellewire for the application 
 app.use(express.json());
@@ -59,6 +57,14 @@ app.use('/comment',routerComment);
 app.use('/auth',auth);
 app.use('/trade',routerTrade);
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Add a catch-all route to serve index.html for all non-API requests
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 require("dotenv").config();
 // Start the server
 const PORTSERVER = 8000;
@@ -66,6 +72,7 @@ const {DB_USER,DB_PASS,DB_HOST,DB_NAME,PORT}=process.env;
 
 mongoose.set('strictQuery', false);
 
+let priceData;
 
 app.get('/news',(req,res)=>{
 

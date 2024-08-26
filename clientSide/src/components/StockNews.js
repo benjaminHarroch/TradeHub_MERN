@@ -56,12 +56,10 @@ const StockNews = () => {
     
 
     useEffect(() => {
-        axios.get('https://newsapi.org/v2/everything?q=stocks&apiKey=27f376a2ad634e758d78d0fdc9515231',{headers: {
-            'Upgrade-Insecure-Requests': '1',}, // or other necessary headers
-          })
+        axios.get('https://tradehub-mern.onrender.com/news')
             .then(response => {
-                setNews(response.data.articles);
-                setFilteredNews(response.data.articles);
+                setNews(response.data);
+                setFilteredNews(response.data);
             })
             .catch(error => console.error('Error fetching news:', error));
     }, []);
@@ -79,13 +77,13 @@ const StockNews = () => {
 
         if (stockFilter) {
             filtered = filtered.filter(article =>
-                article.title.toLowerCase().includes(stockFilter.toLowerCase())
+                article.headline.toLowerCase().includes(stockFilter.toLowerCase())
             );
         }
 
         if (dateFilter) {
             filtered = filtered.filter(article =>
-                new Date(article.publishedAt).toISOString().split('T')[0] === dateFilter
+                new Date(article.datetime).toISOString().split('T')[0] === dateFilter
             );
         }
 
@@ -95,6 +93,9 @@ const StockNews = () => {
     const handlePageChange = (event, newPage) => {
         setPage(newPage);
     };
+    const handleClick=(url)=>{
+        window.location.href =url;
+    }
 
     const paginatedNews = filteredNews.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
@@ -139,7 +140,7 @@ const StockNews = () => {
                 <TitleSlider {...sliderSettings}>
                     {filteredNews.map((article, index) => (
                         <Box key={index} sx={{ textAlign: 'center', p: 2, background: '#3897f0', color: '#fff', borderRadius: '10px',fontWeight:'900' }}>
-                            <Typography variant="h6">{article.title}</Typography>
+                            <Typography variant="h6">{article.headline}</Typography>
                         </Box>
                     ))}
                 </TitleSlider>
@@ -149,18 +150,19 @@ const StockNews = () => {
                 {paginatedNews.map((article, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
                         <NewsCard>
-                            {article.urlToImage && (
+                            {article.image && (
                                 <CardMedia
                                     component="img"
                                     height="140"
-                                    image={article.urlToImage}
-                                    alt={article.title}
+                                    image={article.image}
+                                    alt={article.headline}
+                                    onClick={handleClick(article.url)}
                                 />
                             )}
                             <CardContent>
                                 <NewsTitle variant="h5">{article.title}</NewsTitle>
                                 <Typography variant="body2" color="text.secondary">
-                                    {article.description}
+                                    {article.summary}
                                 </Typography>
                             </CardContent>
                         </NewsCard>
