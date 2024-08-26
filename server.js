@@ -13,6 +13,7 @@ const getTikerArrays=require('./utilsServer/finviz');
 const routerTrade=require('./Controllers/TradeRouter');
 const { Server } = require('socket.io');
 const handleSocket = require('./Controllers/chatrouter'); 
+const path = require('path');
 
 
 
