@@ -4,7 +4,6 @@ import Slider from 'react-slick';
 import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
 
 // Styled components
 const TitleSlider = styled(Slider)(({ theme }) => ({
@@ -53,21 +52,25 @@ const StockNews = () => {
     const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
     const [page, setPage] = useState(1);
     const itemsPerPage = 30;
-    
 
     useEffect(() => {
         axios.get('https://tradehub-mern.onrender.com/news')
             .then(response => {
-                console.log(response)
-                setNews(response);
-                setFilteredNews(response);
+                const data = response.data || [];
+                setNews(data);
+                setFilteredNews(data);
             })
-            .catch(error => console.error('Error fetching news:', error));
+            .catch(error => {
+                console.error('Error fetching news:', error);
+                setNews([]);
+                setFilteredNews([]);
+            });
     }, []);
 
     useEffect(() => {
+        console.log(filteredNews);  // Log to verify the data
         const interval = setInterval(() => {
-            setCurrentTitleIndex(prevIndex => (prevIndex + 1) % filteredNews?.length);
+            setCurrentTitleIndex(prevIndex => (prevIndex + 1) % (filteredNews?.length || 1));
         }, 3000);
 
         return () => clearInterval(interval);
@@ -84,7 +87,7 @@ const StockNews = () => {
 
         if (dateFilter) {
             filtered = filtered?.filter(article =>
-                new Date(article.datetime).toISOString().split('T')[0] === dateFilter
+                new Date(article.datetime * 1000).toISOString().split('T')[0] === dateFilter
             );
         }
 
@@ -94,11 +97,12 @@ const StockNews = () => {
     const handlePageChange = (event, newPage) => {
         setPage(newPage);
     };
-    const handleClick=(url)=>{
-        window.location.href =url;
-    }
 
-    const paginatedNews = filteredNews?.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+    const handleClick = (url) => () => {
+        window.location.href = url;
+    };
+
+    const paginatedNews = Array.isArray(filteredNews) ? filteredNews.slice((page - 1) * itemsPerPage, page * itemsPerPage) : [];
 
     const sliderSettings = {
         dots: false,
@@ -108,12 +112,12 @@ const StockNews = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        arrows:false,
+        arrows: false,
     };
 
     return (
         <Container maxWidth="lg" sx={{ py: 4 }} >
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 4, marginTop:'5%'}}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 4, marginTop: '5%' }}>
                 <TextField
                     label="Search by Stock Name"
                     variant="outlined"
@@ -140,7 +144,7 @@ const StockNews = () => {
             <Box sx={{ mb: 5, overflow: 'hidden' }}>
                 <TitleSlider {...sliderSettings}>
                     {filteredNews?.map((article, index) => (
-                        <Box key={index} sx={{ textAlign: 'center', p: 2, background: '#3897f0', color: '#fff', borderRadius: '10px',fontWeight:'900' }}>
+                        <Box key={index} sx={{ textAlign: 'center', p: 2, background: '#3897f0', color: '#fff', borderRadius: '10px', fontWeight: '900' }}>
                             <Typography variant="h6">{article.headline}</Typography>
                         </Box>
                     ))}
@@ -184,6 +188,3 @@ const StockNews = () => {
 };
 
 export default StockNews;
-
-
-
