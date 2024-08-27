@@ -67,7 +67,7 @@ const StockNews = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentTitleIndex(prevIndex => (prevIndex + 1) % filteredNews.length);
+            setCurrentTitleIndex(prevIndex => (prevIndex + 1) % filteredNews?.length);
         }, 3000);
 
         return () => clearInterval(interval);
@@ -77,13 +77,13 @@ const StockNews = () => {
         let filtered = news;
 
         if (stockFilter) {
-            filtered = filtered.filter(article =>
+            filtered = filtered?.filter(article =>
                 article.headline.toLowerCase().includes(stockFilter.toLowerCase())
             );
         }
 
         if (dateFilter) {
-            filtered = filtered.filter(article =>
+            filtered = filtered?.filter(article =>
                 new Date(article.datetime).toISOString().split('T')[0] === dateFilter
             );
         }
@@ -98,7 +98,7 @@ const StockNews = () => {
         window.location.href =url;
     }
 
-    const paginatedNews = filteredNews.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+    const paginatedNews = filteredNews?.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
     const sliderSettings = {
         dots: false,
@@ -139,7 +139,7 @@ const StockNews = () => {
 
             <Box sx={{ mb: 5, overflow: 'hidden' }}>
                 <TitleSlider {...sliderSettings}>
-                    {filteredNews.map((article, index) => (
+                    {filteredNews?.map((article, index) => (
                         <Box key={index} sx={{ textAlign: 'center', p: 2, background: '#3897f0', color: '#fff', borderRadius: '10px',fontWeight:'900' }}>
                             <Typography variant="h6">{article.headline}</Typography>
                         </Box>
@@ -148,7 +148,7 @@ const StockNews = () => {
             </Box>
 
             <Grid container spacing={3}>
-                {paginatedNews.map((article, index) => (
+                {paginatedNews?.map((article, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
                         <NewsCard>
                             {article.image && (
@@ -173,7 +173,7 @@ const StockNews = () => {
 
             <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
                 <Pagination
-                    count={Math.ceil(filteredNews.length / itemsPerPage)}
+                    count={Math.ceil(filteredNews?.length / itemsPerPage)}
                     page={page}
                     onChange={handlePageChange}
                     color="primary"
