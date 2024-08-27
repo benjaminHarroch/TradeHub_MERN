@@ -58,8 +58,9 @@ const StockNews = () => {
     useEffect(() => {
         axios.get('https://tradehub-mern.onrender.com/news')
             .then(response => {
-                setNews(response.data);
-                setFilteredNews(response.data);
+                console.log(response)
+                setNews(response);
+                setFilteredNews(response);
             })
             .catch(error => console.error('Error fetching news:', error));
     }, []);
