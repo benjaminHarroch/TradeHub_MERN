@@ -66,6 +66,7 @@ app.use(express.static(buildPath));
 // Serve index.html for all non-API requests
 app.get('*', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
+  console.log(__dirname)
 });
 require("dotenv").config();
 // Start the server
