@@ -63,11 +63,7 @@ const buildPath = path.join(__dirname, 'clientSide','build');
 // Serve static files from the correct build directory
 app.use(express.static(buildPath));
 
-// Serve index.html for all non-API requests
-app.get('*', (req, res) => {
-  res.sendFile(path.join(buildPath, 'index.html'));
-  console.log(__dirname)
-});
+
 require("dotenv").config();
 // Start the server
 const PORTSERVER = 8000;
@@ -129,6 +125,12 @@ app.get('/getpricedata/:tiker',async (req,res)=>{
     }
 
 })
+
+// Serve index.html for all non-API requests
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+  console.log(__dirname)
+});
 
 
 function getToday(){
