@@ -30,6 +30,7 @@
     "nice-react-ticker": "^2.1.0",
     "nodemon": "^3.1.4",
     "plotly.js": "^2.34.0",
+    "polygon": "^1.0.2",
     "polygon.io": "^2.1.2",
     "react-plotly.js": "^2.6.0",
     "react-slick": "^0.30.2",
