@@ -6,7 +6,6 @@ import Stockwatcher from './Stockwatcher'
 function LeftSideHomePage() {
   return (
     <div className='LeftSideHomePageContainer'>
-        {/*<Stockwatcher />*/}
         <WatchList />
     </div>
   )

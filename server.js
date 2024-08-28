@@ -1,6 +1,6 @@
 const express =require('express');
 const mongoose =require('mongoose');
-const cors = require("cors");
+const cors = require('cors');
 const serverResponse=require('./utilsServer/serverResponse');
 const http = require('http');
 const routerPost=require('./Controllers/postsRouter');
@@ -27,26 +27,40 @@ const io = new Server(server,{
   }
 });;
 
+// Define allowed origins
 const allowedOrigins = [
-  'https://tradehub-mern-1.onrender.com', // Add other allowed origins here if needed
-  'https://localhost:3000'
+  'http://localhost:3000',
+  'https://tradehub-mern-1.onrender.com'
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
-  }, // Replace with your frontend URL
-  methods: ['GET', 'POST' ,'DELETE'],
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Add OPTIONS method
   credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow necessary headers
+  preflightContinue: false,
+  optionsSuccessStatus: 204  // Some legacy browsers (IE11) choke on 204
 };
+
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Enable preflight across the board
+
 
 // Pass the io instance to the socket logic
 handleSocket(io);
+
+
+// Use the correct path to the build directory
+const buildPath = path.join(__dirname, 'clientSide','build');
+
+// Serve static files from the correct build directory
+app.use(express.static(buildPath));
 
 
 //----- midellewire for the application 
@@ -56,12 +70,6 @@ app.use('/post',routerPost);
 app.use('/comment',routerComment);
 app.use('/auth',auth);
 app.use('/trade',routerTrade);
-
-// Use the correct path to the build directory
-const buildPath = path.join(__dirname, 'clientSide','build');
-
-// Serve static files from the correct build directory
-app.use(express.static(buildPath));
 
 
 require("dotenv").config();
@@ -129,6 +137,7 @@ app.get('/getpricedata/:tiker',async (req,res)=>{
 // Serve index.html for all non-API requests
 app.get('*', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
+  
   console.log(__dirname)
 });
 
@@ -239,3 +248,5 @@ mongoose.connect(mongoUri, {
   .catch(err => {
     console.error('Error connecting to DB:', err);
   });
+
+  
