@@ -6,6 +6,7 @@ import UserContext from './context/userContext';
 import NestedList from './NestedList';  
 import SearchBar from './SearchBar';
 
+
 function NavBar({color}) {
 
   const Navigate=useNavigate();
@@ -35,14 +36,14 @@ function NavBar({color}) {
              <div className={'NavBar-MidleSide'} style={{ backgroundColor: color }}>
              <i onClick={()=>Navigate(`/HomePage`)} className="fas fa-home"></i> {/* Home icon */}
              <i onClick={()=>Navigate(`/journalTrader/${user.user_id}`)}className="fas fa-chart-bar"></i> {/* Chart icon */}
-            <i onClick={()=>Navigate(`/stockNews`)} className="fas fa-plus-circle"></i> {/* Add more icon */}
+             <i onClick={()=>Navigate(`/stockNews`)} className="fa fa-newspaper"></i> {/* Add more icon */}
 
            
 
             </div>
             <div className={'NavBar-RightSide'} style={{ backgroundColor: color }}>
              <SearchBar />
-              TRADEHUB {/* Logo */}
+              <img src='https://firebasestorage.googleapis.com/v0/b/tradehub-ec4d8.appspot.com/o/profile_pics%2FBEARISH%20PIN%20BAR.png?alt=media&token=e5b096e0-28d2-4cd7-8b86-a80e69ef27f1' alt='logo' /> {/* Logo */}
 
             </div>
 

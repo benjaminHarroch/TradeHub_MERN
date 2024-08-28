@@ -31,6 +31,13 @@
     justify-content: space-around;
     align-items: center;
   }
+
+  .NavBar-RightSide img{
+    width: 100px;
+    height: 40px;
+    border-radius: 3px;
+    box-shadow: 1px 1.2px blue;
+  }
   
   .NavBar-MidleSide i {
     margin: 0 20px;

@@ -125,9 +125,9 @@ const StockWatcher = () => {
         <Box
             sx={{
                 position: 'fixed',
-                top: 100,
-                left: 20,
-                width: 250,
+                top: 80,
+                left: 2,
+                width: 220,
                 maxHeight: 500,
                 overflowY: 'auto',
                 backgroundColor: 'background.paper',

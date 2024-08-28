@@ -48,6 +48,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.login-form img{
+    width: 200px;
+    height: 70px;
+    border-radius: 3px;
+    box-shadow: 1px 1.2px blue;
+   position: relative;
+   top:2px;
+   left:80px;
+   
+  }
+
 .container-login-page .login-form-container .login-form-input {
     background-color: rgb(240, 246, 249);
     padding: 10px 20px; /* Adjust padding for smaller screens */
@@ -131,6 +142,10 @@
     .container-login-page .login-form-container .login-form {
         margin: 20px 0; /* Reduce margin for smaller screens */
         padding: 15px; /* Reduce padding inside the form */
+    }
+    .container-login-page .login-form-container .login-form img{
+        width: 90px;
+        left: 40px;/* Reduce padding inside the form */
     }
 
     .container-login-page .login-form-container .Sign-up {

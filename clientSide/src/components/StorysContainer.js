@@ -16,28 +16,36 @@ function StorysContainer() {
 
   const stories=[{
         user:"benjamin",
-        imageSrc:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.warriortrading.com%2Fhow-to-read-candlestick-charts%2F&psig=AOvVaw0axi0A8wMvtcFIJkiPjl6R&ust=1723631943743000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCg1t_j8YcDFQAAAAAdAAAAABAE"
+        imageSrc:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.warriortrading.com%2Fhow-to-read-candlestick-charts%2F&psig=AOvVaw0axi0A8wMvtcFIJkiPjl6R&ust=1723631943743000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCg1t_j8YcDFQAAAAAdAAAAABAE",
+        ticker:'MSFT'
       },{
       user:"benjamin",
-      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+      ticker:'AAPL'
       },{
         user:"benjamin",
-        imageSrc:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.warriortrading.com%2Fhow-to-read-candlestick-charts%2F&psig=AOvVaw0axi0A8wMvtcFIJkiPjl6R&ust=1723631943743000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCg1t_j8YcDFQAAAAAdAAAAABAE"
+        imageSrc:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.warriortrading.com%2Fhow-to-read-candlestick-charts%2F&psig=AOvVaw0axi0A8wMvtcFIJkiPjl6R&ust=1723631943743000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCg1t_j8YcDFQAAAAAdAAAAABAE",
+        ticker:'NVDA'
       },{
       user:"benjamin",
-      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+      ticker:'META'
     },{
       user:"benjamin",
-      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+      ticker:'NFLX'
     },{
     user:"benjamin",
-    imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+    imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+    ticker:'CRWD'
     },{
       user:"benjamin",
-      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+      ticker:'DOGZ'
     },{
     user:"benjamin",
-    imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0"
+    imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+    ticker:'SEDG'
     }]
 
     
@@ -82,7 +90,7 @@ function StorysContainer() {
 
         <Slider {...settings}>
             {stories.map((story, index) => (
-                    <Story key={index} username={story.username} imageSrc={story.imageSrc} />
+                    <Story key={index} ticker={story.ticker} username={story.username} imageSrc={story.imageSrc} />
             ))}
 
         </Slider>

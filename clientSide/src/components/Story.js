@@ -13,7 +13,7 @@ import axios from 'axios';
 
 
 
-function Story() {
+function Story({ticker}) {
 
     const [storyVisible, setStoryVisible] = useState(false);
     const [data ,setData]=useState([{ time: '2023-08-02', open: 131.23, high: 132.5, low: 130.1, close: 130.99 }]);
@@ -24,7 +24,7 @@ function Story() {
 
       const apiKey='smPg0j4kXAb9tWkwQx5b3RITg6we_nuM';
 
-      let url =`https://api.polygon.io/v2/aggs/ticker/MSFT/range/1/day/2024-06-09/2024-09-10?apiKey=${apiKey}`;
+      let url =`https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2024-06-09/2024-09-10?apiKey=${apiKey}`;
       
       axios.get(url).then((res) => {
         setData(res.data.results.map(item => {
@@ -62,8 +62,8 @@ function Story() {
                     alt="green iguana"
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h6" component="div" >
-                            Momentum stock 
+                        <Typography gutterBottom variant="h6" component="div" sx={{color:'orange',fontWeight:'800'}} >
+                            {ticker} 
                         </Typography>
                     </CardContent>
                 </CardActionArea>

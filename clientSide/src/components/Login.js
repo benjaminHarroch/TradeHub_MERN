@@ -98,7 +98,7 @@ export const Login = () => {
             
             <div className='login-form'>
 
-                <image>LOGO</image>
+            <img src='https://firebasestorage.googleapis.com/v0/b/tradehub-ec4d8.appspot.com/o/profile_pics%2FBEARISH%20PIN%20BAR.png?alt=media&token=e5b096e0-28d2-4cd7-8b86-a80e69ef27f1' alt='logo' /> {/* Logo */}
                 <div className='login-form-input'>
                 <input type='text' placeholder='username or email' onChange={(e)=>setUserName(e.target.value)}></input>
                 </div>
