@@ -7,9 +7,7 @@ const routerPost=require('./Controllers/postsRouter');
 const routerComment=require('./Controllers/commentRouter');
 const auth=require('./Controllers/auth');
 const finnhub = require('finnhub');
-const axios = require("axios");
-const yahooStockAPI  = require('yahoo-stock-api');
-const getTikerArrays=require('./utilsServer/finviz');
+const GetData=require('./utilsServer/GetData');
 const routerTrade=require('./Controllers/TradeRouter');
 const { Server } = require('socket.io');
 const handleSocket = require('./Controllers/chatrouter'); 
@@ -103,36 +101,20 @@ app.get('/news', (req, res) => {
   });
 });
 
-app.get('/getMomentumStock',async (req,res)=>{
-  
-    try{
 
-     getTikerArrays().then((response)=>{
-       console.log('array ticker',response)
-       return serverResponse(res,200,response);
-    })
-    }catch(e){
+app.get('/getMomentumStock', async (req, res) => {
+    
+  try{
 
-      console.log('error with the request to get the stock array');
-    }
+    const arrayTiker =await GetData()
+    console.log(arrayTiker);
+    return serverResponse(res,200,arrayTiker);
+   }catch(e){
 
-})
+     console.log('error with the chart data');
+   }
 
-app.get('/getpricedata/:tiker',async (req,res)=>{
-  
-  const tiker=req.params.tiker;
-  console.log(tiker)
-
-    try{
-
-     await main(tiker);
-     return serverResponse(res,200,priceData);
-    }catch(e){
-
-      console.log(e+'error with the chart data');
-    }
-
-})
+});
 
 // Serve index.html for all non-API requests
 app.get('*', (req, res) => {
@@ -142,96 +124,6 @@ app.get('*', (req, res) => {
 });
 
 
-function getToday(){
-
-  var today = new Date();
-  today.setDate(today.getDate() - 1);
-  console.log('her',today.toLocaleDateString())
- const yesterday=today.toLocaleDateString();
-
-  return yesterday;
-}
-
-function getoneMonthAgo(){
-
-  var d = new Date();
-  d.setMonth(d.getMonth() - 2);
-  console.log(d.toLocaleDateString());
-  const onemonthago=d.toLocaleDateString();
-  return onemonthago;
-}
-
-
-function getTimeConvert(UNIX_timestamp){
-
-
-  var a = new Date(UNIX_timestamp * 1000);
-  var year = a.getFullYear();
-  var month = a.getMonth()+1;
-  if(month>0&&month<10){
-    month='0'+month;
-  }
-  var date = a.getDate();
-  if(date>0&&date<10){
-    date='0'+date;
-  }
-
-  var time ={
-    day:parseInt(date),
-    month:parseInt(month),
-    year:parseInt(year)
-  }
-  return time;
-
-}
-
-function getData(data){
-
-  const arrayData=data.response;
-
-  const newArray=arrayData.map((day)=>{
-
-    const timeConvert=getTimeConvert(day.date);
-    
-    return(
-
-      {
-
-        time:timeConvert,
-        open:parseFloat(day.open.toFixed(2)),
-        high:parseFloat(day.high.toFixed(2)),
-        low:parseFloat(day.low.toFixed(2)),
-        close:parseFloat(day.close.toFixed(2))
-
-      }
-    )
-
-  })
-
-  return newArray;
-
-}
-
-
-async function main(tiker)  {
-
-  const yesterday=getToday();
-  
-  const oneMonthAgo=getoneMonthAgo();
-	const startDate = new Date(oneMonthAgo);
-	const endDate = new Date(yesterday);
-	//console.log(await yahooStockAPI.getHistoricalPrices(startDate, endDate, 'AAPL', '1d'));
-  try{
-
-  
-  const data=await yahooStockAPI.getHistoricalPrices(startDate, endDate, tiker, '1d');
-  const response=await getData(data);
-  priceData=response;
-  }catch(e){
-    console.log(e)
-
-  }
-}
 
 const mongoUri = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
