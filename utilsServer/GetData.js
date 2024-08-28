@@ -13,7 +13,7 @@ const getData = async () => {
     };
 
     // Fetch stock data based on filters
-    const data = await finviz.getScreener(filters);
+    const data = await finviz.scan(filters);
 
     // Extract tickers from the data
     const tickers = data.map(stock => stock.Ticker);
