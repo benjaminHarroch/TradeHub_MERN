@@ -1,27 +1,29 @@
+const FinvizScreener = require('finviz-screener');
 
-const finviz = require('finviz-screener');
+// Create an instance of the screener
+const finviz = new FinvizScreener();
 
+const getData = async () => {
+  try {
+    // Define filters for momentum stocks
+    const filters = {
+      performance: 'Week +20%',      // Example filter for performance
+      averageVolume: 'Over 400K',    // Example filter for average volume
+      sharesOutstanding: 'Under 100M' // Example filter for shares outstanding
+    };
 
+    // Fetch stock data based on filters
+    const data = await finviz.getScreener(filters);
 
-//get data from finviz api ---return an array of tikers for momentum stocks
-const getData=  async ()=>{
+    // Extract tickers from the data
+    const tickers = data.map(stock => stock.Ticker);
 
-   const options = {
-    // Maximum number of pages to fetch. Set to `0` to disable. Default is 1
-    pageLimit: 0,
-    // Number of milliseconds to wait between requests. Default is 1000
-    requestTimeout: 1000,
+    return tickers;
+
+  } catch (error) {
+    console.error('Error fetching stock data:', error);
+    return [];
   }
+};
 
-   array = await finviz(options)
-    .performance('Week +20%')
-    .averageVolume('Over 400K')
-    //.relativeVolume('Over 2')
-    .sharesOutstanding('Under 100M')
-    .scan()
-
-   return array //=> ['AAPL', 'MSFT', 'IBM', ... ]
-   
-}
-
-module.default=getData;
+module.exports=getData;
