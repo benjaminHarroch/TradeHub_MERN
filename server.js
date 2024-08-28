@@ -103,17 +103,14 @@ app.get('/news', (req, res) => {
 
 
 app.get('/getMomentumStock', async (req, res) => {
-    
-  try{
-
-    const arrayTiker =await screenNasdaqStocks()
-    console.log(arrayTiker);
-    return serverResponse(res,200,arrayTiker);
-   }catch(e){
-
-     console.log('error with the chart data');
-   }
-
+  try {
+    const arrayTicker = await screenNasdaqStocks();
+    console.log(arrayTicker);
+    res.status(200).json(arrayTicker);
+  } catch (error) {
+    console.error('Error with the chart data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // Serve index.html for all non-API requests

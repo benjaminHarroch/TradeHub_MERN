@@ -56,10 +56,11 @@ async function screenNasdaqStocks() {
       }
     }
 
-    console.log('Screened NASDAQ Stocks:', results);
+    return results;
   } catch (error) {
     console.error('Error screening NASDAQ stocks:', error);
+    return [];
   }
 }
 
-module.default=screenNasdaqStocks;
+module.exports = screenNasdaqStocks;
