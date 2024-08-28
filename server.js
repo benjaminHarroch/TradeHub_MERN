@@ -7,7 +7,7 @@ const routerPost=require('./Controllers/postsRouter');
 const routerComment=require('./Controllers/commentRouter');
 const auth=require('./Controllers/auth');
 const finnhub = require('finnhub');
-const GetData=require('./utilsServer/GetData');
+const screenNasdaqStocks=require('./utilsServer/ScreenStock');
 const routerTrade=require('./Controllers/TradeRouter');
 const { Server } = require('socket.io');
 const handleSocket = require('./Controllers/chatrouter'); 
@@ -106,7 +106,7 @@ app.get('/getMomentumStock', async (req, res) => {
     
   try{
 
-    const arrayTiker =await GetData()
+    const arrayTiker =await screenNasdaqStocks()
     console.log(arrayTiker);
     return serverResponse(res,200,arrayTiker);
    }catch(e){
