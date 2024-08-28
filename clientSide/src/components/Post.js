@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
 import UserContext from "./context/userContext";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Description from "./Description";
 
 
 
@@ -70,7 +71,7 @@ function Post({postImg,postUserName,postTime,postDescription,userId,postID,posts
             </div>
 
             <div className="postBottom">
-                <p>{postDescription}</p>
+                <Description text={postDescription} />
             </div>
 
             <div className="postImage">
