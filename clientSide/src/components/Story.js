@@ -24,7 +24,7 @@ function Story() {
 
       const apiKey='smPg0j4kXAb9tWkwQx5b3RITg6we_nuM';
 
-      let url =`https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-02-10?apiKey=${apiKey}`;
+      let url =`https://api.polygon.io/v2/aggs/ticker/MSFT/range/1/day/2024-06-09/2024-09-10?apiKey=${apiKey}`;
       
       axios.get(url).then((res) => {
         setData(res.data.results.map(item => {
