@@ -32,10 +32,10 @@ async function meetsCriteria(symbol) {
     const weeklyChange = ((dailyBars.data.results[dailyBars.data.results.length - 1].c - dailyBars.data.results[0].o) / dailyBars.data.results[0].o) * 100;
 
     return (
-      stats.data.avgVolume >= 300000 &&
-      quote.data.results[0].v >= 2000000 &&
-      quote.data.results[0].c >= 10 &&
-      stats.data.float <= 300000000 &&
+      //stats.data.avgVolume >= 300000 &&
+      //quote.data.results[0].v >= 2000000 &&
+      //quote.data.results[0].c >= 10 &&
+      //stats.data.float <= 300000000 &&
       weeklyChange > 5
     );
   } catch (error) {
