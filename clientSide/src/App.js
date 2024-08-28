@@ -1,4 +1,3 @@
-
 import './App.css';
 import {BrowserRouter,Routes, Route } from 'react-router-dom';
 import {Login} from './components/Login';
@@ -12,6 +11,8 @@ import Register from './components/Register/Register';
 import JournalTraderPage from './components/JournalTraderPage';
 import StockNews from './components/StockNews';
 import StockWatcher from './components/Stockwatcher';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 

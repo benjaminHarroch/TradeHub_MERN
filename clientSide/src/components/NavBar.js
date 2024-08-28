@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./css/NavBar.css"
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
 import UserContext from './context/userContext';
 import NestedList from './NestedList';  
+import SearchBar from './SearchBar';
 
 function NavBar({color}) {
 
@@ -40,7 +41,7 @@ function NavBar({color}) {
 
             </div>
             <div className={'NavBar-RightSide'} style={{ backgroundColor: color }}>
-             <i className="fas fa-search"></i> {/* Search icon */}
+             <SearchBar />
               TRADEHUB {/* Logo */}
 
             </div>
