@@ -1,4 +1,4 @@
-const Polygon = require('polygon.io');
+const Polygon = require('polygon');
 const polygon = new Polygon('smPg0j4kXAb9tWkwQx5b3RITg6we_nuM'); // Replace with your actual API key
 const fetchNasdaqSymbols=require('./fetchNasdaqSymbols')
 
