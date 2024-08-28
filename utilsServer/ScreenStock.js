@@ -1,5 +1,5 @@
 const Polygon = require('polygon.io');
-const polygon = new Polygon('<your-api-key>'); // Replace with your actual API key
+const polygon = new Polygon('smPg0j4kXAb9tWkwQx5b3RITg6we_nuM'); // Replace with your actual API key
 const fetchNasdaqSymbols=require('./fetchNasdaqSymbols')
 
 const criteria = {
@@ -48,8 +48,8 @@ async function screenNasdaqStocks() {
         results.push(symbol);
       }
     }
-    return results;
     console.log('Screened NASDAQ Stocks:', results);
+    return results;
   } catch (error) {
     console.error('Error screening NASDAQ stocks:', error);
   }
