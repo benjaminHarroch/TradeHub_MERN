@@ -30,7 +30,7 @@ function Post({postImg,postUserName,postTime,postDescription,userId,postID,posts
     //after get the post with is detaille i fetch the data of the authore of this post
     useEffect(()=>{
           axios.get(`https://tradehub-mern.onrender.com/auth/getuser/${userId}`)
-          .then((res)=>setPostUser(res.data[0]))
+          .then((res)=>setPostUser(res.data))
           .catch((err)=>console.log('error with get user',err))
     },[userId])
 

@@ -6,7 +6,7 @@ import UserContext from './context/userContext';
 const socket = io.connect('https://tradehub-mern.onrender.com'); // Ensure this is your server URL
 
 const NewChat = ({ otherUser, open, handleClose }) => {
-    console.log(open)
+console.log(otherUser)
     const { user, chats, setChats } = useContext(UserContext);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);

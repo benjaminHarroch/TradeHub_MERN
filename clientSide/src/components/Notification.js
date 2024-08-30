@@ -24,8 +24,8 @@ const Notification = () => {
                             return {
                                 userId: userIdConversation,
                                 lastMessage,
-                                profilePic: res.data[0].profilepic || `https://randomuser.me/api/portraits/lego/${userIdConversation}.jpg`,
-                                otheruserconvarsation: res.data[0] // Fallback if no profile pic
+                                profilePic: res.data.profilepic || `https://randomuser.me/api/portraits/lego/${userIdConversation}.jpg`,
+                                otheruserconvarsation: res.data // Fallback if no profile pic
                             };
                         } catch (error) {
                             console.error('Error fetching user data:', error);

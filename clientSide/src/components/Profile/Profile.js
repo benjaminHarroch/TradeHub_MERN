@@ -28,7 +28,7 @@ const Profile = () => {
         axios.get(`https://tradehub-mern.onrender.com/auth/getuser/${userId}`)
             .then(res => {
                 console.log('res from get user',res);
-                setUserProfile(res.data[0]);
+                setUserProfile(res.data);
                 setShowChat(true);
             })
             .catch(err => console.log("error", err.response));
@@ -72,7 +72,7 @@ const Profile = () => {
                         </ul>
                     </div>
                     <div className="posts">
-                        {post.map((post) => (
+                        {userProfile&&post.map((post) => (
                             <div className="post-Profile" key={post.id}>
                                 <Post
                                     userId={post.user_id}
