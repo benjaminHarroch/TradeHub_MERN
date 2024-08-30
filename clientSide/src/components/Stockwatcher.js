@@ -17,7 +17,7 @@ import {
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const StockWatcher = () => {
-    const [indices, setIndices] = useState([
+    const [indices] = useState([
         { name: 'SPY', symbol: 'SPY' },
         { name: 'NASDAQ', symbol: 'QQQ' }
     ]);
@@ -69,8 +69,6 @@ const StockWatcher = () => {
                             color,
                             backgroundColor
                         };
-
-                      //  newData[index.symbol].price = quote.c;
                     }
                 });
 
@@ -86,7 +84,7 @@ const StockWatcher = () => {
         return () => clearInterval(intervalId); // Cleanup on component unmount
     }, [indices, data]);
 
-    const renderChart = (chartData,color,backgroundColor) => {
+    const renderChart = (chartData, color, backgroundColor) => {
         const labels = chartData.map(point => point.time);
         const values = chartData.map(point => point.value);
 
@@ -124,6 +122,7 @@ const StockWatcher = () => {
     return (
         <Box
             sx={{
+                display: { xs: 'none', sm: 'block' }, // Hide on extra-small screens
                 position: 'fixed',
                 top: 80,
                 left: 2,

@@ -10,7 +10,7 @@ import LoadingSpinner from '../LoadingSpinner';
 
 const Register = () => {
     const [userName, setUserName] = useState('');
-    const [profilepic, setProfilePic] = useState('');
+    const [ setProfilePic] = useState('');
     const [password, setPassword] = useState('');
     const [secondPassword, setSecondPassword] = useState('');
     const [error, setError] = useState(false);
@@ -39,9 +39,16 @@ const Register = () => {
     };
 
     const handleSubmit = async (event) => {
+
+        let boolianEror=true;
         setLoading(true);
         event.preventDefault();
         console.log("Form submitted."); // Log when form is submitted
+
+        chekeIfValideLogin(password,userName,boolianEror);
+        if(boolianEror){
+            return;
+        }
 
         if (password !== secondPassword) {
             setError(true);
@@ -117,6 +124,23 @@ const Register = () => {
             console.error('Error during registration:', err); // Log any errors during registration
         }
     }
+
+    function chekeIfValideLogin(password,userName,boolianEror){
+
+        if(password.length<8 ||(userName.length<1||userName.length>30)){
+
+            boolianEror=true;
+            setMessage("The username or password is incorrect.");
+
+        }
+  
+        if(password.length===0 ||userName.length===0){
+
+            boolianEror=true;
+            setMessage("Fill in all inputs.");
+
+        }
+      }
 
     return (
         <div>

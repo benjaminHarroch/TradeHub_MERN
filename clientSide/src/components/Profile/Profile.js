@@ -57,8 +57,7 @@ const Profile = () => {
                         <h1>{userProfile?.userName || "----"}</h1>
                         <p>@{userProfile?.userName || "----"}</p>
                         <button>Add Friend</button>
-                        {//<button onClick={handleChatToggle}>Message</button>}}
-} 
+                        
                     { showChat && <ChatPage otherUser={userProfile} />}
                     </div>
                 </div>

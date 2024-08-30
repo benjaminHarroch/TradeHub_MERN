@@ -10,6 +10,7 @@ import { useState } from 'react';
 import Candlestick from './Candlestick';
 //import data from './data';
 import axios from 'axios';
+import './css/StorysContainer.css'
 
 
 
@@ -52,7 +53,7 @@ function Story({ticker}) {
 
   return (
 
-    <div className='StoryContainer' style={{"margin":"0 3px"}}>
+    <div className='StoryContainer' >
          <Card sx={{ maxWidth: 180 }} onClick={handleCardClick}>
                 <CardActionArea>
                     <CardMedia

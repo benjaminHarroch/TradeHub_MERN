@@ -6,7 +6,8 @@ import UserContext from './context/userContext';
 const socket = io.connect('https://tradehub-mern.onrender.com'); // Ensure this is your server URL
 
 const NewChat = ({ otherUser, open, handleClose }) => {
-    const { user } = useContext(UserContext);   
+    console.log(open)
+    const { user, chats, setChats } = useContext(UserContext);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const roomId = user?.user_id && otherUser?._id 
@@ -16,36 +17,101 @@ const NewChat = ({ otherUser, open, handleClose }) => {
         : null;
 
     useEffect(() => {
+        
         if (user?.user_id && otherUser?._id) {
+            // Load previous messages from context or localStorage
+            const existingChat = chats.find(
+                (chat) => chat.roomId === roomId
+            );
+            if (existingChat) {
+                console.log('Existing chat found:', existingChat);
+                setMessages(existingChat.messages);
+            } else {
+                const savedChats = localStorage.getItem('chats');
+                console.log('Chats from localStorage:', savedChats);
+                const parsedChats = savedChats ? JSON.parse(savedChats) : [];
+                const chatFromStorage = parsedChats.find(chat => chat.roomId === roomId);
+                if (chatFromStorage) {
+                    console.log('Chat from localStorage:', chatFromStorage);
+                    setMessages(chatFromStorage.messages);
+                }
+            }
+
             // Join the chat room
             socket.emit('joinRoom', { userId: user.user_id, otherUserId: otherUser._id });
 
-            // Listen for incoming messages once
+            // Listen for incoming messages
             socket.on('receiveMessage', (messageData) => {
-                setMessages((prevMessages) => [...prevMessages, messageData]);
+                console.log('Received message:', messageData);
+                setMessages((prevMessages) => {
+                    const updatedMessages = [...prevMessages, messageData];
+
+                    // Update the chat in the context and localStorage
+                    const existingChatIndex = chats.findIndex(chat => chat.roomId === roomId);
+                    let updatedChats;
+                    if (existingChatIndex !== -1) {
+                        updatedChats = [
+                            ...chats.slice(0, existingChatIndex),
+                            { ...chats[existingChatIndex], messages: updatedMessages },
+                            ...chats.slice(existingChatIndex + 1),
+                        ];
+                    } else {
+                        updatedChats = [...chats, { roomId, messages: updatedMessages }];
+                    }
+
+                    console.log('Updated chats after receiving message:', updatedChats);
+                    setChats(updatedChats);
+                    localStorage.setItem('chats', JSON.stringify(updatedChats));
+
+                    return updatedMessages;
+                });
             });
         }
 
-        // Clean up the socket listener when the component unmounts
         return () => {
+            console.log('Cleaning up socket listener');
             socket.off('receiveMessage');
         };
-    }, [user?.user_id, otherUser?._id]);
+    }, [user?.user_id, otherUser?._id, chats, setChats, roomId]);
 
     const sendMessage = () => {
         if (message.trim() !== '' && roomId) {
             const messageData = {
                 user: user.userName,
-                userId: user.user_id,  // Include userId to differentiate sender/receiver
+                userId: user.user_id,
                 text: message,
                 time: new Date().toLocaleTimeString(),
+                otherUser: otherUser
             };
 
-            // Emit the message without adding it locally
+    
             socket.emit('sendMessage', { roomId, messageData });
+            setMessages((prevMessages) => {
+                const updatedMessages = [...prevMessages, messageData];
+
+                // Update the chat in the context and localStorage
+                const existingChatIndex = chats.findIndex(chat => chat.roomId === roomId);
+                let updatedChats;
+                if (existingChatIndex !== -1) {
+                    updatedChats = [
+                        ...chats.slice(0, existingChatIndex),
+                        { ...chats[existingChatIndex], messages: updatedMessages },
+                        ...chats.slice(existingChatIndex + 1),
+                    ];
+                } else {
+                    updatedChats = [...chats, { roomId, messages: updatedMessages }];
+                }
+
+                console.log('Updated chats after sending message:', updatedChats);
+                setChats(updatedChats);
+                localStorage.setItem('chats', JSON.stringify(updatedChats));
+
+                return updatedMessages;
+            });
             setMessage('');
         }
     };
+    
 
     return (
         <Modal open={open} onClose={handleClose} aria-labelledby="chat-modal" aria-describedby="chat-modal-description">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NewChat from './NewChat';
-import {Button } from '@mui/material';
+
 
 const ChatPage = ({otherUser}) => {
     const [isChatOpen, setIsChatOpen] = useState(false);
@@ -15,9 +15,9 @@ const ChatPage = ({otherUser}) => {
 
     return (
         <div>
-            <Button variant="contained" onClick={handleOpenChat}>
-                Open Chat
-            </Button>
+            <button  onClick={handleOpenChat} >
+                open chat
+            </button>
             <NewChat otherUser={otherUser} open={isChatOpen} handleClose={handleCloseChat} />
         </div>
     );

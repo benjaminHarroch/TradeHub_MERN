@@ -28,12 +28,21 @@ function App() {
     trades:[]
   })
 
+  const [chats, setChats] = useState(() => {
+    const savedChats = localStorage.getItem('chats');
+    return savedChats ? JSON.parse(savedChats) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('chats', JSON.stringify(chats));
+  }, [chats]);
+
   useEffect(()=>{
 
     // Retrieve user from local storage
    const res = JSON.parse(localStorage.getItem('user-detaille'));
 
-    if(!user.id&&res){
+    if(!user.user_id&&res){
       setUser({            
         user_id:res._id,
         userName:res.userName,
@@ -50,7 +59,7 @@ function App() {
   return (
     <div className="App">
 
-      <UserContext.Provider value={{user,setUser}} >
+      <UserContext.Provider value={{user,setUser,chats,setChats}} >
 
          <SnackbarProvider>
             <BrowserRouter>

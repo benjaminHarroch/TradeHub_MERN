@@ -13,7 +13,7 @@ export const Login = () => {
         existError:false,
         errorMessage:""
     });
-    const {user,setUser}=useContext(UserContext);
+    const {setUser}=useContext(UserContext);
     const navigate=useNavigate();
     let boolianEror=false;
 
@@ -24,7 +24,7 @@ export const Login = () => {
             boolianEror=true;
             setError({
                 existError:true,
-                errorMessage:"the user name or password is incorrect"
+                errorMessage:"The username or password is incorrect."
             });
 
         }
@@ -34,7 +34,7 @@ export const Login = () => {
             boolianEror=true;
             setError({
                 existError:true,
-                errorMessage:"please fille all inputes"
+                errorMessage:"Fill in all inputs."
             });
 
         }
@@ -108,7 +108,7 @@ export const Login = () => {
 
                 <div className='Login-btn' onClick={()=>GetUserFromDataBase()}><button>Log-in</button></div>
                 <div className='error-text' style={{color:'red',fontWeight:'800'}}>{error.existError&&error.errorMessage+' please try again'}</div>
-                <div className='forgot-btn'><button>forgot-password?</button></div>
+                <div className='forgot-btn'><button>forgot your password?</button></div>
                 
 
                 <div className='Sign-up'>
