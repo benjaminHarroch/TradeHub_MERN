@@ -87,29 +87,36 @@ router.post("/getUserWithToken", async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
+    console.log("Received registration request:", req.body); // Log request body
     try {
         const { userName, password, profilepic, posts } = req.body;
         const response = await checkIfUserNameExists(userName);
+        console.log("User existence check response:", response); // Log user existence check
 
         if (response) {
+            console.log("User already exists"); // Log duplicate user
             return serverResponse(res, 500, { message: "User already exists" });
         }
 
         bcrypt.hash(password, saltRounds, async function (err, hash) {
             if (err) {
+                console.log("Password hashing error:", err); // Log hashing error
                 return serverResponse(res, 500, { message: "Error occurred with the password" });
             }
 
-            // If the user does not exist, save the user in the database and return a token
             const newUser = new UserModel({ userName, password: hash, profilepic, posts });
             await newUser.save();
-            const IDuser = newUser._id;
+            console.log("User saved:", newUser); // Log successful save
 
+            const IDuser = newUser._id;
             let token = jwt.sign({ id: IDuser }, KEY_SECRET, { expiresIn: 7200 });
+            console.log("Generated token:", token); // Log token generation
+
             return serverResponse(res, 200, { token: token, message: "Registration successful", newUser });
         });
 
     } catch (e) {
+        console.error("Error during registration:", e); // Log catch block errors
         return serverResponse(res, 500, "Request to add a user to the database failed: " + e);
     }
 });
