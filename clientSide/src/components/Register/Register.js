@@ -10,7 +10,7 @@ import LoadingSpinner from '../LoadingSpinner';
 
 const Register = () => {
     const [userName, setUserName] = useState('');
-    const [ setProfilePic] = useState('');
+    const [profilePic, setProfilePic] = useState(null);
     const [password, setPassword] = useState('');
     const [secondPassword, setSecondPassword] = useState('');
     const [error, setError] = useState(false);
@@ -40,28 +40,30 @@ const Register = () => {
 
     const handleSubmit = async (event) => {
 
-        let boolianEror=true;
         setLoading(true);
         event.preventDefault();
-        console.log("Form submitted."); // Log when form is submitted
-
-        chekeIfValideLogin(password,userName,boolianEror);
-        if(boolianEror){
-            return;
+        console.log("Form submitted.");
+    
+        const isError = chekeIfValideLogin(password, userName); // Call the function
+    
+        if (isError) {
+            setLoading(false); // Stop loading if validation fails
+            return; // Exit the function if validation fails
         }
-
+    
+        // Continue with the rest of the form submission logic
         if (password !== secondPassword) {
             setError(true);
             setMessage("Check your password - passwords do not match");
             console.log("Passwords do not match.");
-            setLoading(false); // Log password mismatch
+            setLoading(false);
             return;
         }
-
+    
         if (!selectedImage) {
             alert('Please select an image before submitting.');
-            console.log("No image selected."); 
-            setLoading(false);// Log when no image is selected
+            console.log("No image selected.");
+            setLoading(false);
             return;
         }
 
@@ -125,22 +127,21 @@ const Register = () => {
         }
     }
 
-    function chekeIfValideLogin(password,userName,boolianEror){
+   // Update chekeIfValideLogin to return a boolean value
+function chekeIfValideLogin(password, userName) {
+    if (password.length < 8 || (userName.length < 1 || userName.length > 30)) {
+        setMessage("The username or password is incorrect.");
+        return true; // Error found
+    }
 
-        if(password.length<8 ||(userName.length<1||userName.length>30)){
+    if (password.length === 0 || userName.length === 0) {
+        setMessage("Fill in all inputs.");
+        return true; // Error found
+    }
 
-            boolianEror=true;
-            setMessage("The username or password is incorrect.");
+    return false; // No errors
+}
 
-        }
-  
-        if(password.length===0 ||userName.length===0){
-
-            boolianEror=true;
-            setMessage("Fill in all inputs.");
-
-        }
-      }
 
     return (
         <div>

@@ -17,19 +17,19 @@ function StorysContainer() {
   const stories=[{
         user:"benjamin",
         imageSrc:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.warriortrading.com%2Fhow-to-read-candlestick-charts%2F&psig=AOvVaw0axi0A8wMvtcFIJkiPjl6R&ust=1723631943743000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCg1t_j8YcDFQAAAAAdAAAAABAE",
-        ticker:'MSFT'
+        ticker:'LASE'
       },{
       user:"benjamin",
       imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
-      ticker:'AAPL'
+      ticker:'MERC'
       },{
         user:"benjamin",
         imageSrc:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.warriortrading.com%2Fhow-to-read-candlestick-charts%2F&psig=AOvVaw0axi0A8wMvtcFIJkiPjl6R&ust=1723631943743000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCg1t_j8YcDFQAAAAAdAAAAABAE",
-        ticker:'NVDA'
+        ticker:'RLAY'
       },{
       user:"benjamin",
       imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
-      ticker:'META'
+      ticker:'RZLT'
     },{
       user:"benjamin",
       imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
@@ -37,16 +37,24 @@ function StorysContainer() {
     },{
     user:"benjamin",
     imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
-    ticker:'CRWD'
+    ticker:'SMMT'
     },{
       user:"benjamin",
       imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
-      ticker:'DOGZ'
+      ticker:'TERN'
     },{
     user:"benjamin",
     imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
     ticker:'SEDG'
-    }]
+    },{
+    user:"benjamin",
+    imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+    ticker:'TVTX'
+    },{
+      user:"benjamin",
+      imageSrc:"https://th.bing.com/th/id/R.8916a387421e246e900c047ce0e64c99?rik=juFHzVJhicvLXw&riu=http%3a%2f%2fc8.alamy.com%2fcomp%2fBHK5E9%2ftheodor-herzl-1860-1904-writer-and-statesman-BHK5E9.jpg&ehk=CMtX5vIgHgkb%2bQjBI75QUFA%2b2f0ccpDatIWPhWNmzO8%3d&risl=&pid=ImgRaw&r=0",
+      ticker:'XNCR'
+      }]
 
     
     var settings = {

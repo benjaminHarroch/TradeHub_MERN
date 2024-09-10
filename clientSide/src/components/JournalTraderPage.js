@@ -15,7 +15,7 @@ function JournalTraderPage() {
   function fetchUserFromDb() {
     axios.get(`https://tradehub-mern.onrender.com/auth/getuser/${id}`)
       .then(res => {
-        const tradeIds = res?.data[0]?.trades || [];  // Extract trade IDs from the response
+        const tradeIds = res?.data?.trades || [];  // Extract trade IDs from the response
 
         // Create an array of promises to fetch each trade detail
         const tradeRequests = tradeIds.map(tradeId => 

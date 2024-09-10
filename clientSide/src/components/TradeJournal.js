@@ -8,7 +8,7 @@ import AddTradeButton from './AddTradeButton';
 
 const TradeJournal = ({userTrade,setUserTrade,chartData,id}) => {
 
-   console.log('tradejournal',userTrade);
+   //console.log('tradejournal',userTrade);
 
   return (
     <div className="trade-journal">

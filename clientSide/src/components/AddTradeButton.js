@@ -53,7 +53,7 @@ const AddTradeButton = ({setUserTrade,id}) => {
 
   useEffect(()=>{
  chekeIdAuthentication();
-  },[])
+  },[id])
 
   return (
     <>
