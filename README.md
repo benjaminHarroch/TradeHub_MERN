@@ -1,18 +1,42 @@
-<h1> Junior Traders </h1>
+# TradeHub MERN
 
-<h3>The h6urh6ose of the h6roject : <h/3>
+[![Build Status](https://img.shields.io/github/workflow/status/benjaminHarroch/TradeHub_MERN/Build)](https://github.com/benjaminHarroch/TradeHub_MERN/actions)
+[![License](https://img.shields.io/github/license/benjaminHarroch/TradeHub_MERN)](LICENSE)
 
-<h5>1.Build a h6latform of stock traders who can share trading ideas together. </h5>
-<h5>2.Track your stocks WITH THE WATCHLIST </h5>
-<h5>3.Build a journal trade for track your weakness and h6ower, everything is saved in a database </h5>
-<h5>4.Get momentum stocks that I built with the helh6 of a sh6ecial scanner that every day gives you the hottest stocks in the market </h5>
-<h5>5.Get the hottest news on the market in real time with the helh6 of an Ah6I called IES CLOUDS {i need to add this - stil not working} </h5>
+TradeHub is a powerful trading platform built with the MERN stack (MongoDB, Express, React, Node.js). This application enables users to track their trades, view up-to-date stock news, and manage user accounts with a modern, responsive design.
 
-<h3>Technologies used in the h6roject </h3>
+## Features
 
-<h5>--REACT hooks  </h5>
-<h5>--js es6 </h5>
-<h5>--MUI </h5>
-<h5>--NODEJS WITH EXh6RESS</h5>
-<h5>--MONGO/MONGOOSE/MONOGO ATLAS FOR DEh6LOYING</h5>
-<h5>--nh6m libraries like BCRYh6T,MUI,FINVIZ-YAHOO,NODEMOON</h5>
+- **User Registration and Authentication**: Secure user registration with profile picture uploads and hashed passwords.
+- **Trade Tracking**: Track and analyze trades with detailed views and performance metrics.
+- **Stock News**: Display latest stock news with search and filter capabilities.
+- **Responsive Design**: Optimized for various devices with a focus on user experience.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Installation
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org) (v14 or later)
+- [npm](https://www.npmjs.com) (Node Package Manager)
+
+### Clone the Repository
+
+First, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/benjaminHarroch/TradeHub_MERN.git
+cd TradeHub_MERN
+
