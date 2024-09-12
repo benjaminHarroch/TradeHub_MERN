@@ -1,6 +1,6 @@
 # TradeHub
 
-![TradeHub Logo](https://firebasestorage.googleapis.com/v0/b/tradeh…=media&token=e5b096e0-28d2-4cd7-8b86-a80e69ef27f1) <!-- Replace with your logo image URL -->
+![TradeHub Logo](https://firebasestorage.googleapis.com/v0/b/tradehub-ec4d8.appspot.com/o/profile_pics%2FBEARISH%20PIN%20BAR.png?alt=media&token=e5b096e0-28d2-4cd7-8b86-a80e69ef27f1) <!-- Replace with your logo image URL -->
 
 ## Overview
 
