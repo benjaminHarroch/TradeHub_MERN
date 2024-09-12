@@ -1,42 +1,62 @@
-# TradeHub MERN
+# TradeHub
 
-[![Build Status](https://img.shields.io/github/workflow/status/benjaminHarroch/TradeHub_MERN/Build)](https://github.com/benjaminHarroch/TradeHub_MERN/actions)
-[![License](https://img.shields.io/github/license/benjaminHarroch/TradeHub_MERN)](LICENSE)
+![TradeHub Logo](https://example.com/logo.png) <!-- Replace with your logo image URL -->
 
-TradeHub is a powerful trading platform built with the MERN stack (MongoDB, Express, React, Node.js). This application enables users to track their trades, view up-to-date stock news, and manage user accounts with a modern, responsive design.
+## Overview
+
+TradeHub is a comprehensive trading platform designed to help users track their trades, analyze performance, and stay updated with the latest stock news. With a focus on usability and aesthetics, TradeHub offers a modern and intuitive interface for managing trades, viewing stock charts, and accessing real-time market data.
 
 ## Features
 
-- **User Registration and Authentication**: Secure user registration with profile picture uploads and hashed passwords.
-- **Trade Tracking**: Track and analyze trades with detailed views and performance metrics.
-- **Stock News**: Display latest stock news with search and filter capabilities.
-- **Responsive Design**: Optimized for various devices with a focus on user experience.
+- **Trade Tracking**: Seamlessly add, manage, and analyze your trades.
+- **Stock News**: Stay updated with the latest news articles related to your stocks.
+- **Real-Time Stock Data**: View real-time stock prices and historical data.
+- **Watchlist**: Track your favorite stocks and monitor their performance.
+- **Chat System**: Communicate with other users through a private chat system.
+- **Responsive Design**: Enjoy a smooth experience on any device with a responsive UI.
 
-## Table of Contents
+## Technologies Used
 
-- [Features](#features)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+### Frontend
 
-## Installation
+- **React**: A JavaScript library for building user interfaces.
+- **Material-UI (MUI)**: A React component library that provides pre-designed components.
+- **Axios**: A promise-based HTTP client for making API requests.
+- **Chart.js**: A charting library used for displaying candlestick charts.
 
-### Prerequisites
+### Backend
 
-Before you begin, ensure you have the following installed:
+- **Node.js**: A JavaScript runtime for building scalable network applications.
+- **Express**: A web application framework for Node.js.
+- **MongoDB**: A NoSQL database for storing user data, posts, and trades.
+- **Finnhub API**: Provides real-time stock market data and news.
+- **Socket.io**: Enables real-time, bidirectional communication between web clients and servers.
 
-- [Node.js](https://nodejs.org) (v14 or later)
-- [npm](https://www.npmjs.com) (Node Package Manager)
+### Deployment
 
-### Clone the Repository
+- **Heroku / Render**: For deploying and hosting the application.
+- **Firebase**: For storing images.
 
-First, clone the repository to your local machine:
+## API Endpoints
 
-```bash
-git clone https://github.com/benjaminHarroch/TradeHub_MERN.git
-cd TradeHub_MERN
+### News Endpoint
+
+- **URL**: `/news`
+- **Method**: `GET`
+- **Description**: Fetches the latest market news.
+- **Response**: Returns a list of news articles with details such as title, description, and published date.
+
+### Momentum Stock Endpoint
+
+- **URL**: `/getMomentumStock`
+- **Method**: `GET`
+- **Description**: Retrieves stocks with momentum based on pre-defined criteria.
+- **Response**: Returns a list of stocks with details such as ticker symbol, price, and percentage change.
+
+## Installation Instructions
+
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd <project-directory>
 
