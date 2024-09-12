@@ -1,7 +1,5 @@
 # TradeHub
 
-![TradeHub Logo](https://example.com/logo.png) <!-- Replace with your logo image URL -->
-
 ## Overview
 
 TradeHub is a comprehensive trading platform designed to help users track their trades, analyze performance, and stay updated with the latest stock news. With a focus on usability and aesthetics, TradeHub offers a modern and intuitive interface for managing trades, viewing stock charts, and accessing real-time market data.
@@ -34,7 +32,7 @@ TradeHub is a comprehensive trading platform designed to help users track their 
 
 ### Deployment
 
-- **Heroku / Render**: For deploying and hosting the application.
+- **Render**: For deploying and hosting the application.
 - **Firebase**: For storing images.
 
 ## API Endpoints
