@@ -1,6 +1,6 @@
 # TradeHub
 
-<img src="https://example.com/logo.png" alt="TradeHub Logo" style="width: 100px; height: auto;" />
+<img src="https://firebasestorage.googleapis.com/v0/b/tradehub-ec4d8.appspot.com/o/profile_pics%2FBEARISH%20PIN%20BAR.png?alt=media&token=e5b096e0-28d2-4cd7-8b86-a80e69ef27f1" alt="TradeHub Logo" style="width: 100px; height: auto;" />
 ## Overview
 
 TradeHub is a comprehensive trading platform designed to help users track their trades, analyze performance, and stay updated with the latest stock news. With a focus on usability and aesthetics, TradeHub offers a modern and intuitive interface for managing trades, viewing stock charts, and accessing real-time market data.
