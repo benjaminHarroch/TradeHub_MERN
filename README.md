@@ -1,5 +1,7 @@
 # TradeHub
 
+![TradeHub Logo](https://firebasestorage.googleapis.com/v0/b/tradeh…=media&token=e5b096e0-28d2-4cd7-8b86-a80e69ef27f1) <!-- Replace with your logo image URL -->
+
 ## Overview
 
 TradeHub is a comprehensive trading platform designed to help users track their trades, analyze performance, and stay updated with the latest stock news. With a focus on usability and aesthetics, TradeHub offers a modern and intuitive interface for managing trades, viewing stock charts, and accessing real-time market data.
@@ -37,14 +39,14 @@ TradeHub is a comprehensive trading platform designed to help users track their 
 
 ## API Endpoints
 
-### News Endpoint
+### 📈 News Endpoint
 
 - **URL**: `/news`
 - **Method**: `GET`
 - **Description**: Fetches the latest market news.
 - **Response**: Returns a list of news articles with details such as title, description, and published date.
 
-### Momentum Stock Endpoint
+### 📊 Momentum Stock Endpoint
 
 - **URL**: `/getMomentumStock`
 - **Method**: `GET`
@@ -55,6 +57,7 @@ TradeHub is a comprehensive trading platform designed to help users track their 
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
-   cd <project-directory>
-
+   git clone https://github.com/benjaminHarroch/TradeHub_MERN.git
+   cd JuinorTraders
+   cd clientSide
+   npm run start
