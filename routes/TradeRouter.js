@@ -1,12 +1,11 @@
 
 
-
 const express=require('express');
 const serverResponse=require('../utilsServer/serverResponse');
 const mongoose =require('mongoose');
 const TradeModel=require('../models/Trades');
 const UserModel=require('../models/User');
-//const { use } = require('./auth');
+
 
 
 const router=express.Router();
@@ -14,7 +13,7 @@ const router=express.Router();
 
 router.get('/getalltrade',async (req,res)=>{
 
-   
+
     try{
 
         const trades=await TradeModel.find({})
@@ -78,7 +77,7 @@ router.get('/gettrade/:tradeid', async (req, res) => {
 
 router.post('/newTrade',async (req,res)=>{
 
-   
+
     try{
 
         const newtrade=new TradeModel({...req.body})
