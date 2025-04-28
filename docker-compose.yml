@@ -1,0 +1,27 @@
+version: "3"
+services:
+  react:
+    build:
+      context: ./clientSide
+    ports:
+      - "3000:3000"
+
+  node:
+    build:
+      context: .
+    ports:
+      - "7000:7000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/mydatabase
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo-data:

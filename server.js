@@ -3,14 +3,14 @@ const mongoose =require('mongoose');
 const cors = require('cors');
 const serverResponse=require('./utilsServer/serverResponse');
 const http = require('http');
-const routerPost=require('./Controllers/postsRouter');
-const routerComment=require('./Controllers/commentRouter');
+const routerPost=require('./routes/postsRouter');
+const routerComment=require('./routes/commentRouter');
 const auth=require('./Controllers/auth');
 const finnhub = require('finnhub');
 const screenNasdaqStocks=require('./utilsServer/ScreenStock');
-const routerTrade=require('./Controllers/TradeRouter');
+const routerTrade=require('./routes/TradeRouter');
 const { Server } = require('socket.io');
-const handleSocket = require('./Controllers/chatrouter'); 
+const handleSocket = require('./routes/chatrouter');
 const path = require('path');
 
 
@@ -61,7 +61,7 @@ const buildPath = path.join(__dirname, 'clientSide','build');
 app.use(express.static(buildPath));
 
 
-//----- midellewire for the application 
+//----- midellewire for the application
 app.use(express.json());
 
 app.use('/post',routerPost);
@@ -116,7 +116,7 @@ app.get('/getMomentumStock', async (req, res) => {
 // Serve index.html for all non-API requests
 app.get('*', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
-  
+
   console.log(__dirname)
 });
 
@@ -138,4 +138,3 @@ mongoose.connect(mongoUri, {
     console.error('Error connecting to DB:', err);
   });
 
-  

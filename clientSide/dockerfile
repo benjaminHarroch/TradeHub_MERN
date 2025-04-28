@@ -1,4 +1,4 @@
-# שלב 1: בחר Base Image עבור Node.js
+# שלב 1: בחר Base Image עבור React
 FROM node:18-alpine
 
 # שלב 2: הגדרת תיקיית עבודה
@@ -13,8 +13,12 @@ RUN npm install
 # שלב 5: העתקת שאר הקבצים
 COPY . .
 
-# שלב 6: חשיפת הפורט
-EXPOSE 7000
+# שלב 6: הרצת build ל-React
+RUN npm run build
 
-# שלב 7: הרצת השרת
-CMD ["node", "server.js"]
+# שלב 7: חשיפת הפורט
+EXPOSE 3000
+
+# שלב 8: הרצת השרת של React
+CMD ["npm", "start"]
+
